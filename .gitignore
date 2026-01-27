@@ -1,0 +1,68 @@
+# 常见忽略项
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 虚拟环境
+venv/
+env/
+env.local/
+env.*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 操作系统
+.DS_Store
+Thumbs.db
+
+# 数据文件
+data/
+datasets/
+*.csv
+*.json
+*.pickle
+*.pkl
+
+# 模型文件
+models/
+*.h5
+*.pt
+*.pth
+*.onnx
+
+# 日志
+logs/
+*.log
+
+# 配置
+config/
+*.yaml
+*.yml
+*.env
+
+# 构建
+build/
+dist/
+*.egg-info/
+
+# 测试
+.coverage
+coverage.xml
+pytest_cache/
+
+# 文档
+*.rst
+build/
+docs/_build/
+
+# 其他
+*.tmp
+*.temp
+.cache/

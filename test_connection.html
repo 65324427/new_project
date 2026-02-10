@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试后端连接</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .endpoint {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .status {
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .success {
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>测试后端连接</h1>
+        <p>点击下方按钮测试与后端服务的连接</p>
+        <button onclick="testConnections()">测试连接</button>
+        <div id="results"></div>
+    </div>
+    
+    <script>
+        function testConnections() {
+            const endpoints = [
+                'http://localhost:5000/execute',
+                'http://127.0.0.1:5000/execute',
+                'http://192.168.186.203:5000/execute'
+            ];
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '';
+            
+            // 测试每个端点
+            endpoints.forEach(endpoint => {
+                const endpointDiv = document.createElement('div');
+                endpointDiv.className = 'endpoint';
+                endpointDiv.innerHTML = `<strong>测试端点:</strong> ${endpoint} <span class="status">测试中...</span>`;
+                resultsDiv.appendChild(endpointDiv);
+                
+                // 使用 XMLHttpRequest 测试连接
+                testEndpoint(endpoint, endpointDiv);
+            });
+        }
+        
+        function testEndpoint(endpoint, resultElement) {
+            console.log(`测试端点: ${endpoint}`);
+            console.log(`浏览器位置: ${window.location.href}`);
+            console.log(`浏览器来源: ${window.location.origin}`);
+            
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', endpoint, true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.timeout = 10000; // 10秒
+            
+            xhr.onload = function() {
+                console.log(`XMLHttpRequest 状态: ${xhr.status}`);
+                console.log(`XMLHttpRequest 响应: ${xhr.responseText}`);
+                
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    resultElement.innerHTML = `<strong>测试端点:</strong> ${endpoint} <span class="status success">成功</span>`;
+                    resultElement.innerHTML += `<pre>状态码: ${xhr.status}\n响应: ${xhr.responseText}</pre>`;
+                } else {
+                    resultElement.innerHTML = `<strong>测试端点:</strong> ${endpoint} <span class="status error">失败</span>`;
+                    resultElement.innerHTML += `<pre>状态码: ${xhr.status}\n响应: ${xhr.responseText}</pre>`;
+                }
+            };
+            
+            xhr.onerror = function(e) {
+                console.error(`XMLHttpRequest 错误:`, e);
+                console.error(`XMLHttpRequest readyState: ${xhr.readyState}`);
+                console.error(`XMLHttpRequest 状态: ${xhr.status}`);
+                resultElement.innerHTML = `<strong>测试端点:</strong> ${endpoint} <span class="status error">网络错误</span>`;
+                resultElement.innerHTML += `<pre>错误: ${xhr.statusText || '未知错误'}</pre>`;
+            };
+            
+            xhr.ontimeout = function() {
+                console.error(`XMLHttpRequest 超时`);
+                resultElement.innerHTML = `<strong>测试端点:</strong> ${endpoint} <span class="status error">超时</span>`;
+                resultElement.innerHTML += `<pre>错误: 请求超时 (10秒)</pre>`;
+            };
+            
+            // 发送测试代码
+            const testCode = "print('Hello, World!')";
+            console.log(`发送测试代码: ${testCode}`);
+            xhr.send(JSON.stringify({ code: testCode }));
+        }
+    </script>
+</body>
+</html>

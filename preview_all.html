@@ -153,6 +153,42 @@
             padding: 0;
         }
         
+        .code-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .run-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8em;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            z-index: 10;
+        }
+        
+        .run-button:hover {
+            background-color: #357abd;
+        }
+        
+        .output-container {
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 5px;
+            white-space: pre-wrap;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+        
         .status {
             display: inline-block;
             padding: 4px 12px;
@@ -228,7 +264,547 @@
             color: #666;
             margin-top: 50px;
         }
+        
+        .feature-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .feature-btn {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 500;
+            transition: all 0.3s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .feature-btn:hover {
+            background-color: #357abd;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .feature-btn.active {
+            background-color: #2c5f8f;
+        }
+        
+        .feature-panel {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .panel-header {
+            background-color: #4a90e2;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .panel-header h3 {
+            margin: 0;
+            font-size: 1.3em;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+        }
+        
+        .close-btn:hover {
+            opacity: 0.8;
+        }
+        
+        .panel-content {
+            padding: 20px;
+        }
+        
+        .progress-overview {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .progress-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .progress-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: conic-gradient(#4a90e2 0%, #e0e0e0 0%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .progress-circle::before {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: white;
+            border-radius: 50%;
+        }
+        
+        .progress-circle span {
+            position: relative;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #4a90e2;
+        }
+        
+        .progress-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            min-width: 200px;
+        }
+        
+        .stat-label {
+            color: #666;
+        }
+        
+        .stat-value {
+            font-weight: bold;
+            color: #4a90e2;
+        }
+        
+        .section-progress {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        
+        .section-item {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #e0e0e0;
+        }
+        
+        .section-item.completed {
+            border-left-color: #4caf50;
+        }
+        
+        .section-item.in-progress {
+            border-left-color: #ff9800;
+        }
+        
+        .section-item h4 {
+            margin: 0 0 8px 0;
+            color: #333;
+        }
+        
+        .section-item .progress-bar {
+            height: 6px;
+            background-color: #e0e0e0;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+        
+        .section-item .progress-fill {
+            height: 100%;
+            background-color: #4a90e2;
+            transition: width 0.3s;
+        }
+        
+        .section-item .section-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .quiz-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .quiz-card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s;
+        }
+        
+        .quiz-card:hover {
+            border-color: #4a90e2;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .quiz-card h4 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+        
+        .quiz-card p {
+            margin: 0 0 15px 0;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .start-quiz-btn {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .start-quiz-btn:hover {
+            background-color: #357abd;
+        }
+        
+        .quiz-container {
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 8px;
+        }
+        
+        .quiz-question {
+            margin-bottom: 25px;
+        }
+        
+        .quiz-question h4 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            background-color: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .quiz-option:hover {
+            border-color: #4a90e2;
+        }
+        
+        .quiz-option.selected {
+            border-color: #4a90e2;
+            background-color: #e3f2fd;
+        }
+        
+        .quiz-option input[type="radio"] {
+            margin: 0;
+        }
+        
+        .quiz-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .quiz-actions button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .quiz-actions .submit-btn {
+            background-color: #4a90e2;
+            color: white;
+        }
+        
+        .quiz-actions .submit-btn:hover {
+            background-color: #357abd;
+        }
+        
+        .quiz-actions .back-btn {
+            background-color: #e0e0e0;
+            color: #333;
+        }
+        
+        .quiz-actions .back-btn:hover {
+            background-color: #d0d0d0;
+        }
+        
+        .quiz-results {
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .quiz-results h3 {
+            color: #4a90e2;
+            margin-bottom: 20px;
+        }
+        
+        .quiz-results .score {
+            font-size: 3em;
+            font-weight: bold;
+            color: #4a90e2;
+            margin: 20px 0;
+        }
+        
+        .quiz-results .score-detail {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .community-tabs {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 12px 24px;
+            cursor: pointer;
+            font-size: 1em;
+            color: #666;
+            position: relative;
+            transition: color 0.3s;
+        }
+        
+        .tab-btn:hover {
+            color: #4a90e2;
+        }
+        
+        .tab-btn.active {
+            color: #4a90e2;
+            font-weight: bold;
+        }
+        
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #4a90e2;
+        }
+        
+        .posts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .post-card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #4a90e2;
+        }
+        
+        .post-card.question {
+            border-left-color: #ff9800;
+        }
+        
+        .post-card.share {
+            border-left-color: #4caf50;
+        }
+        
+        .post-card.project {
+            border-left-color: #9c27b0;
+        }
+        
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .post-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .post-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 0.85em;
+            color: #666;
+        }
+        
+        .post-author {
+            font-weight: 500;
+            color: #4a90e2;
+        }
+        
+        .post-category {
+            background-color: #e0e0e0;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 0.8em;
+        }
+        
+        .post-content {
+            margin: 15px 0;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .post-actions {
+            display: flex;
+            gap: 15px;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 10px;
+        }
+        
+        .post-action {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            color: #666;
+            font-size: 0.9em;
+            transition: color 0.3s;
+        }
+        
+        .post-action:hover {
+            color: #4a90e2;
+        }
+        
+        .post-comments {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .post-comments h5 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .comment-item {
+            background-color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85em;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .comment-author {
+            font-weight: 500;
+            color: #4a90e2;
+        }
+        
+        .comment-content {
+            color: #333;
+        }
+        
+        .post-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .post-form input,
+        .post-form select,
+        .post-form textarea {
+            padding: 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 1em;
+            font-family: inherit;
+        }
+        
+        .post-form input:focus,
+        .post-form select:focus,
+        .post-form textarea:focus {
+            outline: none;
+            border-color: #4a90e2;
+        }
+        
+        .post-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .post-form button {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .post-form button:hover {
+            background-color: #357abd;
+        }
     </style>
+    <!-- CodeMirror 库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/matchbrackets.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -236,6 +812,102 @@
             <h1>AI课程学习路径</h1>
             <p class="subtitle">从入门到专业进阶的完整学习方案</p>
         </header>
+        
+        <div class="feature-nav">
+            <button class="feature-btn" onclick="toggleFeature('progress')">学习进度</button>
+            <button class="feature-btn" onclick="toggleFeature('assessment')">评估测试</button>
+            <button class="feature-btn" onclick="toggleFeature('community')">学习社区</button>
+        </div>
+        
+        <div class="feature-panel" id="progress-panel" style="display: none;">
+            <div class="panel-header">
+                <h3>学习进度跟踪</h3>
+                <button class="close-btn" onclick="toggleFeature('progress')">&times;</button>
+            </div>
+            <div class="panel-content">
+                <div class="progress-overview">
+                    <div class="progress-card">
+                        <div class="progress-circle" id="total-progress-circle">
+                            <span id="total-progress-text">0%</span>
+                        </div>
+                        <p>总进度</p>
+                    </div>
+                    <div class="progress-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">已完成章节</span>
+                            <span class="stat-value" id="completed-sections">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">学习时长</span>
+                            <span class="stat-value" id="total-time">0分钟</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">最后学习</span>
+                            <span class="stat-value" id="last-studied">-</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-progress" id="section-progress-list"></div>
+            </div>
+        </div>
+        
+        <div class="feature-panel" id="assessment-panel" style="display: none;">
+            <div class="panel-header">
+                <h3>评估测试</h3>
+                <button class="close-btn" onclick="toggleFeature('assessment')">&times;</button>
+            </div>
+            <div class="panel-content">
+                <div class="quiz-list" id="quiz-list">
+                    <div class="quiz-card" data-quiz="python-basics">
+                        <h4>Python基础测试</h4>
+                        <p>测试Python核心语法和数据结构掌握程度</p>
+                        <button class="start-quiz-btn" onclick="startQuiz('python-basics')">开始测试</button>
+                    </div>
+                    <div class="quiz-card" data-quiz="ml-basics">
+                        <h4>机器学习基础测试</h4>
+                        <p>测试机器学习基本概念和算法理解</p>
+                        <button class="start-quiz-btn" onclick="startQuiz('ml-basics')">开始测试</button>
+                    </div>
+                    <div class="quiz-card" data-quiz="math-basics">
+                        <h4>数学基础测试</h4>
+                        <p>测试线性代数、微积分和概率统计基础</p>
+                        <button class="start-quiz-btn" onclick="startQuiz('math-basics')">开始测试</button>
+                    </div>
+                </div>
+                <div class="quiz-container" id="quiz-container" style="display: none;"></div>
+                <div class="quiz-results" id="quiz-results" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div class="feature-panel" id="community-panel" style="display: none;">
+            <div class="panel-header">
+                <h3>学习社区</h3>
+                <button class="close-btn" onclick="toggleFeature('community')">&times;</button>
+            </div>
+            <div class="panel-content">
+                <div class="community-tabs">
+                    <button class="tab-btn active" onclick="switchCommunityTab('posts')">讨论区</button>
+                    <button class="tab-btn" onclick="switchCommunityTab('create')">发布帖子</button>
+                </div>
+                <div class="community-content" id="posts-tab">
+                    <div class="posts-list" id="posts-list"></div>
+                </div>
+                <div class="community-content" id="create-tab" style="display: none;">
+                    <form class="post-form" id="post-form">
+                        <input type="text" id="post-author" placeholder="你的昵称" required>
+                        <input type="text" id="post-title" placeholder="帖子标题" required>
+                        <select id="post-category">
+                            <option value="general">综合讨论</option>
+                            <option value="question">问题求助</option>
+                            <option value="share">经验分享</option>
+                            <option value="project">项目交流</option>
+                        </select>
+                        <textarea id="post-content" placeholder="帖子内容..." required></textarea>
+                        <button type="submit">发布帖子</button>
+                    </form>
+                </div>
+            </div>
+        </div>
         
         <div class="nav">
             <h2>课程导航</h2>
@@ -1568,6 +2240,35 @@
                         <li>字符串（str）：Unicode字符串，如<code>"Hello"</code>, <code>'World'</code></li>
                         <li>None类型：表示空值，如<code>None</code></li>
                     </ul>
+                    <p><strong>可运行示例：</strong></p>
+                    <pre><code># 基本数据类型示例
+# 整数
+age = 25
+print(f"年龄: {age}, 类型: {type(age)}")
+
+# 浮点数
+temperature = 36.6
+print(f"体温: {temperature}, 类型: {type(temperature)}")
+
+# 布尔值
+is_student = True
+print(f"是否学生: {is_student}, 类型: {type(is_student)}")
+
+# 字符串
+name = "Alice"
+print(f"姓名: {name}, 类型: {type(name)}")
+
+# None类型
+empty_value = None
+print(f"空值: {empty_value}, 类型: {type(empty_value)}")
+
+# 不同进制的整数
+binary = 0b1010  # 二进制
+octal = 0o12     # 八进制
+hexadecimal = 0xA  # 十六进制
+print(f"二进制 1010 = 十进制 {binary}")
+print(f"八进制 12 = 十进制 {octal}")
+print(f"十六进制 A = 十进制 {hexadecimal}")</code></pre>
                 </li>
                 <li><strong>复合数据类型</strong>：
                     <ul>
@@ -1576,12 +2277,65 @@
                         <li>字典（dict）：键值对映射，如<code>{'name': 'Alice', 'age': 30}</code></li>
                         <li>集合（set）：无序唯一元素集合，如<code>{1, 2, 3}</code></li>
                     </ul>
+                    <p><strong>可运行示例：</strong></p>
+                    <pre><code># 复合数据类型示例
+# 列表
+fruits = ["apple", "banana", "cherry"]
+print(f"水果列表: {fruits}, 类型: {type(fruits)}")
+
+# 元组
+coordinates = (10.0, 20.0)
+print(f"坐标: {coordinates}, 类型: {type(coordinates)}")
+
+# 字典
+person = {"name": "Bob", "age": 30, "city": "New York"}
+print(f"人物信息: {person}, 类型: {type(person)}")
+
+# 集合
+unique_numbers = {1, 2, 3, 3, 4}  # 重复值会被自动去重
+print(f"唯一数字: {unique_numbers}, 类型: {type(unique_numbers)}")
+
+# 访问元素
+print(f"列表第一个元素: {fruits[0]}")
+print(f"字典中的年龄: {person['age']}")
+print(f"检查集合是否包含5: {5 in unique_numbers}")</code></pre>
                 </li>
                 <li><strong>类型转换</strong>：
                     <ul>
                         <li>显式转换：<code>int()</code>, <code>float()</code>, <code>str()</code>, <code>bool()</code></li>
                         <li>隐式转换：Python会在需要时自动进行某些转换</li>
                     </ul>
+                    <p><strong>可运行示例：</strong></p>
+                    <pre><code># 类型转换示例
+# 显式转换
+# 字符串转整数
+num_str = "42"
+num_int = int(num_str)
+print(f"字符串 '{num_str}' 转整数: {num_int}, 类型: {type(num_int)}")
+
+# 整数转浮点数
+num_float = float(num_int)
+print(f"整数 {num_int} 转浮点数: {num_float}, 类型: {type(num_float)}")
+
+# 浮点数转字符串
+float_str = str(num_float)
+print(f"浮点数 {num_float} 转字符串: '{float_str}', 类型: {type(float_str)}")
+
+# 布尔值转换
+print(f"0 转布尔值: {bool(0)}")
+print(f"非零整数转布尔值: {bool(42)}")
+print(f"空字符串转布尔值: {bool('')}")
+print(f"非空字符串转布尔值: {bool('Hello')}")
+print(f"None转布尔值: {bool(None)}")
+
+# 隐式转换示例
+# 整数和浮点数相加，结果为浮点数
+result = 5 + 3.14
+print(f"5 + 3.14 = {result}, 类型: {type(result)}")
+
+# 字符串和数字连接（需要显式转换）
+# print("年龄: " + 25)  # 这会报错
+print("年龄: " + str(25))  # 正确：需要显式转换</code></pre>
                 </li>
                 <li><strong>变量命名规则</strong>：
                     <ul>
@@ -1590,6 +2344,32 @@
                         <li>区分大小写</li>
                         <li>避免使用关键字和内置函数名</li>
                     </ul>
+                    <p><strong>可运行示例：</strong></p>
+                    <pre><code># 变量命名示例
+# 有效的变量名
+user_name = "Alice"
+user_age = 25
+user_score = 95.5
+_is_active = True
+
+print(f"用户名: {user_name}")
+print(f"年龄: {user_age}")
+print(f"分数: {user_score}")
+print(f"是否活跃: {_is_active}")
+
+# 变量名区分大小写
+userName = "Bob"  # 与user_name是不同的变量
+print(f"另一个用户名变量: {userName}")
+
+# 以下是无效的变量名（取消注释会报错）
+# 123abc = "invalid"  # 不能以数字开头
+# user-name = "invalid"  # 不能包含连字符
+# class = "invalid"  # 不能使用关键字
+# print = "invalid"  # 不能使用内置函数名
+
+# 查看Python关键字
+import keyword
+print(f"Python关键字: {keyword.kwlist[:10]}...")  # 显示前10个关键字</code></pre>
                 </li>
             </ul>
             
@@ -1602,6 +2382,47 @@
                         <li>if-elif-else语句：多条件分支</li>
                         <li>条件表达式：<code>value = true_value if condition else false_value</code></li>
                     </ul>
+                    <p><strong>可运行示例：</strong></p>
+                    <pre><code># 条件语句示例
+# 基本if语句
+age = 18
+if age >= 18:
+    print("你是成年人")
+
+# if-else语句
+temperature = 30
+if temperature > 25:
+    print("天气很热")
+else:
+    print("天气凉爽")
+
+# if-elif-else语句
+exam_score = 85
+if exam_score >= 90:
+    print("优秀")
+elif exam_score >= 80:
+    print("良好")
+elif exam_score >= 60:
+    print("及格")
+else:
+    print("不及格")
+
+# 条件表达式（三元运算符）
+num = 5
+result = "偶数" if num % 2 == 0 else "奇数"
+print(f"{num}是{result}")
+
+# 多个条件
+a = 10
+b = 20
+if a > 0 and b > 0:
+    print("a和b都是正数")
+
+if a > 5 or b > 5:
+    print("a或b大于5")
+
+if not (a == b):
+    print("a不等于b")</code></pre>
                 </li>
                 <li><strong>循环语句</strong>：
                     <ul>
@@ -1610,6 +2431,54 @@
                         <li>循环控制：<code>break</code>（终止循环）, <code>continue</code>（跳过当前迭代）</li>
                         <li>循环else子句：循环正常结束时执行</li>
                     </ul>
+                    <p><strong>可运行示例：</strong></p>
+                    <pre><code># 循环语句示例
+# for循环遍历列表
+fruits = ["apple", "banana", "cherry"]
+print("遍历水果列表:")
+for fruit in fruits:
+    print(f"- {fruit}")
+
+# for循环遍历字符串
+word = "Python"
+print("\n遍历字符串:")
+for char in word:
+    print(f"- {char}")
+
+# while循环
+count = 1
+print("\nwhile循环计数:")
+while count <= 5:
+    print(f"计数: {count}")
+    count += 1
+
+# 循环控制：break
+print("\n使用break终止循环:")
+for i in range(10):
+    if i == 5:
+        print(f"遇到5，终止循环")
+        break
+    print(f"i = {i}")
+
+# 循环控制：continue
+print("\n使用continue跳过当前迭代:")
+for i in range(10):
+    if i % 2 == 0:
+        continue  # 跳过偶数
+    print(f"奇数: {i}")
+
+# 循环else子句
+print("\n循环else子句:")
+for i in range(3):
+    print(f"i = {i}")
+else:
+    print("循环正常结束")
+
+# 无限循环（谨慎使用）
+print("\n按Ctrl+C停止无限循环演示:")
+# 取消注释以下代码会创建无限循环
+# while True:
+#     print("这是一个无限循环")</code></pre>
                 </li>
                 <li><strong>迭代工具</strong>：
                     <ul>
@@ -1619,6 +2488,57 @@
                         <li><code>reversed()</code>：反向迭代</li>
                         <li><code>sorted()</code>：排序后迭代</li>
                     </ul>
+                    <p><strong>可运行示例：</strong></p>
+                    <pre><code># 迭代工具示例
+# range() 函数
+print("使用range()生成数字序列:")
+for i in range(5):
+    print(f"i = {i}")
+
+print("\n使用range(start, stop, step):")
+for i in range(2, 10, 2):
+    print(f"i = {i}")
+
+# enumerate() 函数
+fruits = ["apple", "banana", "cherry"]
+print("\n使用enumerate()获取索引和值:")
+for index, fruit in enumerate(fruits):
+    print(f"索引 {index}: {fruit}")
+
+# 自定义起始索引
+print("\n自定义起始索引为1:")
+for index, fruit in enumerate(fruits, start=1):
+    print(f"编号 {index}: {fruit}")
+
+# zip() 函数
+names = ["Alice", "Bob", "Charlie"]
+age = [25, 30, 35]
+cities = ["New York", "London", "Paris"]
+
+print("\n使用zip()并行迭代多个序列:")
+for name, age, city in zip(names, age, cities):
+    print(f"{name}, {age}岁, 来自{city}")
+
+# reversed() 函数
+print("\n使用reversed()反向迭代:")
+for fruit in reversed(fruits):
+    print(f"- {fruit}")
+
+# sorted() 函数
+numbers = [5, 2, 8, 1, 9]
+print("\n使用sorted()排序后迭代:")
+for num in sorted(numbers):
+    print(f"- {num}")
+
+# 降序排序
+print("\n降序排序:")
+for num in sorted(numbers, reverse=True):
+    print(f"- {num}")
+
+# 字符串排序
+print("\n字符串按字母顺序排序:")
+for fruit in sorted(fruits):
+    print(f"- {fruit}")</code></pre>
                 </li>
             </ul>
             
@@ -1631,6 +2551,54 @@
                         <li>返回值：使用<code>return</code>语句</li>
                         <li>文档字符串：使用三引号添加函数文档</li>
                     </ul>
+                    <p><strong>可运行示例：</strong></p>
+                    <pre><code># 函数定义与调用示例
+# 基本函数定义
+def greet():
+    """简单的问候函数"""
+    print("Hello, World!")
+
+# 调用函数
+greet()
+
+# 带参数的函数
+def greet_person(name):
+    """向指定人员问候"""
+    print(f"Hello, {name}!")
+
+# 调用带参数的函数
+greet_person("Alice")
+
+# 带返回值的函数
+def add(a, b):
+    """计算两个数的和并返回结果"""
+    return a + b
+
+# 调用带返回值的函数
+result = add(5, 3)
+print(f"5 + 3 = {result}")
+
+# 带文档字符串的函数
+def calculate_area(radius):
+    """
+    计算圆的面积
+    
+    参数:
+        radius (float): 圆的半径
+    
+    返回:
+        float: 圆的面积
+    """
+    import math
+    return math.pi * radius ** 2
+
+# 调用带文档字符串的函数
+area = calculate_area(5)
+print(f"半径为5的圆面积: {area:.2f}")
+
+# 查看函数文档
+print("\n函数文档:")
+print(calculate_area.__doc__)</code></pre>
                 </li>
                 <li><strong>参数类型</strong>：
                     <ul>
@@ -1640,6 +2608,56 @@
                         <li>可变参数：<code>*args</code>（任意数量的位置参数）</li>
                         <li>关键字可变参数：<code>**kwargs</code>（任意数量的关键字参数）</li>
                     </ul>
+                    <p><strong>可运行示例：</strong></p>
+                    <pre><code># 参数类型示例
+# 位置参数
+def describe_person(name, age):
+    print(f"姓名: {name}, 年龄: {age}")
+
+# 使用位置参数调用
+describe_person("Bob", 30)
+
+# 关键字参数
+describe_person(age=25, name="Alice")  # 可以改变参数顺序
+
+# 默认参数
+def greet_with_time(name, time_of_day="morning"):
+    print(f"Good {time_of_day}, {name}!")
+
+# 使用默认参数
+greet_with_time("Charlie")  # 使用默认的time_of_day
+# 覆盖默认参数
+greet_with_time("David", "evening")
+
+# 可变参数 (*args)
+def sum_numbers(*args):
+    """计算任意数量数字的和"""
+    total = 0
+    for num in args:
+        total += num
+    return total
+
+# 调用带可变参数的函数
+print(f"1 + 2 + 3 = {sum_numbers(1, 2, 3)}")
+print(f"4 + 5 + 6 + 7 = {sum_numbers(4, 5, 6, 7)}")
+
+# 关键字可变参数 (**kwargs)
+def print_info(**kwargs):
+    """打印任意数量的关键字参数"""
+    for key, value in kwargs.items():
+        print(f"{key}: {value}")
+
+# 调用带关键字可变参数的函数
+print_info(name="Alice", age=25, city="New York")
+
+# 混合使用不同类型的参数
+def mixed_params(pos1, pos2, *args, kw1="default", **kwargs):
+    print(f"位置参数: {pos1}, {pos2}")
+    print(f"可变参数: {args}")
+    print(f"关键字参数: {kw1}")
+    print(f"关键字可变参数: {kwargs}")
+
+mixed_params(1, 2, 3, 4, 5, kw1="custom", extra="value", another="param")</code></pre>
                 </li>
                 <li><strong>函数高级特性</strong>：
                     <ul>
@@ -1649,6 +2667,81 @@
                         <li>生成器函数：使用<code>yield</code>语句的函数</li>
                         <li>递归函数：调用自身的函数</li>
                     </ul>
+                    <p><strong>可运行示例：</strong></p>
+                    <pre><code># 函数高级特性示例
+# lambda函数（匿名函数）
+square = lambda x: x ** 2
+print(f"5的平方: {square(5)}")
+
+# lambda函数用作排序键
+students = [("Alice", 25), ("Bob", 20), ("Charlie", 30)]
+students.sort(key=lambda student: student[1])  # 按年龄排序
+print("按年龄排序的学生:", students)
+
+# 闭包
+def make_counter():
+    count = 0
+    
+    def counter():
+        nonlocal count  # 声明为非局部变量
+        count += 1
+        return count
+    
+    return counter
+
+# 创建计数器
+my_counter = make_counter()
+print(f"计数器第一次调用: {my_counter()}")
+print(f"计数器第二次调用: {my_counter()}")
+print(f"计数器第三次调用: {my_counter()}")
+
+# 装饰器
+def timer_decorator(func):
+    import time
+    
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        print(f"函数 {func.__name__} 执行时间: {end_time - start_time:.4f} 秒")
+        return result
+    
+    return wrapper
+
+@timer_decorator
+def slow_function():
+    """模拟耗时操作"""
+    import time
+    time.sleep(1)
+    print("函数执行完成")
+
+# 调用被装饰的函数
+slow_function()
+
+# 生成器函数
+def fibonacci(n):
+    """生成斐波那契数列的前n个数"""
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+# 使用生成器
+print("斐波那契数列前10项:")
+for num in fibonacci(10):
+    print(num, end=" ")
+print()
+
+# 递归函数
+def factorial(n):
+    """计算n的阶乘"""
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+print(f"5的阶乘: {factorial(5)}")
+print(f"10的阶乘: {factorial(10)}")</code></pre>
                 </li>
                 <li><strong>函数式编程工具</strong>：
                     <ul>
@@ -1657,6 +2750,70 @@
                         <li><code>reduce()</code>：对可迭代对象进行累积操作</li>
                         <li><code>functools</code>模块：提供额外的函数式编程工具</li>
                     </ul>
+                    <p><strong>可运行示例：</strong></p>
+                    <pre><code># 函数式编程工具示例
+# map() 函数
+numbers = [1, 2, 3, 4, 5]
+
+# 使用map()将每个数字平方
+squared = list(map(lambda x: x**2, numbers))
+print(f"数字平方: {squared}")
+
+# 使用map()将列表中的字符串转换为整数
+str_numbers = ["1", "2", "3", "4", "5"]
+int_numbers = list(map(int, str_numbers))
+print(f"字符串转整数: {int_numbers}")
+
+# filter() 函数
+# 使用filter()筛选偶数
+even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
+print(f"偶数: {even_numbers}")
+
+# 使用filter()筛选长度大于3的字符串
+words = ["apple", "banana", "cherry", "date"]
+long_words = list(filter(lambda word: len(word) > 3, words))
+print(f"长度大于3的单词: {long_words}")
+
+# reduce() 函数
+from functools import reduce
+
+# 使用reduce()计算列表中所有元素的和
+sum_result = reduce(lambda x, y: x + y, numbers)
+print(f"列表元素和: {sum_result}")
+
+# 使用reduce()计算列表中所有元素的乘积
+product_result = reduce(lambda x, y: x * y, numbers)
+print(f"列表元素积: {product_result}")
+
+# 使用reduce()找到列表中的最大值
+max_result = reduce(lambda x, y: x if x > y else y, numbers)
+print(f"列表最大值: {max_result}")
+
+# functools模块的其他工具
+from functools import partial
+
+# partial() - 创建一个带有预设参数的函数
+def power(base, exponent):
+    return base ** exponent
+
+# 创建一个计算平方的函数（预设exponent=2）
+square = partial(power, exponent=2)
+print(f"5的平方: {square(5)}")
+
+# 创建一个计算立方的函数（预设exponent=3）
+cube = partial(power, exponent=3)
+print(f"5的立方: {cube(5)}")
+
+# 组合使用map、filter和reduce
+# 计算列表中偶数的平方和
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+result = reduce(
+    lambda x, y: x + y,
+    map(lambda x: x**2,
+        filter(lambda x: x % 2 == 0, numbers)
+    )
+)
+print(f"偶数的平方和: {result}")</code></pre>
                 </li>
             </ul>
             
@@ -1669,6 +2826,47 @@
                         <li>模块别名：<code>import module as alias</code></li>
                         <li>内置模块：如<code>math</code>, <code>random</code>, <code>os</code></li>
                     </ul>
+                    <p><strong>可运行示例：</strong></p>
+                    <pre><code># 模块系统示例
+# 导入整个模块
+import math
+print(f"π的值: {math.pi}")
+print(f"2的平方根: {math.sqrt(2)}")
+print(f"sin(π/2): {math.sin(math.pi/2)}")
+
+# 从模块中导入特定函数
+from random import randint, choice
+print(f"随机整数(1-10): {randint(1, 10)}")
+
+fruits = ["apple", "banana", "cherry"]
+print(f"随机选择的水果: {choice(fruits)}")
+
+# 导入模块并指定别名
+import datetime as dt
+current_time = dt.datetime.now()
+print(f"当前时间: {current_time}")
+print(f"年份: {current_time.year}")
+print(f"月份: {current_time.month}")
+print(f"日期: {current_time.day}")
+
+# 导入模块中的所有内容（不推荐）
+from os import *
+print(f"当前工作目录: {getcwd()}")
+
+# 查看模块搜索路径
+import sys
+print("\n模块搜索路径:")
+for path in sys.path[:5]:  # 只显示前5个路径
+    print(path)
+
+# 查看内置模块
+print("\n一些常用内置模块:")
+common_modules = ["math", "random", "datetime", "os", "sys", "json", "csv"]
+for module in common_modules:
+    if module in sys.modules:
+        print(f"✓ {module}")
+    else:
+        print(f"  {module}")</code></pre>
                 </li>
                 <li><strong>包系统</strong>：
                     <ul>
@@ -1677,6 +2875,83 @@
                         <li>相对导入：使用<code>.</code>和<code>..</code>进行相对导入</li>
                         <li>命名空间包：Python 3.3+的无<code>__init__.py</code>包</li>
                     </ul>
+                    <p><strong>可运行示例：</strong></p>
+                    <pre><code># 包系统示例
+# 注意：以下代码需要在实际的包结构中运行
+
+# 假设我们有以下包结构：
+# my_package/
+#     __init__.py
+#     module1.py
+#     module2.py
+#     subpackage/
+#         __init__.py
+#         module3.py
+
+# 1. 导入包中的模块
+# import my_package.module1
+# from my_package import module2
+# from my_package.subpackage import module3
+
+# 2. 导入包并使用别名
+# import my_package as mp
+# from my_package.module1 import function1 as f1
+
+# 3. 相对导入示例（在包内部使用）
+# 在my_package/module2.py中：
+# from . import module1  # 相对导入同一包中的模块
+# from .subpackage import module3  # 相对导入子包中的模块
+
+# 4. 命名空间包示例
+# Python 3.3+ 不需要__init__.py文件
+# 多个目录可以组成一个命名空间包
+
+# 示例：创建一个简单的包结构
+import os
+import sys
+
+# 创建临时包结构
+def create_temp_package():
+    # 创建主包目录
+    os.makedirs("temp_package/subpackage", exist_ok=True)
+    
+    # 创建__init__.py文件
+    with open("temp_package/__init__.py", "w") as f:
+        f.write("# temp_package 初始化文件\n")
+    
+    with open("temp_package/subpackage/__init__.py", "w") as f:
+        f.write("# subpackage 初始化文件\n")
+    
+    # 创建模块文件
+    with open("temp_package/module1.py", "w") as f:
+        f.write("def hello():\n    print('Hello from module1')\n")
+    
+    with open("temp_package/subpackage/module2.py", "w") as f:
+        f.write("def world():\n    print('World from module2')\n")
+
+# 创建临时包
+create_temp_package()
+
+# 添加当前目录到模块搜索路径
+sys.path.insert(0, os.getcwd())
+
+# 测试导入
+try:
+    import temp_package
+    import temp_package.module1
+    from temp_package.subpackage import module2
+    
+    print("成功导入包和模块")
+    temp_package.module1.hello()
+    module2.world()
+except ImportError as e:
+    print(f"导入错误: {e}")
+finally:
+    # 清理临时文件
+    import shutil
+    if os.path.exists("temp_package"):
+        shutil.rmtree("temp_package")
+        print("已清理临时包")</code></pre>
                 </li>
                 <li><strong>模块最佳实践</strong>：
                     <ul>
@@ -1685,6 +2960,99 @@
                         <li>模块级变量和常量命名规范</li>
                         <li>模块导入顺序：标准库 → 第三方库 → 本地模块</li>
                     </ul>
+                    <p><strong>可运行示例：</strong></p>
+                    <pre><code># 模块最佳实践示例
+
+# 1. 使用 if __name__ == "__main__": 保护代码
+# 假设这是一个名为 my_module.py 的文件
+"""
+# my_module.py
+
+def add(a, b):
+    """计算两个数的和"""
+    return a + b
+
+# 模块级变量和常量
+VERSION = "1.0.0"  # 常量使用全大写
+_debug = False  # 私有变量使用下划线前缀
+
+if __name__ == "__main__":
+    # 当模块被直接运行时执行的代码
+    print("测试 add 函数:")
+    print(f"1 + 2 = {add(1, 2)}")
+    print(f"模块版本: {VERSION}")
+"""
+
+# 模拟模块导入和运行
+print("模拟模块最佳实践:")
+
+# 2. 模块文档字符串示例
+# 查看math模块的文档字符串
+import math
+print("\nmath模块文档字符串:")
+print(math.__doc__[:500] + "...")  # 只显示前500个字符
+
+# 3. 模块导入顺序示例
+"""
+# 推荐的导入顺序：
+
+# 1. 标准库模块
+import os
+import sys
+import datetime
+
+# 2. 第三方库模块
+# import numpy as np
+# import pandas as pd
+
+# 3. 本地模块
+# import my_module
+# from my_package import module
+"""
+
+print("\n推荐的模块导入顺序:")
+print("1. 标准库模块 (os, sys, datetime等)")
+print("2. 第三方库模块 (numpy, pandas等)")
+print("3. 本地模块 (自己编写的模块)")
+
+# 4. 模块级变量和常量命名规范示例
+print("\n模块级变量命名规范:")
+print("- 常量: 全大写加下划线 (VERSION, MAX_VALUE)")
+print("- 公共变量: 小写加下划线 (data_path, user_name)")
+print("- 私有变量: 单下划线前缀 (_private_var, _temp_data)")
+
+# 5. 实际示例：创建一个符合最佳实践的模块
+import os
+
+# 创建一个临时模块文件
+with open("example_module.py", "w") as f:
+    f.write('"""示例模块\n\n这个模块展示了模块最佳实践\n"""\n\n# 模块级常量\nMODULE_VERSION = "1.0.0"\n\n# 公共函数\ndef greet(name):\n    """向指定名称的人打招呼\n\n    参数:\n        name (str): 要问候的人的名字\n    \n    返回:\n        str: 问候语\n    """\n    return f"Hello, {name}!"\n\n# 私有函数\ndef _private_helper():\n    """私有辅助函数"""\n    return "This is a private function"\n\n# 主执行代码\nif __name__ == "__main__":\n    print(f"模块版本: {MODULE_VERSION}")\n    print(greet("World"))\n    print(_private_helper())\n')
+
+# 测试模块
+print("\n测试示例模块:")
+try:
+    # 导入模块
+    import example_module
+    
+    # 使用模块功能
+    print(f"模块版本: {example_module.MODULE_VERSION}")
+    print(example_module.greet("Alice"))
+    
+    # 尝试访问私有函数（不推荐）
+    print(example_module._private_helper())
+    
+    # 直接运行模块
+    print("\n直接运行模块:")
+    import subprocess
+    result = subprocess.run([sys.executable, "example_module.py"], capture_output=True, text=True)
+    print(result.stdout)
+except Exception as e:
+    print(f"错误: {e}")
+finally:
+    # 清理
+    if os.path.exists("example_module.py"):
+        os.remove("example_module.py")
+        print("\n已清理示例模块文件")</code></pre>
                 </li>
             </ul>
             
@@ -1695,6 +3063,62 @@
                         <li>内置异常：如<code>TypeError</code>, <code>ValueError</code>, <code>ZeroDivisionError</code></li>
                         <li>异常层次结构：所有异常继承自<code>BaseException</code></li>
                     </ul>
+                    <p><strong>可运行示例：</strong></p>
+                    <pre><code># 异常类型示例
+# 常见内置异常
+print("测试常见内置异常:")
+
+# ZeroDivisionError - 除零错误
+try:
+    result = 10 / 0
+except ZeroDivisionError as e:
+    print(f"ZeroDivisionError: {e}")
+
+# TypeError - 类型错误
+try:
+    result = "10" + 5
+except TypeError as e:
+    print(f"TypeError: {e}")
+
+# ValueError - 值错误
+try:
+    result = int("abc")
+except ValueError as e:
+    print(f"ValueError: {e}")
+
+# IndexError - 索引错误
+try:
+    lst = [1, 2, 3]
+    print(lst[5])
+except IndexError as e:
+    print(f"IndexError: {e}")
+
+# KeyError - 键错误
+try:
+    d = {"name": "Alice"}
+    print(d["age"])
+except KeyError as e:
+    print(f"KeyError: {e}")
+
+# FileNotFoundError - 文件未找到错误
+try:
+    with open("non_existent_file.txt", "r") as f:
+        content = f.read()
+except FileNotFoundError as e:
+    print(f"FileNotFoundError: {e}")
+
+# 异常层次结构
+print("\n异常层次结构:")
+print(f"BaseException: {BaseException}")
+print(f"Exception继承自BaseException: {issubclass(Exception, BaseException)}")
+print(f"ZeroDivisionError继承自Exception: {issubclass(ZeroDivisionError, Exception)}")
+print(f"TypeError继承自Exception: {issubclass(TypeError, Exception)}")
+
+# 捕获所有异常（不推荐）
+try:
+    result = 10 / 0
+except BaseException as e:
+    print(f"捕获所有异常: {type(e).__name__}: {e}")</code></pre>
                 </li>
                 <li><strong>异常处理语句</strong>：
                     <ul>
@@ -1704,6 +3128,78 @@
                         <li>try-except-else：无异常时执行</li>
                         <li>try-except-finally：无论是否有异常都执行</li>
                     </ul>
+                    <p><strong>可运行示例：</strong></p>
+                    <pre><code># 异常处理语句示例
+# 1. 基本try-except
+print("1. 基本try-except:")
+try:
+    num = int(input("请输入一个整数: "))
+    print(f"你输入的是: {num}")
+except ValueError:
+    print("错误: 请输入有效的整数")
+
+# 2. 多个except子句
+print("\n2. 多个except子句:")
+try:
+    num1 = int(input("请输入第一个数: "))
+    num2 = int(input("请输入第二个数: "))
+    result = num1 / num2
+    print(f"结果: {result}")
+except ValueError:
+    print("错误: 请输入有效的整数")
+except ZeroDivisionError:
+    print("错误: 除数不能为零")
+except Exception as e:
+    print(f"其他错误: {e}")
+
+# 3. except-as：捕获异常并赋值给变量
+print("\n3. except-as:")
+try:
+    lst = [1, 2, 3]
+    print(lst[10])
+except IndexError as e:
+    print(f"索引错误: {e}")
+    print(f"异常类型: {type(e).__name__}")
+
+# 4. try-except-else：无异常时执行
+print("\n4. try-except-else:")
+try:
+    num = int(input("请输入一个正数: "))
+except ValueError:
+    print("错误: 请输入有效的整数")
+else:
+    if num > 0:
+        print(f"你输入的正数是: {num}")
+    else:
+        print("错误: 请输入正数")
+
+# 5. try-except-finally：无论是否有异常都执行
+print("\n5. try-except-finally:")
+try:
+    print("尝试执行代码")
+    result = 10 / 0
+except ZeroDivisionError:
+    print("捕获到除零错误")
+finally:
+    print("finally块：无论是否有异常都会执行")
+
+# 示例：使用finally释放资源
+print("\n6. 使用finally释放资源:")
+file = None
+try:
+    file = open("test.txt", "w")
+    file.write("Hello, World!")
+    # 模拟异常
+    10 / 0
+except ZeroDivisionError:
+    print("捕获到异常，但文件会被正确关闭")
+finally:
+    if file:
+        file.close()
+        print("文件已关闭")
+
+# 检查文件是否已关闭
+print(f"文件是否关闭: {file.closed if 'file' in locals() else '文件未创建'}")</code></pre>
                 </li>
                 <li><strong>异常触发与自定义</strong>：
                     <ul>
@@ -1711,6 +3207,76 @@
                         <li>自定义异常：继承自内置异常类</li>
                         <li>异常链：使用<code>raise NewException from original_exception</code></li>
                     </ul>
+                    <p><strong>可运行示例：</strong></p>
+                    <pre><code># 异常触发与自定义示例
+# 1. 手动触发异常
+print("1. 手动触发异常:")
+try:
+    age = int(input("请输入年龄: "))
+    if age < 0:
+        raise ValueError("年龄不能为负数")
+    print(f"年龄: {age}")
+except ValueError as e:
+    print(f"错误: {e}")
+
+# 2. 自定义异常类
+print("\n2. 自定义异常类:")
+
+# 定义自定义异常
+class InvalidAgeError(Exception):
+    """当年龄无效时抛出的异常"""
+    pass
+
+class AgeTooSmallError(InvalidAgeError):
+    """当年龄太小时抛出的异常"""
+    pass
+
+class AgeTooLargeError(InvalidAgeError):
+    """当年龄太大时抛出的异常"""
+    pass
+
+# 使用自定义异常
+try:
+    age = int(input("请输入年龄: "))
+    if age < 0:
+        raise InvalidAgeError("年龄不能为负数")
+    elif age < 18:
+        raise AgeTooSmallError("年龄太小，未满18岁")
+    elif age > 120:
+        raise AgeTooLargeError("年龄太大，超过120岁")
+    print(f"年龄有效: {age}")
+except AgeTooSmallError as e:
+    print(f"年龄太小: {e}")
+except AgeTooLargeError as e:
+    print(f"年龄太大: {e}")
+except InvalidAgeError as e:
+    print(f"无效年龄: {e}")
+except ValueError:
+    print("错误: 请输入有效的整数")
+
+# 3. 异常链
+print("\n3. 异常链:")
+try:
+    try:
+        10 / 0
+    except ZeroDivisionError as e:
+        # 创建异常链
+        raise ValueError("计算错误") from e
+except ValueError as e:
+    print(f"捕获到: {e}")
+    print(f"原始异常: {e.__cause__}")
+
+# 另一种异常链方式
+try:
+    try:
+        with open("non_existent.txt", "r") as f:
+            content = f.read()
+    except FileNotFoundError:
+        # 隐式异常链
+        raise RuntimeError("无法读取配置文件")
+except RuntimeError as e:
+    print(f"捕获到: {e}")
+    print(f"原始异常: {e.__context__}")</code></pre>
                 </li>
                 <li><strong>异常处理最佳实践</strong>：
                     <ul>
@@ -1720,6 +3286,150 @@
                         <li>避免裸except</li>
                         <li>在finally中释放资源</li>
                     </ul>
+                    <p><strong>可运行示例：</strong></p>
+                    <pre><code># 异常处理最佳实践示例
+print("异常处理最佳实践:")
+
+# 1. 只捕获预期的异常
+print("\n1. 只捕获预期的异常:")
+def divide(a, b):
+    try:
+        return a / b
+    except ZeroDivisionError:
+        # 只捕获预期的除零错误
+        print("错误: 除数不能为零")
+        return None
+
+print(f"5 / 2 = {divide(5, 2)}")
+print(f"5 / 0 = {divide(5, 0)}")
+
+# 2. 使用具体的异常类型而非通用Exception
+print("\n2. 使用具体的异常类型:")
+def process_data(data):
+    try:
+        # 尝试处理数据
+        result = data["key"]
+        return result
+    except KeyError:
+        # 具体异常类型
+        print("错误: 缺少必要的键 'key'")
+        return None
+    # 避免这样做:
+    # except Exception:
+    #     print("发生错误")
+    #     return None
+
+print(f"处理 {'key': 'value'}: {process_data({'key': 'value'})}")
+print(f"处理 {{}}: {process_data({})}")
+
+# 3. 提供有意义的异常消息
+print("\n3. 提供有意义的异常消息:")
+def validate_email(email):
+    if "@" not in email:
+        raise ValueError(f"无效的邮箱地址: '{email}'，缺少 '@' 符号")
+    return True
+
+try:
+    validate_email("user.example.com")
+except ValueError as e:
+    print(f"捕获到: {e}")
+
+# 4. 避免裸except
+print("\n4. 避免裸except:")
+def risky_operation():
+    try:
+        # 一些可能出错的操作
+        10 / 0
+    except:  # 裸except，不推荐
+        print("发生了一些错误")
+        # 无法知道具体发生了什么错误
+
+# 推荐的做法
+def safe_operation():
+    try:
+        # 一些可能出错的操作
+        10 / 0
+    except Exception as e:
+        print(f"发生错误: {type(e).__name__}: {e}")
+        # 可以记录日志或进行其他处理
+
+print("裸except:")
+risky_operation()
+print("\n带异常信息的except:")
+safe_operation()
+
+# 5. 在finally中释放资源
+print("\n5. 在finally中释放资源:")
+import socket
+
+def send_data(host, port, message):
+    sock = None
+    try:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.connect((host, port))
+        sock.sendall(message.encode())
+        print("数据发送成功")
+    except ConnectionError as e:
+        print(f"连接错误: {e}")
+    finally:
+        if sock:
+            sock.close()
+            print("socket已关闭")
+
+# 测试（会失败，因为没有服务器在监听）
+send_data("localhost", 12345, "Hello")
+
+# 6. 使用上下文管理器（with语句）
+print("\n6. 使用上下文管理器:")
+# 上下文管理器会自动处理资源释放
+try:
+    with open("test.txt", "w") as f:
+        f.write("Hello")
+        # 模拟异常
+        10 / 0
+except ZeroDivisionError:
+    print("捕获到异常")
+# 文件会自动关闭，即使发生异常
+print("文件操作完成，文件已自动关闭")
+
+# 7. 异常处理的完整示例
+print("\n7. 完整的异常处理示例:")
+def read_config(config_file):
+    """
+    读取配置文件
+    
+    参数:
+        config_file (str): 配置文件路径
+    
+    返回:
+        dict: 配置数据
+    
+    异常:
+        ConfigError: 配置文件错误
+    """
+    try:
+        with open(config_file, "r") as f:
+            import json
+            config = json.load(f)
+            # 验证配置
+            if "api_key" not in config:
+                raise ValueError("配置缺少 'api_key'")
+            return config
+    except FileNotFoundError as e:
+        raise RuntimeError(f"配置文件不存在: {config_file}") from e
+    except json.JSONDecodeError as e:
+        raise RuntimeError(f"配置文件格式错误: {e}") from e
+
+try:
+    config = read_config("config.json")
+    print(f"配置加载成功: {config}")
+except RuntimeError as e:
+    print(f"配置错误: {e}")
+    # 使用默认配置
+    print("使用默认配置")
+    config = {"api_key": "default_key"}
+
+print(f"最终配置: {config}")</code></pre>
                 </li>
             </ul>
             
@@ -1733,6 +3443,147 @@
                 <li><strong>真值测试</strong>：空值、零、空序列等在布尔上下文中为False</li>
                 <li><strong>上下文管理器</strong>：<code>with</code>语句，如<code>with open('file.txt') as f:</code></li>
             </ul>
+            <p><strong>可运行示例：</strong></p>
+            <pre><code># Python特有的语法特性示例
+
+# 1. 缩进
+print("1. 缩进:")
+def greet(name):
+    if name:
+        print(f"Hello, {name}!")
+    else:
+        print("Hello, World!")
+
+greet("Alice")
+greet("")
+
+# 2. 多行语句
+print("\n2. 多行语句:")
+# 使用反斜杠续行
+result = 1 + 2 + \
+         3 + 4 + \
+         5
+print(f"使用反斜杠续行的结果: {result}")
+
+# 使用括号续行
+result = (1 + 2 +
+          3 + 4 +
+          5)
+print(f"使用括号续行的结果: {result}")
+
+# 3. 多重赋值
+print("\n3. 多重赋值:")
+a, b, c = 1, 2, 3
+print(f"a = {a}, b = {b}, c = {c}")
+
+# 交换变量值
+a, b = b, a
+print(f"交换后: a = {a}, b = {b}")
+
+# 4. 解包
+print("\n4. 解包:")
+# 列表解包
+numbers = [1, 2, 3, 4, 5]
+a, b, c = numbers[:3]  # 解包前3个元素
+print(f"解包前3个元素: a = {a}, b = {b}, c = {c}")
+
+# 使用*解包剩余元素
+a, *b, c = numbers
+print(f"a = {a}, b = {b}, c = {c}")
+
+# 元组解包
+point = (10, 20)
+x, y = point
+print(f"坐标: x = {x}, y = {y}")
+
+# 字典解包
+person = {"name": "Bob", "age": 30}
+print(f"字典键: {list(person.keys())}")
+print(f"字典值: {list(person.values())}")
+
+# 5. 比较运算符链接
+print("\n5. 比较运算符链接:")
+x = 5
+result = 1 < x < 10
+print(f"1 < x < 10: {result}")
+
+result = 10 > x >= 5
+print(f"10 > x >= 5: {result}")
+
+# 等价于
+result = (1 < x) and (x < 10)
+print(f"等价于 (1 < x) and (x < 10): {result}")
+
+# 6. 真值测试
+print("\n6. 真值测试:")
+# 以下值在布尔上下文中为False
+false_values = [False, None, 0, 0.0, "", [], {}, set()]
+for value in false_values:
+    print(f"{repr(value)} 在布尔上下文中为: {bool(value)}")
+
+# 以下值在布尔上下文中为True
+true_values = [True, 1, 0.1, "hello", [1, 2], {"a": 1}, {1, 2}]
+for value in true_values:
+    print(f"{repr(value)} 在布尔上下文中为: {bool(value)}")
+
+# 7. 上下文管理器
+print("\n7. 上下文管理器:")
+# 文件操作
+with open("test.txt", "w") as f:
+    f.write("Hello, Context Manager!")
+
+# 文件会自动关闭
+print("文件操作完成")
+
+# 自定义上下文管理器
+class Timer:
+    def __enter__(self):
+        import time
+        self.start = time.time()
+        return self
+    
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        import time
+        self.end = time.time()
+        print(f"执行时间: {self.end - self.start:.4f} 秒")
+
+# 使用自定义上下文管理器
+with Timer():
+    # 模拟耗时操作
+    import time
+    time.sleep(0.5)
+    print("耗时操作完成")
+
+# 8. 其他Python特有特性
+print("\n8. 其他Python特有特性:")
+
+# 列表推导式
+numbers = [1, 2, 3, 4, 5]
+squared = [x**2 for x in numbers]
+print(f"列表推导式 - 平方: {squared}")
+
+# 条件列表推导式
+even_squared = [x**2 for x in numbers if x % 2 == 0]
+print(f"条件列表推导式 - 偶数平方: {even_squared}")
+
+# 字典推导式
+squared_dict = {x: x**2 for x in numbers}
+print(f"字典推导式: {squared_dict}")
+
+# 集合推导式
+squared_set = {x**2 for x in numbers}
+print(f"集合推导式: {squared_set}")
+
+# 生成器表达式
+generator = (x**2 for x in numbers)
+print(f"生成器表达式: {list(generator)}")
+
+# 函数参数默认值
+def greet(name, greeting="Hello"):
+    return f"{greeting}, {name}!"
+
+print(f"默认参数: {greet('Alice')}")
+print(f"自定义参数: {greet('Alice', 'Hi')}")</code></pre>
             
             <h4>7. 代码风格与最佳实践</h4>
             <ul>
@@ -1761,6 +3612,226 @@
                     </ul>
                 </li>
             </ul>
+            <p><strong>可运行示例：</strong></p>
+            <pre><code># 代码风格与最佳实践示例
+
+# 1. PEP 8 代码风格
+print("1. PEP 8 代码风格示例:")
+
+# 好的代码风格
+def calculate_average(numbers):
+    """
+    计算列表中数字的平均值
+    
+    参数:
+        numbers (list): 数字列表
+    
+    返回:
+        float: 平均值
+    """
+    if not numbers:
+        return 0.0
+    
+    total = sum(numbers)
+    count = len(numbers)
+    
+    return total / count
+
+# 使用函数
+scores = [85, 90, 78, 92, 88]
+average = calculate_average(scores)
+print(f"平均分: {average}")
+
+# 2. 命名约定
+print("\n2. 命名约定:")
+
+# 变量和函数：snake_case
+user_name = "Alice"
+user_age = 30
+
+def get_user_info(name, age):
+    return f"Name: {name}, Age: {age}"
+
+# 类名：CamelCase
+class UserProfile:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+    def get_info(self):
+        return f"Name: {self.name}, Age: {self.age}"
+
+# 常量：全大写
+MAX_AGE = 120
+DEFAULT_NAME = "Guest"
+
+# 使用
+user = UserProfile(user_name, user_age)
+print(f"用户信息: {user.get_info()}")
+print(f"最大年龄限制: {MAX_AGE}")
+print(f"默认用户名: {DEFAULT_NAME}")
+
+# 3. 代码可读性
+print("\n3. 代码可读性:")
+
+# 好的注释和格式
+def process_order(order):
+    """
+    处理订单
+    
+    步骤:
+    1. 验证订单信息
+    2. 计算总价
+    3. 生成订单号
+    4. 保存订单
+    
+    参数:
+        order (dict): 订单信息
+    
+    返回:
+        dict: 处理后的订单
+    """
+    # 验证订单信息
+    if not validate_order(order):
+        return {"error": "无效的订单信息"}
+    
+    # 计算总价
+    total_price = calculate_total(order)
+    
+    # 生成订单号
+    order_id = generate_order_id()
+    
+    # 保存订单
+    order["total_price"] = total_price
+    order["order_id"] = order_id
+    
+    save_order(order)
+    
+    return order
+
+# 模拟辅助函数
+def validate_order(order):
+    return True
+
+def calculate_total(order):
+    return 100.0
+
+def generate_order_id():
+    return "ORDER-123"
+
+def save_order(order):
+    pass
+
+# 4. 性能考虑
+print("\n4. 性能考虑:")
+
+# 生成器表达式 vs 列表推导式
+import time
+
+# 大数据集
+big_data = range(10000000)
+
+# 列表推导式（占用更多内存）
+start_time = time.time()
+list_result = [x * 2 for x in big_data]
+list_time = time.time() - start_time
+print(f"列表推导式时间: {list_time:.4f} 秒")
+
+# 生成器表达式（内存高效）
+start_time = time.time()
+gen_result = (x * 2 for x in big_data)
+# 只计算前5个元素
+first_five = [next(gen_result) for _ in range(5)]
+gen_time = time.time() - start_time
+print(f"生成器表达式时间: {gen_time:.4f} 秒")
+print(f"生成器前5个结果: {first_five}")
+
+# 避免在循环中进行昂贵的操作
+print("\n避免在循环中进行昂贵的操作:")
+
+# 不好的做法
+start_time = time.time()
+result = []
+for i in range(1000000):
+    # 在循环中重复创建列表
+    temp = [1, 2, 3, 4, 5]
+    result.append(i * sum(temp))
+bad_time = time.time() - start_time
+print(f"不好的做法时间: {bad_time:.4f} 秒")
+
+# 好的做法
+start_time = time.time()
+result = []
+# 预先计算
+ temp_sum = sum([1, 2, 3, 4, 5])
+for i in range(1000000):
+    result.append(i * temp_sum)
+good_time = time.time() - start_time
+print(f"好的做法时间: {good_time:.4f} 秒")
+print(f"性能提升: {bad_time / good_time:.2f}x")
+
+# 使用适当的数据结构
+print("\n使用适当的数据结构:")
+
+# 列表 vs 集合（成员检查）
+items = list(range(1000000))
+items_set = set(items)
+
+# 列表成员检查
+start_time = time.time()
+for i in range(1000):
+    999999 in items
+list_check_time = time.time() - start_time
+print(f"列表成员检查时间: {list_check_time:.4f} 秒")
+
+# 集合成员检查
+start_time = time.time()
+for i in range(1000):
+    999999 in items_set
+set_check_time = time.time() - start_time
+print(f"集合成员检查时间: {set_check_time:.4f} 秒")
+print(f"性能提升: {list_check_time / set_check_time:.2f}x")
+
+# 5. 完整的最佳实践示例
+print("\n5. 完整的最佳实践示例:")
+
+# 创建一个符合最佳实践的模块
+import os
+
+with open("best_practice_example.py", "w") as f:
+    f.write('"""最佳实践示例模块\n\n这个模块展示了Python代码的最佳实践\n"""\n\nimport os\nimport sys\nfrom datetime import datetime\n\n# 常量\nMAX_RETRY_COUNT = 3\nDEFAULT_TIMEOUT = 30\n\n\nclass DataProcessor:\n    """数据处理器类\n    \n    处理各种类型的数据转换和验证\n    """\n    \n    def __init__(self, timeout=DEFAULT_TIMEOUT):\n        """初始化数据处理器\n        \n        参数:\n            timeout (int): 操作超时时间（秒）\n        """\n        self.timeout = timeout\n        self.processed_count = 0\n    \n    def validate_data(self, data):\n        """验证数据有效性\n        \n        参数:\n            data (dict): 要验证的数据\n        \n        返回:\n            bool: 数据是否有效\n        """\n        if not isinstance(data, dict):\n            return False\n        \n        required_fields = ["id", "name", "value"]\n        for field in required_fields:\n            if field not in data:\n                return False\n        \n        return True\n    \n    def process_batch(self, data_list):\n        """处理数据批次\n        \n        参数:\n            data_list (list): 数据列表\n        \n        返回:\n            list: 处理后的数据\n        """\n        processed_data = []\n        \n        for data in data_list:\n            if self.validate_data(data):\n                processed_item = self._process_single(data)\n                processed_data.append(processed_item)\n                self.processed_count += 1\n        \n        return processed_data\n    \n    def _process_single(self, data):\n        """处理单个数据项\n        \n        参数:\n            data (dict): 单个数据项\n        \n        返回:\n            dict: 处理后的数据\n        """\n        # 添加处理时间戳\n        data["processed_at"] = datetime.now().isoformat()\n        \n        # 转换值为数值类型\n        try:\n            data["value"] = float(data["value"])\n        except (ValueError, TypeError):\n            data["value"] = 0.0\n        \n        return data\n\n\ndef main():\n    """主函数\n    \n    示例用法\n    """\n    processor = DataProcessor()\n    \n    # 示例数据\n    test_data = [\n        {"id": 1, "name": "Item 1", "value": "100"},\n        {"id": 2, "name": "Item 2", "value": "200"},\n        {"id": 3, "name": "Item 3"},  # 缺少value字段\n        {"id": 4, "name": "Item 4", "value": "abc"},  # 非数值value\n    ]\n    \n    # 处理数据\n    result = processor.process_batch(test_data)\n    \n    print(f"处理了 {processor.processed_count} 个数据项")\n    print("处理结果:")\n    for item in result:\n        print(f"  {item}")\n\n\nif __name__ == "__main__":\n    main()\n')
+
+# 运行示例
+print("运行最佳实践示例:")
+import subprocess
+result = subprocess.run([sys.executable, "best_practice_example.py"], capture_output=True, text=True)
+print(result.stdout)
+
+# 清理
+if os.path.exists("best_practice_example.py"):
+    os.remove("best_practice_example.py")
+    print("\n已清理示例文件")
+
+# 6. 代码风格检查工具
+print("\n6. 代码风格检查工具:")
+print("推荐使用以下工具检查代码风格:")
+print("- flake8: 检查PEP 8合规性和代码质量")
+print("- black: 自动格式化Python代码")
+print("- isort: 自动排序导入语句")
+print("- mypy: 静态类型检查")
+
+# 示例命令
+print("\n示例命令:")
+print("# 安装工具")
+print("pip install flake8 black isort mypy")
+print("\n# 检查代码风格")
+print("flake8 your_script.py")
+print("\n# 自动格式化代码")
+print("black your_script.py")
+print("\n# 排序导入")
+print("isort your_script.py")
+print("\n# 类型检查")
+print("mypy your_script.py")</code></pre>
         </div>
     </div>
     
@@ -2285,6 +4356,293 @@ class Color(Enum):
                     </ul>
                 </li>
             </ul>
+            
+            <h4>7. 可运行示例</h4>
+            <p>以下是面向对象编程的完整可运行示例，涵盖了核心概念：</p>
+            
+            <pre><code>#!/usr/bin/env python3
+"""面向对象编程完整示例"""
+
+# 1. 类与对象的基本示例
+print("1. 类与对象的基本示例:")
+
+class Person:
+    """人员类"""
+    
+    # 类变量
+    species = "Homo sapiens"
+    
+    def __init__(self, name, age):
+        """初始化方法"""
+        self.name = name  # 实例变量
+        self.age = age
+    
+    def greet(self):
+        """打招呼方法"""
+        return f"Hello, my name is {self.name}."
+    
+    def celebrate_birthday(self):
+        """庆祝生日方法"""
+        self.age += 1
+        return f"Happy birthday! I'm now {self.age} years old."
+    
+    def __str__(self):
+        """字符串表示方法"""
+        return f"Person(name='{self.name}', age={self.age})"
+
+# 创建对象
+person1 = Person("Alice", 30)
+person2 = Person("Bob", 25)
+
+# 访问属性和方法
+print(f"Person 1: {person1}")
+print(f"Person 2: {person2}")
+print(f"Greeting from person 1: {person1.greet()}")
+print(f"Greeting from person 2: {person2.greet()}")
+print(f"Celebrating birthday: {person1.celebrate_birthday()}")
+print(f"Updated person 1: {person1}")
+print(f"Class variable: {Person.species}")
+print(f"Instance accessing class variable: {person1.species}")
+
+# 2. 继承与多态示例
+print("\n2. 继承与多态示例:")
+
+class Employee(Person):
+    """员工类，继承自Person"""
+    
+    def __init__(self, name, age, employee_id, department):
+        """初始化方法"""
+        super().__init__(name, age)  # 调用父类初始化方法
+        self.employee_id = employee_id
+        self.department = department
+    
+    def greet(self):
+        """重写打招呼方法"""
+        return f"Hello, my name is {self.name} and I work in {self.department}."
+    
+    def get_employee_info(self):
+        """获取员工信息方法"""
+        return f"ID: {self.employee_id}, Name: {self.name}, Department: {self.department}"
+
+class Manager(Employee):
+    """经理类，继承自Employee"""
+    
+    def __init__(self, name, age, employee_id, department, team_size):
+        """初始化方法"""
+        super().__init__(name, age, employee_id, department)
+        self.team_size = team_size
+    
+    def greet(self):
+        """重写打招呼方法"""
+        return f"Hello, my name is {self.name}, I'm a manager in {self.department} managing {self.team_size} people."
+    
+    def manage_team(self):
+        """管理团队方法"""
+        return f"Managing team of {self.team_size} members."
+
+# 创建对象
+employee = Employee("Charlie", 35, "EMP001", "Engineering")
+manager = Manager("David", 40, "MGR001", "Engineering", 10)
+
+# 多态示例
+print(f"Employee greeting: {employee.greet()}")
+print(f"Manager greeting: {manager.greet()}")
+print(f"Employee info: {employee.get_employee_info()}")
+print(f"Manager managing: {manager.manage_team()}")
+
+# 3. 封装与访问控制示例
+print("\n3. 封装与访问控制示例:")
+
+class BankAccount:
+    """银行账户类"""
+    
+    def __init__(self, account_holder, initial_balance=0.0):
+        """初始化方法"""
+        self.account_holder = account_holder  # 公开属性
+        self._balance = initial_balance  # 保护属性
+        self.__account_number = self._generate_account_number()  # 私有属性
+    
+    def _generate_account_number(self):
+        """生成账户号码（保护方法）"""
+        import random
+        return f"ACC-{random.randint(100000, 999999)}"
+    
+    @property
+    def balance(self):
+        """余额属性（只读）"""
+        return self._balance
+    
+    @property
+    def account_number(self):
+        """账户号码属性（只读）"""
+        return self.__account_number
+    
+    def deposit(self, amount):
+        """存款方法"""
+        if amount > 0:
+            self._balance += amount
+            return f"Deposited ${amount:.2f}. New balance: ${self._balance:.2f}"
+        else:
+            return "Invalid deposit amount."
+    
+    def withdraw(self, amount):
+        """取款方法"""
+        if 0 < amount <= self._balance:
+            self._balance -= amount
+            return f"Withdrew ${amount:.2f}. New balance: ${self._balance:.2f}"
+        else:
+            return "Invalid withdrawal amount or insufficient funds."
+
+# 创建账户
+account = BankAccount("Eva", 1000.0)
+print(f"Account holder: {account.account_holder}")
+print(f"Account number: {account.account_number}")
+print(f"Initial balance: ${account.balance:.2f}")
+print(account.deposit(500.0))
+print(account.withdraw(200.0))
+print(f"Final balance: ${account.balance:.2f}")
+
+# 4. 高级面向对象特性示例
+print("\n4. 高级面向对象特性示例:")
+
+# 组合示例
+class Address:
+    """地址类"""
+    def __init__(self, street, city, zip_code):
+        self.street = street
+        self.city = city
+        self.zip_code = zip_code
+    
+    def __str__(self):
+        return f"{self.street}, {self.city}, {self.zip_code}"
+
+class Customer:
+    """客户类，使用组合"""
+    def __init__(self, name, email, address):
+        self.name = name
+        self.email = email
+        self.address = address  # 组合关系
+    
+    def __str__(self):
+        return f"Customer(name='{self.name}', email='{self.email}', address={self.address})"
+
+# 创建地址和客户
+address = Address("123 Main St", "New York", "10001")
+customer = Customer("Frank", "frank@example.com", address)
+print(f"Customer with address: {customer}")
+
+# 混入类示例
+class LoggableMixin:
+    """日志混入类"""
+    def log(self, message):
+        """记录日志方法"""
+        print(f"[{self.__class__.__name__}] {message}")
+
+class LoggablePerson(Person, LoggableMixin):
+    """可日志的人员类"""
+    def greet(self):
+        """重写打招呼方法，添加日志"""
+        self.log("Greeting someone")
+        return super().greet()
+
+# 创建可日志的人员
+loggable_person = LoggablePerson("Grace", 28)
+print(loggable_person.greet())
+
+# 5. 设计模式示例
+print("\n5. 设计模式示例:")
+
+# 单例模式
+class Singleton:
+    """单例模式实现"""
+    _instance = None
+    
+    def __new__(cls):
+        """创建实例方法"""
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+    
+    def __init__(self):
+        """初始化方法"""
+        if not hasattr(self, "initialized"):
+            self.initialized = True
+            self.data = []
+    
+    def add_data(self, item):
+        """添加数据方法"""
+        self.data.append(item)
+    
+    def get_data(self):
+        """获取数据方法"""
+        return self.data
+
+# 测试单例模式
+singleton1 = Singleton()
+singleton2 = Singleton()
+print(f"Are singleton1 and singleton2 the same object? {singleton1 is singleton2}")
+singleton1.add_data("Item 1")
+singleton2.add_data("Item 2")
+print(f"Singleton 1 data: {singleton1.get_data()}")
+print(f"Singleton 2 data: {singleton2.get_data()}")
+
+# 工厂模式
+class Animal:
+    """动物基类"""
+    def speak(self):
+        """发声方法"""
+        pass
+
+class Dog(Animal):
+    """狗类"""
+    def speak(self):
+        return "Woof!"
+
+class Cat(Animal):
+    """猫类"""
+    def speak(self):
+        return "Meow!"
+
+class AnimalFactory:
+    """动物工厂类"""
+    @staticmethod
+    def create_animal(animal_type):
+        """创建动物方法"""
+        if animal_type == "dog":
+            return Dog()
+        elif animal_type == "cat":
+            return Cat()
+        else:
+            raise ValueError(f"Unknown animal type: {animal_type}")
+
+# 测试工厂模式
+dog = AnimalFactory.create_animal("dog")
+cat = AnimalFactory.create_animal("cat")
+print(f"Dog says: {dog.speak()}")
+print(f"Cat says: {cat.speak()}")
+
+print("\n6. 完整的面向对象编程最佳实践示例:")
+
+# 创建一个符合最佳实践的模块
+import os
+
+with open("oop_best_practice.py", "w") as f:
+    f.write('"""面向对象编程最佳实践示例\n\n这个模块展示了Python面向对象编程的最佳实践\n"""\n\nfrom abc import ABC, abstractmethod\nfrom datetime import datetime\n\n\nclass DataProcessor(ABC):\n    """数据处理器抽象基类\n    \n    定义数据处理的通用接口\n    """\n    \n    @abstractmethod\n    def process(self, data):\n        """处理数据\n        \n        参数:\n            data: 要处理的数据\n        \n        返回:\n            处理后的数据\n        """\n        pass\n\n\nclass CSVDataProcessor(DataProcessor):\n    """CSV数据处理器\n    \n    处理CSV格式的数据\n    """\n    \n    def process(self, data):\n        """处理CSV数据\n        \n        参数:\n            data (str): CSV格式的字符串\n        \n        返回:\n            list: 处理后的数据列表\n        """\n        lines = data.strip().split("\n")\n        headers = lines[0].split(",")\n        result = []\n        \n        for line in lines[1:]:\n            values = line.split(",")\n            if len(values) == len(headers):\n                row = dict(zip(headers, values))\n                result.append(row)\n        \n        return result\n\n\nclass JSONDataProcessor(DataProcessor):\n    """JSON数据处理器\n    \n    处理JSON格式的数据\n    """\n    \n    def process(self, data):\n        """处理JSON数据\n        \n        参数:\n            data (str): JSON格式的字符串\n        \n        返回:\n            dict: 处理后的数据字典\n        """\n        import json\n        return json.loads(data)\n\n\nclass DataProcessorFactory:\n    """数据处理器工厂\n    \n    根据数据类型创建相应的处理器\n    """\n    \n    @staticmethod\n    def create_processor(data_type):\n        """创建数据处理器\n        \n        参数:\n            data_type (str): 数据类型\n        \n        返回:\n            DataProcessor: 相应的数据处理器\n        """\n        if data_type == "csv":\n            return CSVDataProcessor()\n        elif data_type == "json":\n            return JSONDataProcessor()\n        else:\n            raise ValueError(f"Unknown data type: {data_type}")\n\n\nclass DataPipeline:\n    """数据处理管道\n    \n    组合多个数据处理器\n    """\n    \n    def __init__(self):\n        """初始化数据处理管道"""\n        self.processors = []\n    \n    def add_processor(self, processor):\n        """添加处理器\n        \n        参数:\n            processor (DataProcessor): 数据处理器\n        """\n        self.processors.append(processor)\n    \n    def process(self, data, data_type):\n        """处理数据\n        \n        参数:\n            data: 要处理的数据\n            data_type (str): 数据类型\n        \n        返回:\n            处理后的数据\n        """\n        processor = DataProcessorFactory.create_processor(data_type)\n        result = processor.process(data)\n        \n        for custom_processor in self.processors:\n            result = custom_processor.process(result)\n        \n        return result\n\n\ndef main():\n    """主函数\n    \n    示例用法\n    """\n    # 创建数据处理管道\npipeline = DataPipeline()\n\n    # 测试CSV数据处理\ncsv_data = "name,age,city\nAlice,30,New York\nBob,25,London\nCharlie,35,Paris"\nprint("Processing CSV data:")\nresult = pipeline.process(csv_data, "csv")\nprint(result)\n\n    # 测试JSON数据处理\nimport json\njson_data = json.dumps({"name": "David", "age": 40, "city": "Tokyo"})\nprint("\nProcessing JSON data:")\nresult = pipeline.process(json_data, "json")\nprint(result)\n\n\nif __name__ == "__main__":\n    main()\n')
+
+# 运行最佳实践示例
+print("运行面向对象编程最佳实践示例:")
+import subprocess
+import sys
+result = subprocess.run([sys.executable, "oop_best_practice.py"], capture_output=True, text=True)
+print(result.stdout)
+
+# 清理
+if os.path.exists("oop_best_practice.py"):
+    os.remove("oop_best_practice.py")
+    print("\n已清理示例文件")
+
+print("\n面向对象编程示例运行完成！")
+</code></pre>
         </div>
     </div>
     
@@ -3333,12 +5691,682 @@ plt.savefig('figure.png', dpi=300, bbox_inches='tight')</code></pre>
     
     <!-- JavaScript代码 -->
     <script>
+        // Pyodide初始化
+        let pyodide;
+        
+        async function initPyodide() {
+            if (!pyodide) {
+                pyodide = await loadPyodide({
+                    indexURL: "https://cdn.jsdelivr.net/pyodide/v0.25.0/full/"
+                });
+                console.log("Pyodide initialized successfully");
+            }
+            return pyodide;
+        }
+        
+        // 运行Python代码（通过后端API）
+        async function runPythonCode(code, outputElement) {
+            try {
+                console.log("Starting to run Python code:", code);
+                outputElement.textContent = "运行中...\n";
+                
+                // 使用相对路径连接后端，避免跨域问题
+                const endpoints = [
+                    '/execute'
+                ];
+                
+                let response;
+                let endpointUsed;
+                
+                // 尝试每个端点
+                for (const endpoint of endpoints) {
+                    try {
+                        console.log(`Trying endpoint: ${endpoint}`);
+                        console.log(`Browser location: ${window.location.href}`);
+                        console.log(`Browser origin: ${window.location.origin}`);
+                        
+                        // 先尝试发送一个简单的 OPTIONS 请求
+                        console.log(`Sending OPTIONS request to: ${endpoint}`);
+                        const optionsResponse = await fetch(endpoint, {
+                            method: 'OPTIONS',
+                            headers: {
+                                'Access-Control-Request-Method': 'POST',
+                                'Access-Control-Request-Headers': 'Content-Type'
+                            },
+                            mode: 'cors',
+                            cache: 'no-cache',
+                            credentials: 'omit'
+                        });
+                        console.log(`OPTIONS response status: ${optionsResponse.status}`);
+                        console.log(`OPTIONS response headers:`, Object.fromEntries(optionsResponse.headers.entries()));
+                        
+                        // 然后发送 POST 请求
+                        console.log(`Sending POST request to: ${endpoint}`);
+                        response = await fetch(endpoint, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ code: code }),
+                            mode: 'cors',
+                            cache: 'no-cache',
+                            credentials: 'omit'
+                        });
+                        endpointUsed = endpoint;
+                        console.log(`Successfully connected to: ${endpoint}`);
+                        console.log(`POST response status: ${response.status}`);
+                        break;
+                    } catch (error) {
+                        console.warn(`Failed to connect to ${endpoint}:`, error);
+                        console.warn(`Error name: ${error.name}`);
+                        console.warn(`Error message: ${error.message}`);
+                        console.warn(`Error stack: ${error.stack}`);
+                        continue;
+                    }
+                }
+                
+                if (!response) {
+                    throw new Error('Could not connect to any backend endpoint');
+                }
+                
+                // 处理响应
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status} at ${endpointUsed}`);
+                }
+                
+                const result = await response.json();
+                console.log("API response:", result);
+                
+                // 显示结果
+                outputElement.textContent = "";
+                if (result.stdout) {
+                    outputElement.textContent += result.stdout;
+                }
+                if (result.stderr) {
+                    outputElement.textContent += result.stderr;
+                }
+                if (result.error) {
+                    outputElement.textContent += `Error: ${result.error}\n`;
+                }
+                if (!result.stdout && !result.stderr && !result.error) {
+                    outputElement.textContent = "代码执行成功，无输出结果";
+                }
+                
+                console.log("Python code executed successfully");
+            } catch (error) {
+                console.error("Error running Python code:", error);
+                console.error("Error stack:", error.stack);
+                outputElement.textContent += `Error: ${error.message}\n`;
+                outputElement.textContent += `Error details: ${JSON.stringify(error)}\n`;
+                outputElement.textContent += `\n提示: 请确保后端服务器正在运行\n`;
+                outputElement.textContent += `建议: 运行命令: python backend.py\n`;
+                outputElement.textContent += `\n后端服务器状态检查:\n`;
+                outputElement.textContent += `1. 打开新的终端\n`;
+                outputElement.textContent += `2. 运行: cd "c:\Users\Administrator\Documents\trae_projects\training\new_project"\n`;
+                outputElement.textContent += `3. 运行: python backend.py\n`;
+                outputElement.textContent += `4. 确保看到 "Running on http://127.0.0.1:5000" 消息\n`;
+            }
+        }
+        
+        // 为代码块添加运行按钮和CodeMirror编辑器
+        function addRunButtons() {
+            const codeBlocks = document.querySelectorAll("pre code:not(.processed)");
+            
+            codeBlocks.forEach((codeBlock, index) => {
+                // 标记为已处理
+                codeBlock.classList.add("processed");
+                const preElement = codeBlock.parentElement;
+                const container = document.createElement("div");
+                container.className = "code-container";
+                
+                // 将pre元素移动到容器中
+                preElement.parentNode.insertBefore(container, preElement);
+                
+                // 创建CodeMirror编辑器
+                const editorDiv = document.createElement("div");
+                container.appendChild(editorDiv);
+                
+                // 获取代码内容
+                const code = codeBlock.textContent;
+                
+                // 初始化CodeMirror编辑器
+                const editor = CodeMirror(editorDiv, {
+                    value: code,
+                    mode: "python",
+                    theme: "monokai",
+                    lineNumbers: true,
+                    matchBrackets: true,
+                    indentUnit: 4,
+                    tabSize: 4,
+                    indentWithTabs: false,
+                    lineWrapping: true,
+                    // 设置编辑器高度
+                    viewportMargin: 100,
+                    // 设置最小高度
+                    height: "400px"
+                });
+                
+                // 让编辑器容器可调整大小
+                container.style.resize = "vertical";
+                container.style.overflow = "auto";
+                container.style.minHeight = "400px";
+                container.style.maxHeight = "800px";
+                
+                // 确保编辑器正确调整大小
+                setTimeout(() => {
+                    editor.refresh();
+                }, 100);
+                
+                // 创建运行按钮
+                const runButton = document.createElement("button");
+                runButton.className = "run-button";
+                runButton.textContent = "运行";
+                runButton.onclick = function() {
+                    // 创建或清空输出容器
+                    let outputContainer = container.querySelector(".output-container");
+                    if (!outputContainer) {
+                        outputContainer = document.createElement("div");
+                        outputContainer.className = "output-container";
+                        container.appendChild(outputContainer);
+                    }
+                    
+                    // 获取编辑器中的代码
+                    const code = editor.getValue();
+                    
+                    // 运行代码
+                    runPythonCode(code, outputContainer);
+                };
+                
+                // 添加运行按钮到容器
+                container.appendChild(runButton);
+                
+                // 隐藏原始的pre元素
+                preElement.style.display = "none";
+            });
+        }
+        
+        // 页面加载完成后添加运行按钮
+        window.addEventListener("DOMContentLoaded", function() {
+            addRunButtons();
+        });
+        
+        // 模态框打开时重新添加运行按钮（因为模态框内容是动态显示的）
         function openModal(modalId) {
-            document.getElementById(modalId).style.display = "block";
+            const modal = document.getElementById(modalId);
+            modal.style.display = "block";
+            
+            // 延迟添加运行按钮，确保模态框内容已完全显示
+            setTimeout(() => {
+                addRunButtons();
+                
+                // 刷新所有CodeMirror编辑器，解决字符重叠问题
+                setTimeout(() => {
+                    document.querySelectorAll('.CodeMirror').forEach(cm => {
+                        cm.CodeMirror.refresh();
+                    });
+                }, 200);
+            }, 100);
         }
         
         function closeModal(modalId) {
             document.getElementById(modalId).style.display = "none";
+        }
+        
+        const API_BASE = '';
+        let currentUserId = 'user_' + Date.now();
+        let currentQuiz = null;
+        let currentQuizIndex = 0;
+        let quizAnswers = {};
+        
+        const quizData = {
+            'python-basics': [
+                {
+                    question: 'Python中哪个关键字用于定义函数？',
+                    options: ['function', 'def', 'func', 'define'],
+                    correct: 1
+                },
+                {
+                    question: '以下哪个是Python的列表？',
+                    options: ['{1, 2, 3}', '[1, 2, 3]', '(1, 2, 3)', '<1, 2, 3>'],
+                    correct: 1
+                },
+                {
+                    question: 'Python中用于导入模块的关键字是？',
+                    options: ['include', 'import', 'require', 'using'],
+                    correct: 1
+                },
+                {
+                    question: '以下哪个是Python的字典？',
+                    options: ['[1, 2, 3]', '{1, 2, 3}', '{"a": 1, "b": 2}', '(1, 2, 3)'],
+                    correct: 2
+                },
+                {
+                    question: 'Python中如何创建一个空列表？',
+                    options: ['list()', '[]', '{}', '以上都可以'],
+                    correct: 3
+                }
+            ],
+            'ml-basics': [
+                {
+                    question: '监督学习需要什么类型的数据？',
+                    options: ['无标签数据', '有标签数据', '半标签数据', '以上都不需要'],
+                    correct: 1
+                },
+                {
+                    question: '以下哪个是分类算法？',
+                    options: ['线性回归', '逻辑回归', 'K-均值聚类', 'PCA'],
+                    correct: 1
+                },
+                {
+                    question: '过拟合是指模型在什么情况下表现很好？',
+                    options: ['训练集', '测试集', '验证集', '所有数据集'],
+                    correct: 0
+                },
+                {
+                    question: '随机森林属于哪种学习方法？',
+                    options: ['集成学习', '深度学习', '强化学习', '迁移学习'],
+                    correct: 0
+                },
+                {
+                    question: '以下哪个是评估分类模型的指标？',
+                    options: ['MSE', 'MAE', '准确率', 'R²'],
+                    correct: 2
+                }
+            ],
+            'math-basics': [
+                {
+                    question: '矩阵乘法满足交换律吗？',
+                    options: ['满足', '不满足', '有时满足', '不确定'],
+                    correct: 1
+                },
+                {
+                    question: '导数的几何意义是？',
+                    options: ['面积', '斜率', '体积', '长度'],
+                    correct: 1
+                },
+                {
+                    question: '两个独立事件A和B同时发生的概率是？',
+                    options: ['P(A) + P(B)', 'P(A) * P(B)', 'P(A) / P(B)', 'P(A) - P(B)'],
+                    correct: 1
+                },
+                {
+                    question: '梯度下降算法用于？',
+                    options: ['增加损失函数', '减少损失函数', '计算概率', '数据归一化'],
+                    correct: 1
+                },
+                {
+                    question: '方差的单位是？',
+                    options: ['与原数据相同', '原数据单位的平方', '原数据单位的平方根', '无量纲'],
+                    correct: 1
+                }
+            ]
+        };
+        
+        function toggleFeature(feature) {
+            const panels = ['progress', 'assessment', 'community'];
+            panels.forEach(p => {
+                const panel = document.getElementById(p + '-panel');
+                if (panel) {
+                    panel.style.display = (p === feature) ? 'block' : 'none';
+                }
+            });
+            
+            const buttons = document.querySelectorAll('.feature-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            if (feature === 'progress') {
+                loadProgress();
+            } else if (feature === 'community') {
+                loadCommunityPosts();
+            }
+        }
+        
+        async function loadProgress() {
+            try {
+                const response = await fetch(`${API_BASE}/api/progress`);
+                const data = await response.json();
+                const userProgress = data[currentUserId] || { sections: {}, totalProgress: 0, lastUpdated: null };
+                
+                const totalProgress = Math.round(userProgress.totalProgress || 0);
+                const progressCircle = document.getElementById('total-progress-circle');
+                const progressText = document.getElementById('total-progress-text');
+                
+                progressCircle.style.background = `conic-gradient(#4a90e2 ${totalProgress}%, #e0e0e0 ${totalProgress}%)`;
+                progressText.textContent = totalProgress + '%';
+                
+                const sections = userProgress.sections || {};
+                const completedCount = Object.values(sections).filter(s => s.completed).length;
+                const totalTime = Object.values(sections).reduce((sum, s) => sum + (s.timeSpent || 0), 0);
+                
+                document.getElementById('completed-sections').textContent = completedCount;
+                document.getElementById('total-time').textContent = totalTime + '分钟';
+                
+                if (userProgress.lastUpdated) {
+                    const lastDate = new Date(userProgress.lastUpdated);
+                    document.getElementById('last-studied').textContent = lastDate.toLocaleDateString();
+                }
+                
+                renderSectionProgress(sections);
+            } catch (error) {
+                console.error('Failed to load progress:', error);
+            }
+        }
+        
+        function renderSectionProgress(sections) {
+            const container = document.getElementById('section-progress-list');
+            const sectionNames = {
+                'ai-overview': 'AI概述与职业规划',
+                'python-basics': 'Python编程基础',
+                'math-basics': '数学基础',
+                'ml-basics': '机器学习基础'
+            };
+            
+            container.innerHTML = '';
+            
+            Object.entries(sections).forEach(([key, section]) => {
+                const div = document.createElement('div');
+                div.className = `section-item ${section.completed ? 'completed' : 'in-progress'}`;
+                
+                const statusClass = section.completed ? 'completed' : 'in-progress';
+                const statusText = section.completed ? '已完成' : '进行中';
+                
+                div.innerHTML = `
+                    <h4>${sectionNames[key] || key}</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: ${section.progress}%"></div>
+                    </div>
+                    <div class="section-meta">
+                        <span>${statusText}</span>
+                        <span>${section.progress}%</span>
+                    </div>
+                `;
+                
+                container.appendChild(div);
+            });
+        }
+        
+        async function updateProgress(section, progress, completed, timeSpent) {
+            try {
+                const response = await fetch(`${API_BASE}/api/progress`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        userId: currentUserId,
+                        section,
+                        progress,
+                        completed,
+                        timeSpent
+                    })
+                });
+                
+                const data = await response.json();
+                return data.success;
+            } catch (error) {
+                console.error('Failed to update progress:', error);
+                return false;
+            }
+        }
+        
+        function startQuiz(quizId) {
+            currentQuiz = quizId;
+            currentQuizIndex = 0;
+            quizAnswers = {};
+            
+            document.getElementById('quiz-list').style.display = 'none';
+            document.getElementById('quiz-container').style.display = 'block';
+            document.getElementById('quiz-results').style.display = 'none';
+            
+            renderQuizQuestion();
+        }
+        
+        function renderQuizQuestion() {
+            const questions = quizData[currentQuiz];
+            const question = questions[currentQuizIndex];
+            const container = document.getElementById('quiz-container');
+            
+            let optionsHtml = '';
+            question.options.forEach((option, index) => {
+                optionsHtml += `
+                    <div class="quiz-option ${quizAnswers[currentQuizIndex] === index ? 'selected' : ''}" onclick="selectQuizOption(${index})">
+                        <input type="radio" name="quiz-option" value="${index}" ${quizAnswers[currentQuizIndex] === index ? 'checked' : ''}>
+                        <span>${option}</span>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = `
+                <div class="quiz-question">
+                    <h4>问题 ${currentQuizIndex + 1} / ${questions.length}</h4>
+                    <p>${question.question}</p>
+                    <div class="quiz-options">
+                        ${optionsHtml}
+                    </div>
+                </div>
+                <div class="quiz-actions">
+                    <button class="back-btn" onclick="backToQuizList()">返回列表</button>
+                    <button class="submit-btn" onclick="submitQuizAnswer()">${currentQuizIndex < questions.length - 1 ? '下一题' : '提交答案'}</button>
+                </div>
+            `;
+        }
+        
+        function selectQuizOption(index) {
+            quizAnswers[currentQuizIndex] = index;
+            document.querySelectorAll('.quiz-option').forEach((opt, i) => {
+                opt.classList.toggle('selected', i === index);
+                opt.querySelector('input').checked = i === index;
+            });
+        }
+        
+        function submitQuizAnswer() {
+            if (quizAnswers[currentQuizIndex] === undefined) {
+                alert('请选择一个答案');
+                return;
+            }
+            
+            const questions = quizData[currentQuiz];
+            
+            if (currentQuizIndex < questions.length - 1) {
+                currentQuizIndex++;
+                renderQuizQuestion();
+            } else {
+                showQuizResults();
+            }
+        }
+        
+        async function showQuizResults() {
+            const questions = quizData[currentQuiz];
+            let correctCount = 0;
+            
+            questions.forEach((q, index) => {
+                if (quizAnswers[index] === q.correct) {
+                    correctCount++;
+                }
+            });
+            
+            const score = Math.round((correctCount / questions.length) * 100);
+            
+            const resultsContainer = document.getElementById('quiz-results');
+            document.getElementById('quiz-container').style.display = 'none';
+            resultsContainer.style.display = 'block';
+            
+            resultsContainer.innerHTML = `
+                <h3>测试完成！</h3>
+                <div class="score">${score}分</div>
+                <div class="score-detail">答对 ${correctCount} / ${questions.length} 题</div>
+                <button class="start-quiz-btn" onclick="backToQuizList()">返回测试列表</button>
+            `;
+            
+            await submitAssessment(currentQuiz, score, questions.length, quizAnswers);
+        }
+        
+        async function submitAssessment(quizId, score, total, answers) {
+            try {
+                const response = await fetch(`${API_BASE}/api/assessments`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        userId: currentUserId,
+                        quizId,
+                        score,
+                        total,
+                        answers
+                    })
+                });
+                
+                const data = await response.json();
+                return data.success;
+            } catch (error) {
+                console.error('Failed to submit assessment:', error);
+                return false;
+            }
+        }
+        
+        function backToQuizList() {
+            document.getElementById('quiz-list').style.display = 'grid';
+            document.getElementById('quiz-container').style.display = 'none';
+            document.getElementById('quiz-results').style.display = 'none';
+            currentQuiz = null;
+            currentQuizIndex = 0;
+            quizAnswers = {};
+        }
+        
+        function switchCommunityTab(tab) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            document.querySelectorAll('.community-content').forEach(content => {
+                content.style.display = 'none';
+            });
+            
+            document.getElementById(tab + '-tab').style.display = 'block';
+            
+            if (tab === 'posts') {
+                loadCommunityPosts();
+            }
+        }
+        
+        async function loadCommunityPosts() {
+            try {
+                const response = await fetch(`${API_BASE}/api/community`);
+                const data = await response.json();
+                const posts = data.posts || [];
+                
+                const container = document.getElementById('posts-list');
+                container.innerHTML = '';
+                
+                if (posts.length === 0) {
+                    container.innerHTML = '<p style="text-align: center; color: #666;">暂无帖子，快来发布第一个吧！</p>';
+                    return;
+                }
+                
+                posts.forEach(post => {
+                    const categoryLabels = {
+                        'general': '综合讨论',
+                        'question': '问题求助',
+                        'share': '经验分享',
+                        'project': '项目交流'
+                    };
+                    
+                    const postDiv = document.createElement('div');
+                    postDiv.className = `post-card ${post.category}`;
+                    postDiv.innerHTML = `
+                        <div class="post-header">
+                            <div>
+                                <div class="post-title">${post.title}</div>
+                                <div class="post-meta">
+                                    <span class="post-author">${post.author}</span>
+                                    <span>${new Date(post.timestamp).toLocaleDateString()}</span>
+                                    <span class="post-category">${categoryLabels[post.category] || post.category}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post-content">${post.content}</div>
+                        <div class="post-actions">
+                            <span class="post-action" onclick="likePost(${post.id})">👍 ${post.likes}</span>
+                            <span class="post-action" onclick="showCommentForm(${post.id})">💬 评论</span>
+                        </div>
+                        <div class="post-comments" id="comments-${post.id}" style="display: none;">
+                            <h5>评论</h5>
+                            <div id="comments-list-${post.id}"></div>
+                            <div class="comment-form" style="margin-top: 10px;">
+                                <input type="text" id="comment-author-${post.id}" placeholder="你的昵称" style="width: 100%; padding: 8px; margin-bottom: 5px;">
+                                <textarea id="comment-content-${post.id}" placeholder="写下你的评论..." style="width: 100%; padding: 8px; min-height: 60px;"></textarea>
+                                <button onclick="submitComment(${post.id})" style="margin-top: 5px; padding: 8px 16px; background: #4a90e2; color: white; border: none; border-radius: 4px; cursor: pointer;">发表评论</button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    container.appendChild(postDiv);
+                });
+            } catch (error) {
+                console.error('Failed to load community posts:', error);
+            }
+        }
+        
+        document.getElementById('post-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const author = document.getElementById('post-author').value;
+            const title = document.getElementById('post-title').value;
+            const category = document.getElementById('post-category').value;
+            const content = document.getElementById('post-content').value;
+            
+            try {
+                const response = await fetch(`${API_BASE}/api/community/posts`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ author, title, category, content })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    document.getElementById('post-form').reset();
+                    switchCommunityTab('posts');
+                }
+            } catch (error) {
+                console.error('Failed to create post:', error);
+                alert('发布失败，请重试');
+            }
+        });
+        
+        function likePost(postId) {
+            alert('点赞功能开发中...');
+        }
+        
+        function showCommentForm(postId) {
+            const commentsDiv = document.getElementById(`comments-${postId}`);
+            commentsDiv.style.display = commentsDiv.style.display === 'none' ? 'block' : 'none';
+        }
+        
+        async function submitComment(postId) {
+            const author = document.getElementById(`comment-author-${postId}`).value;
+            const content = document.getElementById(`comment-content-${postId}`).value;
+            
+            if (!author || !content) {
+                alert('请填写昵称和评论内容');
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE}/api/community/comments/${postId}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ author, content })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    document.getElementById(`comment-author-${postId}`).value = '';
+                    document.getElementById(`comment-content-${postId}`).value = '';
+                    loadCommunityPosts();
+                }
+            } catch (error) {
+                console.error('Failed to submit comment:', error);
+                alert('评论失败，请重试');
+            }
         }
         
         // 点击模态框外部关闭

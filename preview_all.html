@@ -295,6 +295,103 @@
             background-color: #2c5f8f;
         }
         
+        .personalized-content {
+            padding: 20px;
+        }
+        
+        .personalized-header {
+            margin-bottom: 30px;
+        }
+        
+        .personalized-header h4 {
+            color: #4a90e2;
+            margin-bottom: 10px;
+        }
+        
+        .personalized-header p {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .recommended-courses {
+            margin-bottom: 40px;
+        }
+        
+        .course-recommendation {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #4a90e2;
+            transition: all 0.3s;
+        }
+        
+        .course-recommendation:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .course-recommendation h5 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+        
+        .course-recommendation p {
+            margin: 0 0 15px 0;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85em;
+            color: #888;
+        }
+        
+        .priority-high {
+            border-left-color: #f44336;
+        }
+        
+        .priority-medium {
+            border-left-color: #ff9800;
+        }
+        
+        .priority-low {
+            border-left-color: #4caf50;
+        }
+        
+        .learning-insights {
+            background-color: #f0f8ff;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #b3d9ff;
+        }
+        
+        .learning-insights h4 {
+            color: #4a90e2;
+            margin-bottom: 15px;
+        }
+        
+        .insight-item {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .insight-item:before {
+            content: "💡";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .insight-item p {
+            margin: 0;
+            color: #333;
+            font-size: 0.9em;
+        }
+        
         .feature-panel {
             background-color: white;
             border-radius: 8px;
@@ -817,6 +914,7 @@
             <button class="feature-btn" onclick="toggleFeature('progress')">学习进度</button>
             <button class="feature-btn" onclick="toggleFeature('assessment')">评估测试</button>
             <button class="feature-btn" onclick="toggleFeature('community')">学习社区</button>
+            <button class="feature-btn" onclick="toggleFeature('personalized')">个性化学习</button>
         </div>
         
         <div class="feature-panel" id="progress-panel" style="display: none;">
@@ -905,6 +1003,23 @@
                         <textarea id="post-content" placeholder="帖子内容..." required></textarea>
                         <button type="submit">发布帖子</button>
                     </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="feature-panel" id="personalized-panel" style="display: none;">
+            <div class="panel-header">
+                <h3>个性化学习路径</h3>
+                <button class="close-btn" onclick="toggleFeature('personalized')">&times;</button>
+            </div>
+            <div class="panel-content">
+                <div class="personalized-content">
+                    <div class="personalized-header">
+                        <h4>为您推荐的学习路径</h4>
+                        <p>基于您的学习进度和表现，我们为您定制了以下学习计划</p>
+                    </div>
+                    <div class="recommended-courses" id="recommended-courses"></div>
+                    <div class="learning-insights" id="learning-insights"></div>
                 </div>
             </div>
         </div>
@@ -6003,7 +6118,7 @@ plt.savefig('figure.png', dpi=300, bbox_inches='tight')</code></pre>
         };
         
         function toggleFeature(feature) {
-            const panels = ['progress', 'assessment', 'community'];
+            const panels = ['progress', 'assessment', 'community', 'personalized'];
             panels.forEach(p => {
                 const panel = document.getElementById(p + '-panel');
                 if (panel) {
@@ -6019,14 +6134,28 @@ plt.savefig('figure.png', dpi=300, bbox_inches='tight')</code></pre>
                 loadProgress();
             } else if (feature === 'community') {
                 loadCommunityPosts();
+            } else if (feature === 'personalized') {
+                loadPersonalizedPath();
             }
         }
         
         async function loadProgress() {
             try {
-                const response = await fetch(`${API_BASE}/api/progress`);
-                const data = await response.json();
-                const userProgress = data[currentUserId] || { sections: {}, totalProgress: 0, lastUpdated: null };
+                let userProgress;
+                
+                if (isOnline()) {
+                    // 在线时从服务器获取数据
+                    const response = await fetch(`${API_BASE}/api/progress`);
+                    const data = await response.json();
+                    userProgress = data[currentUserId] || { sections: {}, totalProgress: 0, lastUpdated: null };
+                    
+                    // 保存到本地存储
+                    saveToLocalStorage(`progress_${currentUserId}`, userProgress);
+                } else {
+                    // 离线时从本地存储获取数据
+                    userProgress = getFromLocalStorage(`progress_${currentUserId}`) || { sections: {}, totalProgress: 0, lastUpdated: null };
+                    console.log('Using offline progress data');
+                }
                 
                 const totalProgress = Math.round(userProgress.totalProgress || 0);
                 const progressCircle = document.getElementById('total-progress-circle');
@@ -6088,20 +6217,62 @@ plt.savefig('figure.png', dpi=300, bbox_inches='tight')</code></pre>
         
         async function updateProgress(section, progress, completed, timeSpent) {
             try {
-                const response = await fetch(`${API_BASE}/api/progress`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        userId: currentUserId,
-                        section,
+                if (isOnline()) {
+                    // 在线时同步到服务器
+                    const response = await fetch(`${API_BASE}/api/progress`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            userId: currentUserId,
+                            section,
+                            progress,
+                            completed,
+                            timeSpent
+                        })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    // 同时更新本地存储
+                    const userProgress = getFromLocalStorage(`progress_${currentUserId}`) || { sections: {}, totalProgress: 0, lastUpdated: null };
+                    userProgress.sections = userProgress.sections || {};
+                    userProgress.sections[section] = {
                         progress,
                         completed,
-                        timeSpent
-                    })
-                });
-                
-                const data = await response.json();
-                return data.success;
+                        timeSpent,
+                        lastUpdated: new Date().toISOString()
+                    };
+                    userProgress.lastUpdated = new Date().toISOString();
+                    saveToLocalStorage(`progress_${currentUserId}`, userProgress);
+                    
+                    return data.success;
+                } else {
+                    // 离线时保存到本地存储
+                    const userProgress = getFromLocalStorage(`progress_${currentUserId}`) || { sections: {}, totalProgress: 0, lastUpdated: null };
+                    userProgress.sections = userProgress.sections || {};
+                    userProgress.sections[section] = {
+                        progress,
+                        completed,
+                        timeSpent,
+                        lastUpdated: new Date().toISOString()
+                    };
+                    userProgress.lastUpdated = new Date().toISOString();
+                    
+                    // 计算总进度
+                    const sections = userProgress.sections;
+                    const totalSections = Object.keys(sections).length;
+                    if (totalSections > 0) {
+                        const totalProgressValue = Object.values(sections).reduce((sum, s) => sum + (s.progress || 0), 0) / totalSections;
+                        userProgress.totalProgress = totalProgressValue;
+                    }
+                    
+                    // 标记为需要同步
+                    userProgress.needsSync = true;
+                    
+                    saveToLocalStorage(`progress_${currentUserId}`, userProgress);
+                    console.log('Progress saved offline, will sync when online');
+                    return true;
+                }
             } catch (error) {
                 console.error('Failed to update progress:', error);
                 return false;
@@ -6369,6 +6540,44 @@ plt.savefig('figure.png', dpi=300, bbox_inches='tight')</code></pre>
             }
         }
         
+        // 网络状态变化监听器
+        window.addEventListener('online', async function() {
+            console.log('Back online, syncing data...');
+            await syncOfflineData();
+        });
+        
+        window.addEventListener('offline', function() {
+            console.log('Offline mode activated');
+        });
+        
+        // 同步离线数据到服务器
+        async function syncOfflineData() {
+            try {
+                const userProgress = getFromLocalStorage(`progress_${currentUserId}`);
+                
+                if (userProgress && userProgress.needsSync) {
+                    console.log('Syncing offline progress to server...');
+                    
+                    // 同步每个部分的进度
+                    for (const [section, sectionData] of Object.entries(userProgress.sections || {})) {
+                        await updateProgress(
+                            section,
+                            sectionData.progress,
+                            sectionData.completed,
+                            sectionData.timeSpent
+                        );
+                    }
+                    
+                    // 清除同步标记
+                    userProgress.needsSync = false;
+                    saveToLocalStorage(`progress_${currentUserId}`, userProgress);
+                    console.log('Offline data synced successfully');
+                }
+            } catch (error) {
+                console.error('Failed to sync offline data:', error);
+            }
+        }
+        
         // 点击模态框外部关闭
         window.onclick = function(event) {
             var modals = document.getElementsByClassName("modal");
@@ -6378,6 +6587,278 @@ plt.savefig('figure.png', dpi=300, bbox_inches='tight')</code></pre>
                     modal.style.display = "none";
                 }
             }
+        }
+        
+        // 离线学习支持功能
+        function isOnline() {
+            return navigator.onLine;
+        }
+        
+        function saveToLocalStorage(key, data) {
+            try {
+                localStorage.setItem(key, JSON.stringify(data));
+                return true;
+            } catch (error) {
+                console.error('Error saving to localStorage:', error);
+                return false;
+            }
+        }
+        
+        function getFromLocalStorage(key) {
+            try {
+                const data = localStorage.getItem(key);
+                return data ? JSON.parse(data) : null;
+            } catch (error) {
+                console.error('Error getting from localStorage:', error);
+                return null;
+            }
+        }
+        
+        // 个性化学习路径功能
+        async function loadPersonalizedPath() {
+            try {
+                let userProgress;
+                
+                if (isOnline()) {
+                    // 在线时从服务器获取数据
+                    const response = await fetch(`${API_BASE}/api/progress`);
+                    const progressData = await response.json();
+                    userProgress = progressData[currentUserId] || { sections: {}, totalProgress: 0, lastUpdated: null };
+                    
+                    // 保存到本地存储
+                    saveToLocalStorage(`progress_${currentUserId}`, userProgress);
+                } else {
+                    // 离线时从本地存储获取数据
+                    userProgress = getFromLocalStorage(`progress_${currentUserId}`) || { sections: {}, totalProgress: 0, lastUpdated: null };
+                    console.log('Using offline progress data');
+                }
+                
+                // 生成推荐课程
+                const recommendedCourses = generateRecommendedCourses(userProgress);
+                
+                // 显示推荐课程
+                displayRecommendedCourses(recommendedCourses);
+                
+                // 生成并显示学习洞察
+                const insights = generateLearningInsights(userProgress, recommendedCourses);
+                displayLearningInsights(insights);
+            } catch (error) {
+                console.error('Failed to load personalized path:', error);
+                // 显示默认推荐
+                displayDefaultRecommendations();
+            }
+        }
+        
+        function generateRecommendedCourses(userProgress) {
+            const sections = userProgress.sections || {};
+            const recommended = [];
+            
+            // 课程数据库
+            const courseDatabase = [
+                {
+                    id: 'python-advanced',
+                    title: 'Python高级特性',
+                    description: '深入学习Python的高级特性，包括装饰器、上下文管理器、生成器等',
+                    prerequisites: ['python-basics'],
+                    estimatedTime: '6小时',
+                    priority: 'high'
+                },
+                {
+                    id: 'numpy-basics',
+                    title: 'NumPy基础',
+                    description: '学习NumPy库的基本用法，包括数组操作、数学函数等',
+                    prerequisites: ['python-basics'],
+                    estimatedTime: '4小时',
+                    priority: 'high'
+                },
+                {
+                    id: 'pandas-basics',
+                    title: 'Pandas基础',
+                    description: '掌握Pandas库的数据处理能力，包括DataFrame操作、数据清洗等',
+                    prerequisites: ['numpy-basics'],
+                    estimatedTime: '5小时',
+                    priority: 'high'
+                },
+                {
+                    id: 'matplotlib-basics',
+                    title: 'Matplotlib数据可视化',
+                    description: '学习使用Matplotlib创建各种数据可视化图表',
+                    prerequisites: ['numpy-basics'],
+                    estimatedTime: '3小时',
+                    priority: 'medium'
+                },
+                {
+                    id: 'ml-algorithms',
+                    title: '机器学习算法基础',
+                    description: '深入理解常用机器学习算法的原理和实现',
+                    prerequisites: ['python-basics', 'math-basics'],
+                    estimatedTime: '10小时',
+                    priority: 'high'
+                },
+                {
+                    id: 'dl-fundamentals',
+                    title: '深度学习基础',
+                    description: '学习深度学习的基本概念和神经网络原理',
+                    prerequisites: ['ml-algorithms', 'math-basics'],
+                    estimatedTime: '8小时',
+                    priority: 'medium'
+                },
+                {
+                    id: 'nlp-basics',
+                    title: '自然语言处理基础',
+                    description: '了解NLP的基本概念和常用技术',
+                    prerequisites: ['ml-algorithms'],
+                    estimatedTime: '6小时',
+                    priority: 'low'
+                },
+                {
+                    id: 'cv-basics',
+                    title: '计算机视觉基础',
+                    description: '学习计算机视觉的基本概念和图像处理技术',
+                    prerequisites: ['ml-algorithms'],
+                    estimatedTime: '6小时',
+                    priority: 'low'
+                }
+            ];
+            
+            // 检查用户已完成的课程
+            const completedSections = Object.keys(sections).filter(section => sections[section].completed);
+            
+            // 筛选推荐课程
+            courseDatabase.forEach(course => {
+                // 检查前置条件是否满足
+                const prerequisitesMet = course.prerequisites.every(prereq => 
+                    completedSections.includes(prereq)
+                );
+                
+                // 检查是否已经推荐过或完成过
+                const alreadyCompleted = completedSections.includes(course.id);
+                
+                if (prerequisitesMet && !alreadyCompleted) {
+                    recommended.push(course);
+                }
+            });
+            
+            // 按优先级排序
+            recommended.sort((a, b) => {
+                const priorityOrder = { 'high': 0, 'medium': 1, 'low': 2 };
+                return priorityOrder[a.priority] - priorityOrder[b.priority];
+            });
+            
+            return recommended.slice(0, 5); // 最多推荐5门课程
+        }
+        
+        function displayRecommendedCourses(courses) {
+            const container = document.getElementById('recommended-courses');
+            
+            if (courses.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #666;">暂无推荐课程，继续完成现有课程以获取更多推荐</p>';
+                return;
+            }
+            
+            container.innerHTML = '';
+            
+            courses.forEach((course, index) => {
+                const courseDiv = document.createElement('div');
+                courseDiv.className = `course-recommendation priority-${course.priority}`;
+                
+                courseDiv.innerHTML = `
+                    <h5>${index + 1}. ${course.title}</h5>
+                    <p>${course.description}</p>
+                    <div class="course-meta">
+                        <span>预计学习时间: ${course.estimatedTime}</span>
+                        <span>优先级: ${course.priority === 'high' ? '高' : course.priority === 'medium' ? '中' : '低'}</span>
+                    </div>
+                `;
+                
+                container.appendChild(courseDiv);
+            });
+        }
+        
+        function generateLearningInsights(userProgress, recommendedCourses) {
+            const insights = [];
+            const sections = userProgress.sections || {};
+            const completedCount = Object.values(sections).filter(s => s.completed).length;
+            const totalSections = Object.keys(sections).length;
+            
+            // 基于完成率的洞察
+            if (completedCount === 0) {
+                insights.push('您还没有完成任何课程，建议从Python基础开始学习');
+            } else {
+                const completionRate = (completedCount / totalSections * 100).toFixed(1);
+                insights.push(`您已完成 ${completionRate}% 的课程，继续保持！`);
+            }
+            
+            // 基于学习时间的洞察
+            const totalTime = Object.values(sections).reduce((sum, s) => sum + (s.timeSpent || 0), 0);
+            if (totalTime > 100) {
+                insights.push('您已经投入了大量时间学习，建议定期复习巩固所学知识');
+            }
+            
+            // 基于推荐课程的洞察
+            if (recommendedCourses.length > 0) {
+                const highPriorityCourses = recommendedCourses.filter(c => c.priority === 'high');
+                if (highPriorityCourses.length > 0) {
+                    insights.push(`有 ${highPriorityCourses.length} 门高优先级课程等待您学习，建议优先完成`);
+                }
+            }
+            
+            // 通用学习建议
+            insights.push('建议每天保持至少1小时的学习时间，以保持学习进度');
+            insights.push('实践是掌握AI技能的关键，尝试完成每个章节的练习和项目');
+            
+            return insights;
+        }
+        
+        function displayLearningInsights(insights) {
+            const container = document.getElementById('learning-insights');
+            
+            container.innerHTML = '<h4>学习洞察</h4>';
+            
+            insights.forEach(insight => {
+                const insightDiv = document.createElement('div');
+                insightDiv.className = 'insight-item';
+                insightDiv.innerHTML = `<p>${insight}</p>`;
+                container.appendChild(insightDiv);
+            });
+        }
+        
+        function displayDefaultRecommendations() {
+            const container = document.getElementById('recommended-courses');
+            container.innerHTML = `
+                <div class="course-recommendation priority-high">
+                    <h5>1. Python编程基础</h5>
+                    <p>学习Python的基本语法和编程概念，为AI学习打下基础</p>
+                    <div class="course-meta">
+                        <span>预计学习时间: 8小时</span>
+                        <span>优先级: 高</span>
+                    </div>
+                </div>
+                <div class="course-recommendation priority-high">
+                    <h5>2. 数学基础</h5>
+                    <p>复习线性代数、微积分和概率统计等AI所需的数学知识</p>
+                    <div class="course-meta">
+                        <span>预计学习时间: 10小时</span>
+                        <span>优先级: 高</span>
+                    </div>
+                </div>
+                <div class="course-recommendation priority-medium">
+                    <h5>3. 机器学习基础</h5>
+                    <p>了解机器学习的基本概念和常用算法</p>
+                    <div class="course-meta">
+                        <span>预计学习时间: 12小时</span>
+                        <span>优先级: 中</span>
+                    </div>
+                </div>
+            `;
+            
+            const insightsContainer = document.getElementById('learning-insights');
+            insightsContainer.innerHTML = `
+                <h4>学习洞察</h4>
+                <div class="insight-item"><p>开始您的AI学习之旅，从基础课程开始</p></div>
+                <div class="insight-item"><p>建议按照课程的依赖关系顺序学习</p></div>
+                <div class="insight-item"><p>定期练习和实践是掌握AI技能的关键</p></div>
+            `;
         }
     </script>
 </body>

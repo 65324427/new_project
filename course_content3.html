@@ -1,0 +1,772 @@
+<!-- 第三阶段实践项目 -->
+<div class="section" id="phase3-projects">
+    <h3>第三阶段实践项目 <span class="status pending">待开发</span></h3>
+    <h4>多模态AI应用项目</h4>
+    <p>基于多模态AI技术的应用开发，包含文本-图像融合、图像描述生成等功能。</p>
+    <ul>
+        <li>多模态数据获取与预处理</li>
+        <li>多模态模型选择与微调</li>
+        <li>模型评估与优化</li>
+        <li>应用开发与部署</li>
+        <li>用户体验优化</li>
+    </ul>
+    
+    <h4>企业级AI系统项目</h4>
+    <p>构建完整的企业级AI系统，包含数据处理、模型训练、部署和监控等环节。</p>
+    <ul>
+        <li>系统架构设计</li>
+        <li>数据流水线构建</li>
+        <li>模型训练与管理</li>
+        <li>系统部署与监控</li>
+        <li>性能优化与扩展</li>
+    </ul>
+</div>
+
+<!-- Web版学习工具 -->
+<div class="section" id="tools">
+    <h2>Web版学习工具</h2>
+    <p>项目最终将交付一个功能完整的Web版学习工具，具有以下特点：</p>
+    <ul>
+        <li>整合所有课程内容和实践项目</li>
+        <li>提供交互式学习体验</li>
+        <li>包含评估系统和学习社区</li>
+        <li>支持随时随地学习和实践</li>
+        <li>用户友好的界面设计</li>
+    </ul>
+    
+    <h3>工具功能模块</h3>
+    <ul>
+        <li><strong>课程内容模块</strong>：提供结构化的课程内容，支持章节导航和进度跟踪</li>
+        <li><strong>代码执行模块</strong>：内置Python代码编辑器和执行环境，支持实时运行代码</li>
+        <li><strong>评估测试模块</strong>：提供单元测试、综合测试和实战项目评估</li>
+        <li><strong>学习社区模块</strong>：支持用户交流、问题求助和经验分享</li>
+        <li><strong>个性化学习模块</strong>：基于用户进度和表现，推荐个性化学习路径</li>
+    </ul>
+    
+    <h3>技术架构</h3>
+    <ul>
+        <li><strong>前端</strong>：HTML5 + CSS3 + JavaScript，响应式设计</li>
+        <li><strong>后端</strong>：Python + Flask，提供API服务</li>
+        <li><strong>数据存储</strong>：JSON文件存储，支持本地数据持久化</li>
+        <li><strong>代码执行</strong>：安全的Python代码执行环境</li>
+        <li><strong>离线支持</strong>：本地存储，支持离线学习</li>
+    </ul>
+</div>
+
+<!-- 模态框内容 -->
+<div class="modal" id="modal1" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal1')">&times;</span>
+        <h3>AI发展历史与里程碑</h3>
+        <p>人工智能的发展经历了漫长而曲折的历史过程，从早期的理论研究到现代的实际应用，经历了多次兴衰和突破：</p>
+        
+        <h4>1. 早期萌芽期（1940-1950年代）</h4>
+        <ul>
+            <li><strong>1943年</strong>：麦卡洛克和皮茨发表《神经活动中内在思想的逻辑演算》，提出人工神经元模型</li>
+            <li><strong>1949年</strong>：赫布提出赫布学习规则，为神经网络学习奠定基础</li>
+            <li><strong>1950年</strong>：阿兰·图灵发表《计算机器与智能》，提出图灵测试，探讨机器能否思考</li>
+            <li><strong>1956年</strong>：达特茅斯会议召开，约翰·麦卡锡首次提出"人工智能"（Artificial Intelligence）术语，AI正式成为一门学科</li>
+        </ul>
+        
+        <h4>2. 第一次黄金时代（1956-1974年）</h4>
+        <ul>
+            <li><strong>1957年</strong>：罗森布拉特发明感知器（Perceptron），这是第一个可训练的神经网络</li>
+            <li><strong>1961年</strong>：明斯基发表《迈向人工智能的步骤》，提出了通用问题求解器的概念</li>
+            <li><strong>1965年</strong>：费根鲍姆开发了第一个专家系统DENDRAL</li>
+            <li><strong>1969年</strong>：明斯基和佩珀特发表《感知器》，指出感知器的局限性，导致神经网络研究陷入低谷</li>
+        </ul>
+        
+        <h4>3. 第一次AI冬天（1974-1980年）</h4>
+        <ul>
+            <li>政府和企业减少对AI研究的 funding</li>
+            <li>专家系统的局限性开始显现</li>
+            <li>神经网络研究几乎停滞</li>
+        </ul>
+        
+        <h4>4. 第二次黄金时代（1980-1987年）</h4>
+        <ul>
+            <li><strong>1982年</strong>：霍普菲尔德提出霍普菲尔德神经网络，重新激发了对神经网络的兴趣</li>
+            <li><strong>1986年</strong>：鲁梅尔哈特等人提出反向传播算法，解决了多层神经网络的训练问题</li>
+            <li><strong>1987年</strong>：第一届国际神经网络大会召开</li>
+        </ul>
+        
+        <h4>5. 第二次AI冬天（1987-1993年）</h4>
+        <ul>
+            <li>专家系统的维护成本过高</li>
+            <li>神经网络的实际应用效果不如预期</li>
+            <li>AI研究再次面临 funding 危机</li>
+        </ul>
+        
+        <h4>6. 现代AI崛起（1993-2012年）</h4>
+        <ul>
+            <li><strong>1997年</strong>：IBM的深蓝战胜国际象棋世界冠军卡斯帕罗夫</li>
+            <li><strong>2006年</strong>：欣顿等人提出深度学习的概念，推动了神经网络的复兴</li>
+            <li><strong>2010年</strong>：ImageNet数据集发布，为计算机视觉研究提供了标准 benchmark</li>
+        </ul>
+        
+        <h4>7. 深度学习革命（2012年至今）</h4>
+        <ul>
+            <li><strong>2012年</strong>：AlexNet在ImageNet竞赛中取得突破性成绩，深度学习开始成为AI研究的主流</li>
+            <li><strong>2014年</strong>：GAN（生成对抗网络）提出，推动了生成模型的发展</li>
+            <li><strong>2016年</strong>：AlphaGo战胜围棋世界冠军李世石</li>
+            <li><strong>2017年</strong>：Transformer模型提出，为NLP领域带来革命性变化</li>
+            <li><strong>2018年</strong>：BERT模型发布，推动了NLP任务的性能提升</li>
+            <li><strong>2020年</strong>：GPT-3发布，展示了大语言模型的强大能力</li>
+            <li><strong>2022年</strong>：ChatGPT发布，引发了全球范围内的AI热潮</li>
+            <li><strong>2023年</strong>：GPT-4、Claude等更强大的大语言模型发布</li>
+            <li><strong>2024年</strong>：多模态大模型成为研究热点</li>
+        </ul>
+        
+        <h4>8. 2026年AI发展趋势</h4>
+        <ul>
+            <li><strong>大模型技术</strong>：模型规模进一步扩大，能力持续提升</li>
+            <li><strong>多模态融合</strong>：文本、图像、音频、视频等多模态信息的融合</li>
+            <li><strong>行业应用深化</strong>：AI在各个行业的应用更加广泛和深入</li>
+            <li><strong>AI伦理与安全</strong>：AI的伦理问题和安全挑战受到更多关注</li>
+            <li><strong>边缘AI</strong>：AI模型在边缘设备上的部署和应用</li>
+        </ul>
+    </div>
+</div>
+
+<!-- 其他模态框（示例） -->
+<div class="modal" id="modal2" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal2')">&times;</span>
+        <h3>2026年AI技术热点与应用场景</h3>
+        <p>2026年，AI技术将继续快速发展，以下是一些热点技术和应用场景：</p>
+        
+        <h4>1. 大语言模型（LLM）</h4>
+        <ul>
+            <li>更强大的模型能力</li>
+            <li>更高效的训练和推理方法</li>
+            <li>垂直领域的专业模型</li>
+            <li>模型压缩和边缘部署</li>
+        </ul>
+        
+        <h4>2. 多模态AI</h4>
+        <ul>
+            <li>文本-图像-音频-视频的融合</li>
+            <li>多模态生成和理解</li>
+            <li>跨模态迁移学习</li>
+            <li>多模态人机交互</li>
+        </ul>
+        
+        <h4>3. 生成式AI</h4>
+        <ul>
+            <li>文本生成</li>
+            <li>图像生成</li>
+            <li>视频生成</li>
+            <li>3D模型生成</li>
+        </ul>
+        
+        <h4>4. 行业应用场景</h4>
+        <ul>
+            <li><strong>金融</strong>：智能风控、量化投资、智能客服</li>
+            <li><strong>医疗</strong>：医学影像诊断、药物研发、智能问诊</li>
+            <li><strong>教育</strong>：个性化学习、智能辅导、自动评分</li>
+            <li><strong>制造</strong>：智能工厂、预测性维护、质量控制</li>
+            <li><strong>交通</strong>：自动驾驶、智能交通管理、路线规划</li>
+            <li><strong>零售</strong>：智能推荐、库存管理、客户服务</li>
+        </ul>
+    </div>
+</div>
+
+<div class="modal" id="modal3" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal3')">&times;</span>
+        <h3>热门AI岗位分析</h3>
+        <p>2026年，AI领域的就业市场依然火爆，以下是一些热门AI岗位的分析：</p>
+        
+        <h4>1. 大模型工程师</h4>
+        <ul>
+            <li><strong>岗位描述</strong>：负责大语言模型的训练、微调、部署和优化</li>
+            <li><strong>技能要求</strong>：
+                <ul>
+                    <li>深度学习框架（PyTorch、TensorFlow）</li>
+                    <li>自然语言处理基础</li>
+                    <li>模型训练和微调经验</li>
+                    <li>分布式训练技术</li>
+                    <li>Prompt Engineering技术</li>
+                </ul>
+            </li>
+            <li><strong>薪资水平</strong>：30-60K/月</li>
+            <li><strong>就业前景</strong>：★★★★★</li>
+        </ul>
+        
+        <h4>2. 多模态AI工程师</h4>
+        <ul>
+            <li><strong>岗位描述</strong>：负责开发处理文本、图像、音频等多模态信息的AI系统</li>
+            <li><strong>技能要求</strong>：
+                <ul>
+                    <li>深度学习基础</li>
+                    <li>计算机视觉技术</li>
+                    <li>自然语言处理技术</li>
+                    <li>多模态融合技术</li>
+                    <li>模型部署经验</li>
+                </ul>
+            </li>
+            <li><strong>薪资水平</strong>：25-50K/月</li>
+            <li><strong>就业前景</strong>：★★★★☆</li>
+        </ul>
+        
+        <h4>3. AI应用开发工程师</h4>
+        <ul>
+            <li><strong>岗位描述</strong>：负责将AI技术应用到具体行业和场景中</li>
+            <li><strong>技能要求</strong>：
+                <ul>
+                    <li>至少掌握一种编程语言（Python、Java、JavaScript等）</li>
+                    <li>了解常见AI框架和API</li>
+                    <li>具备一定的前端或后端开发能力</li>
+                    <li>行业领域知识</li>
+                </ul>
+            </li>
+            <li><strong>薪资水平</strong>：20-40K/月</li>
+            <li><strong>就业前景</strong>：★★★★☆</li>
+        </ul>
+        
+        <h4>4. 机器学习工程师</h4>
+        <ul>
+            <li><strong>岗位描述</strong>：负责设计、实现和部署机器学习模型</li>
+            <li><strong>技能要求</strong>：
+                <ul>
+                    <li>机器学习算法基础</li>
+                    <li>数据处理和特征工程</li>
+                    <li>模型评估和优化</li>
+                    <li>Python编程</li>
+                    <li>常见机器学习库（Scikit-learn、XGBoost等）</li>
+                </ul>
+            </li>
+            <li><strong>薪资水平</strong>：18-35K/月</li>
+            <li><strong>就业前景</strong>：★★★☆☆</li>
+        </ul>
+        
+        <h4>5. AI产品经理</h4>
+        <ul>
+            <li><strong>岗位描述</strong>：负责AI产品的规划、设计和管理</li>
+            <li><strong>技能要求</strong>：
+                <ul>
+                    <li>AI技术基础</li>
+                    <li>产品规划和设计能力</li>
+                    <li>用户研究和数据分析</li>
+                    <li>项目管理能力</li>
+                    <li>行业领域知识</li>
+                </ul>
+            </li>
+            <li><strong>薪资水平</strong>：20-45K/月</li>
+            <li><strong>就业前景</strong>：★★★★☆</li>
+        </ul>
+        
+        <h4>6. AI算法研究员</h4>
+        <ul>
+            <li><strong>岗位描述</strong>：负责AI算法的研究和创新</li>
+            <li><strong>技能要求</strong>：
+                <ul>
+                    <li>扎实的数学基础（线性代数、微积分、概率统计）</li>
+                    <li>深度学习理论</li>
+                    <li>发表过相关领域论文</li>
+                    <li>编程能力（Python、C++）</li>
+                    <li>英文文献阅读能力</li>
+                </ul>
+            </li>
+            <li><strong>薪资水平</strong>：35-70K/月</li>
+            <li><strong>就业前景</strong>：★★★★★</li>
+        </ul>
+        
+        <h4>7. 数据科学家</h4>
+        <ul>
+            <li><strong>岗位描述</strong>：负责从数据中提取价值，为业务决策提供支持</li>
+            <li><strong>技能要求</strong>：
+                <ul>
+                    <li>统计学基础</li>
+                    <li>数据处理和分析能力</li>
+                    <li>机器学习算法</li>
+                    <li>数据可视化</li>
+                    <li>Python编程</li>
+                </ul>
+            </li>
+            <li><strong>薪资水平</strong>：20-40K/月</li>
+            <li><strong>就业前景</strong>：★★★☆☆</li>
+        </ul>
+        
+        <h4>8. AI伦理专家</h4>
+        <ul>
+            <li><strong>岗位描述</strong>：负责AI系统的伦理评估和风险管理</li>
+            <li><strong>技能要求</strong>：
+                <ul>
+                    <li>AI技术基础</li>
+                    <li>伦理学知识</li>
+                    <li>法律法规知识</li>
+                    <li>风险评估能力</li>
+                    <li>沟通协调能力</li>
+                </ul>
+            </li>
+            <li><strong>薪资水平</strong>：25-45K/月</li>
+            <li><strong>就业前景</strong>：★★★☆☆</li>
+        </ul>
+        
+        <h4>职业发展建议</h4>
+        <ul>
+            <li><strong>技术路线</strong>：AI助理 → 机器学习工程师 → 大模型工程师/算法研究员</li>
+            <li><strong>应用路线</strong>：AI应用开发 → 行业AI专家 → AI产品经理</li>
+            <li><strong>持续学习</strong>：AI技术发展迅速，保持持续学习的习惯至关重要</li>
+            <li><strong>项目经验</strong>：积累实际项目经验，构建个人作品集</li>
+            <li><strong>软技能</strong>：沟通能力、团队协作能力、问题解决能力同样重要</li>
+        </ul>
+    </div>
+</div>
+<div class="modal" id="modal4" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal4')">&times;</span>
+        <h3>不同背景学习者的职业路径规划</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal5" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal5')">&times;</span>
+        <h3>AI伦理与安全</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal6" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal6')">&times;</span>
+        <h3>Python核心语法</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal7" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal7')">&times;</span>
+        <h3>数据结构</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal8" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal8')">&times;</span>
+        <h3>面向对象编程</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal9" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal9')">&times;</span>
+        <h3>文件操作与异常处理</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal10" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal10')">&times;</span>
+        <h3>常用AI库（NumPy、Pandas、Matplotlib）</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal11" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal11')">&times;</span>
+        <h3>线性代数基础（向量、矩阵、线性变换）</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal12" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal12')">&times;</span>
+        <h3>微积分基础（导数、梯度、链式法则）</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal13" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal13')">&times;</span>
+        <h3>概率统计基础（概率分布、贝叶斯定理、统计推断）</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal14" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal14')">&times;</span>
+        <h3>信息论基础（熵、交叉熵、KL散度）</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal15" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal15')">&times;</span>
+        <h3>数学概念的直观理解与AI应用</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal16" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal16')">&times;</span>
+        <h3>机器学习概述</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal17" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal17')">&times;</span>
+        <h3>线性回归与逻辑回归</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal18" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal18')">&times;</span>
+        <h3>决策树与随机森林</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal19" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal19')">&times;</span>
+        <h3>模型评估与调优</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal20" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal20')">&times;</span>
+        <h3>特征工程基础</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal21" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal21')">&times;</span>
+        <h3>神经网络基础</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal22" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal22')">&times;</span>
+        <h3>前向传播与反向传播</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal23" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal23')">&times;</span>
+        <h3>激活函数与损失函数</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal24" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal24')">&times;</span>
+        <h3>优化算法（SGD、Adam）</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal25" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal25')">&times;</span>
+        <h3>模型正则化与防止过拟合</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal26" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal26')">&times;</span>
+        <h3>大语言模型概述</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal27" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal27')">&times;</span>
+        <h3>Prompt Engineering技术</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal28" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal28')">&times;</span>
+        <h3>模型微调方法</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal29" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal29')">&times;</span>
+        <h3>大模型应用开发</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal30" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal30')">&times;</span>
+        <h3>大模型评估指标</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal31" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal31')">&times;</span>
+        <h3>多模态AI概述</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal32" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal32')">&times;</span>
+        <h3>文本-图像融合技术</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal33" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal33')">&times;</span>
+        <h3>图像描述生成</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal34" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal34')">&times;</span>
+        <h3>多模态模型评估</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal35" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal35')">&times;</span>
+        <h3>多模态应用开发</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal36" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal36')">&times;</span>
+        <h3>模型部署技术</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal37" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal37')">&times;</span>
+        <h3>模型监控与维护</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal38" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal38')">&times;</span>
+        <h3>AI系统架构设计</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal39" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal39')">&times;</span>
+        <h3>MLOps实践</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal40" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal40')">&times;</span>
+        <h3>AI系统性能优化</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal41" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal41')">&times;</span>
+        <h3>强化学习基础</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal42" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal42')">&times;</span>
+        <h3>图神经网络</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal43" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal43')">&times;</span>
+        <h3>联邦学习</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal44" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal44')">&times;</span>
+        <h3>自监督学习</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal45" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal45')">&times;</span>
+        <h3>AI安全与隐私保护</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal46" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal46')">&times;</span>
+        <h3>金融科技AI应用</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal47" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal47')">&times;</span>
+        <h3>医疗健康AI应用</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal48" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal48')">&times;</span>
+        <h3>智能交通AI应用</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal49" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal49')">&times;</span>
+        <h3>智能制造AI应用</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal50" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal50')">&times;</span>
+        <h3>零售与营销AI应用</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal51" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal51')">&times;</span>
+        <h3>项目需求分析与设计</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal52" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal52')">&times;</span>
+        <h3>数据处理与特征工程</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal53" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal53')">&times;</span>
+        <h3>模型选择与训练</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal54" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal54')">&times;</span>
+        <h3>模型评估与优化</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal55" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal55')">&times;</span>
+        <h3>项目部署与文档编写</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal56" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal56')">&times;</span>
+        <h3>AI岗位简历优化</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal57" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal57')">&times;</span>
+        <h3>技术面试准备</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal58" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal58')">&times;</span>
+        <h3>算法题解题技巧</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal59" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal59')">&times;</span>
+        <h3>职业发展规划</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>
+<div class="modal" id="modal60" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal60')">&times;</span>
+        <h3>行业趋势与发展方向</h3>
+        <p>本内容正在开发中，敬请期待...</p>
+        <p>点击右上角关闭按钮返回。</p>
+    </div>
+</div>

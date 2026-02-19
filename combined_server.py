@@ -139,6 +139,23 @@ class RequestHandler(BaseHTTPRequestHandler):
                     self.send_error(404, 'File not found')
                 except:
                     pass
+        elif path.endswith('.html'):
+            self.send_response(200)
+            self.send_header('Content-type', 'text/html')
+            self._set_cors_headers()
+            self.end_headers()
+            try:
+                with open(path[1:], 'rb') as f:
+                    self.wfile.write(f.read())
+                print(f"Successfully served HTML file: {path[1:]}")
+            except ConnectionAbortedError:
+                print(f"Client aborted connection while serving HTML file")
+            except Exception as e:
+                print(f"Error serving HTML file: {str(e)}")
+                try:
+                    self.send_error(404, 'File not found')
+                except:
+                    pass
         else:
             print(f"404 - File not found for: {self.path}")
             try:

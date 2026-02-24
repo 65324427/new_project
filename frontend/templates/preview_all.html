@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI课程学习路径 - 预览</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../static/css/styles.css">
     <!-- CodeMirror 库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css">
@@ -170,26 +170,27 @@
         <!-- 模态框将通过JavaScript加载 -->
     </div>
     
-    <script src="script.js"></script>
-    <script src="script_fixes.js"></script>
-    <script src="progress_tracker.js"></script>
-    <script src="user_manager.js"></script>
+    <script src="../static/js/config.js"></script>
+    <script src="../static/js/script.js"></script>
+    <script src="../static/js/script_fixes.js"></script>
+    <script src="../static/js/progress_tracker.js"></script>
+    <script src="../static/js/user_manager.js"></script>
     <script>
         // 加载外部内容
         function loadContent() {
             // 加载第一个内容文件
-            fetch('course_content1.html')
+            fetch('../templates/course_content1.html')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('content-container').innerHTML += data;
                     // 加载第二个内容文件
-                    return fetch('course_content2.html');
+                    return fetch('../templates/course_content2.html');
                 })
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('content-container').innerHTML += data;
                     // 加载第三个内容文件
-                    return fetch('course_content3.html');
+                    return fetch('../templates/course_content3.html');
                 })
                 .then(response => response.text())
                 .then(data => {

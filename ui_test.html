@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI测试 - 按钮功能验证</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-section h2 {
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        .test-item {
+            margin: 10px 0;
+            padding: 10px;
+            border-left: 4px solid #007bff;
+            background: #f8f9fa;
+        }
+        .test-item.pass {
+            border-left-color: #28a745;
+            background: #d4edda;
+        }
+        .test-item.fail {
+            border-left-color: #dc3545;
+            background: #f8d7da;
+        }
+        .test-item.pending {
+            border-left-color: #ffc107;
+            background: #fff3cd;
+        }
+        .test-item h3 {
+            margin: 0 0 5px 0;
+            font-size: 16px;
+        }
+        .test-item p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #666;
+        }
+        .test-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .test-button:hover {
+            background: #0056b3;
+        }
+        .test-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .summary {
+            background: #007bff;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .summary h2 {
+            margin: 0 0 10px 0;
+        }
+        .summary-stats {
+            display: flex;
+            gap: 20px;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 32px;
+            font-weight: bold;
+        }
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .console-output {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 10px;
+        }
+        .console-output .log {
+            margin: 5px 0;
+        }
+        .console-output .success {
+            color: #4ec9b0;
+        }
+        .console-output .error {
+            color: #f48771;
+        }
+        .console-output .info {
+            color: #9cdcfe;
+        }
+    </style>
+</head>
+<body>
+    <div class="summary">
+        <h2>UI测试总结</h2>
+        <div class="summary-stats">
+            <div class="stat">
+                <div class="stat-value" id="total-tests">0</div>
+                <div class="stat-label">总测试数</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="passed-tests">0</div>
+                <div class="stat-label">通过</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="failed-tests">0</div>
+                <div class="stat-label">失败</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="pending-tests">0</div>
+                <div class="stat-label">待测试</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>测试控制</h2>
+        <button class="test-button" onclick="runAllTests()">运行所有测试</button>
+        <button class="test-button" onclick="clearResults()">清除结果</button>
+        <button class="test-button" onclick="openMainPage()">打开主页面</button>
+    </div>
+
+    <div class="test-section">
+        <h2>功能导航按钮测试</h2>
+        <div id="feature-nav-tests"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>关闭按钮测试</h2>
+        <div id="close-btn-tests"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>评估测试按钮测试</h2>
+        <div id="quiz-btn-tests"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>社区标签按钮测试</h2>
+        <div id="community-tab-tests"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>导航链接测试</h2>
+        <div id="nav-link-tests"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>测试日志</h2>
+        <div class="console-output" id="console-output"></div>
+    </div>
+
+    <script>
+        let testResults = {
+            total: 0,
+            passed: 0,
+            failed: 0,
+            pending: 0
+        };
+
+        const tests = [];
+
+        function log(message, type = 'info') {
+            const consoleOutput = document.getElementById('console-output');
+            const logEntry = document.createElement('div');
+            logEntry.className = `log ${type}`;
+            const timestamp = new Date().toLocaleTimeString();
+            logEntry.textContent = `[${timestamp}] ${message}`;
+            consoleOutput.appendChild(logEntry);
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        }
+
+        function updateSummary() {
+            document.getElementById('total-tests').textContent = testResults.total;
+            document.getElementById('passed-tests').textContent = testResults.passed;
+            document.getElementById('failed-tests').textContent = testResults.failed;
+            document.getElementById('pending-tests').textContent = testResults.pending;
+        }
+
+        function createTestItem(name, description, status = 'pending') {
+            testResults.total++;
+            if (status === 'pass') testResults.passed++;
+            if (status === 'fail') testResults.failed++;
+            if (status === 'pending') testResults.pending++;
+            updateSummary();
+
+            const testItem = document.createElement('div');
+            testItem.className = `test-item ${status}`;
+            testItem.id = `test-${testResults.total}`;
+            testItem.innerHTML = `
+                <h3>${name}</h3>
+                <p>${description}</p>
+            `;
+            return testItem;
+        }
+
+        function updateTestStatus(testId, status, message) {
+            const testItem = document.getElementById(testId);
+            if (testItem) {
+                testItem.className = `test-item ${status}`;
+                const p = testItem.querySelector('p');
+                if (p) {
+                    p.textContent = message;
+                }
+            }
+        }
+
+        function testButtonExists(buttonSelector, testName, containerId) {
+            const container = document.getElementById(containerId);
+            const testItem = createTestItem(testName, `检查按钮是否存在: ${buttonSelector}`, 'pending');
+            container.appendChild(testItem);
+
+            try {
+                const button = document.querySelector(buttonSelector);
+                if (button) {
+                    updateTestStatus(testItem.id, 'pass', `按钮存在且可访问: ${buttonSelector}`);
+                    log(`✓ ${testName}: 按钮存在`, 'success');
+                    return true;
+                } else {
+                    updateTestStatus(testItem.id, 'fail', `按钮不存在: ${buttonSelector}`);
+                    log(`✗ ${testName}: 按钮不存在`, 'error');
+                    return false;
+                }
+            } catch (error) {
+                updateTestStatus(testItem.id, 'fail', `检查按钮时出错: ${error.message}`);
+                log(`✗ ${testName}: ${error.message}`, 'error');
+                return false;
+            }
+        }
+
+        function testButtonClickable(buttonSelector, testName, containerId) {
+            const container = document.getElementById(containerId);
+            const testItem = createTestItem(testName, `检查按钮是否可点击: ${buttonSelector}`, 'pending');
+            container.appendChild(testItem);
+
+            try {
+                const button = document.querySelector(buttonSelector);
+                if (button) {
+                    const isClickable = !button.disabled && 
+                                      button.style.display !== 'none' && 
+                                      button.style.visibility !== 'hidden';
+                    if (isClickable) {
+                        updateTestStatus(testItem.id, 'pass', `按钮可点击: ${buttonSelector}`);
+                        log(`✓ ${testName}: 按钮可点击`, 'success');
+                        return true;
+                    } else {
+                        updateTestStatus(testItem.id, 'fail', `按钮不可点击: ${buttonSelector} (disabled=${button.disabled}, display=${button.style.display}, visibility=${button.style.visibility})`);
+                        log(`✗ ${testName}: 按钮不可点击`, 'error');
+                        return false;
+                    }
+                } else {
+                    updateTestStatus(testItem.id, 'fail', `按钮不存在: ${buttonSelector}`);
+                    log(`✗ ${testName}: 按钮不存在`, 'error');
+                    return false;
+                }
+            } catch (error) {
+                updateTestStatus(testItem.id, 'fail', `检查按钮时出错: ${error.message}`);
+                log(`✗ ${testName}: ${error.message}`, 'error');
+                return false;
+            }
+        }
+
+        function testButtonFunction(buttonSelector, functionName, testName, containerId) {
+            const container = document.getElementById(containerId);
+            const testItem = createTestItem(testName, `检查按钮函数: ${functionName}`, 'pending');
+            container.appendChild(testItem);
+
+            try {
+                const button = document.querySelector(buttonSelector);
+                if (button) {
+                    const onclickAttr = button.getAttribute('onclick');
+                    if (onclickAttr && onclickAttr.includes(functionName)) {
+                        updateTestStatus(testItem.id, 'pass', `按钮函数正确: ${functionName}`);
+                        log(`✓ ${testName}: 按钮函数正确`, 'success');
+                        return true;
+                    } else {
+                        updateTestStatus(testItem.id, 'fail', `按钮函数不匹配: 期望 ${functionName}, 实际 ${onclickAttr}`);
+                        log(`✗ ${testName}: 按钮函数不匹配`, 'error');
+                        return false;
+                    }
+                } else {
+                    updateTestStatus(testItem.id, 'fail', `按钮不存在: ${buttonSelector}`);
+                    log(`✗ ${testName}: 按钮不存在`, 'error');
+                    return false;
+                }
+            } catch (error) {
+                updateTestStatus(testItem.id, 'fail', `检查按钮函数时出错: ${error.message}`);
+                log(`✗ ${testName}: ${error.message}`, 'error');
+                return false;
+            }
+        }
+
+        function testLinkExists(linkSelector, testName, containerId) {
+            const container = document.getElementById(containerId);
+            const testItem = createTestItem(testName, `检查链接是否存在: ${linkSelector}`, 'pending');
+            container.appendChild(testItem);
+
+            try {
+                const link = document.querySelector(linkSelector);
+                if (link) {
+                    updateTestStatus(testItem.id, 'pass', `链接存在且可访问: ${linkSelector}`);
+                    log(`✓ ${testName}: 链接存在`, 'success');
+                    return true;
+                } else {
+                    updateTestStatus(testItem.id, 'fail', `链接不存在: ${linkSelector}`);
+                    log(`✗ ${testName}: 链接不存在`, 'error');
+                    return false;
+                }
+            } catch (error) {
+                updateTestStatus(testItem.id, 'fail', `检查链接时出错: ${error.message}`);
+                log(`✗ ${testName}: ${error.message}`, 'error');
+                return false;
+            }
+        }
+
+        function runFeatureNavTests() {
+            log('开始测试功能导航按钮...', 'info');
+            
+            const featureButtons = [
+                { selector: '.feature-btn:nth-child(1)', name: '学习进度按钮', func: 'toggleFeature' },
+                { selector: '.feature-btn:nth-child(2)', name: '评估测试按钮', func: 'toggleFeature' },
+                { selector: '.feature-btn:nth-child(3)', name: '学习社区按钮', func: 'toggleFeature' },
+                { selector: '.feature-btn:nth-child(4)', name: '个性化学习按钮', func: 'toggleFeature' }
+            ];
+
+            featureButtons.forEach(btn => {
+                testButtonExists(btn.selector, btn.name + ' - 存在性', 'feature-nav-tests');
+                testButtonClickable(btn.selector, btn.name + ' - 可点击性', 'feature-nav-tests');
+                testButtonFunction(btn.selector, btn.func, btn.name + ' - 函数正确性', 'feature-nav-tests');
+            });
+        }
+
+        function runCloseBtnTests() {
+            log('开始测试关闭按钮...', 'info');
+            
+            const closeButtons = [
+                { selector: '#progress-panel .close-btn', name: '学习进度关闭按钮' },
+                { selector: '#assessment-panel .close-btn', name: '评估测试关闭按钮' },
+                { selector: '#community-panel .close-btn', name: '学习社区关闭按钮' },
+                { selector: '#personalized-panel .close-btn', name: '个性化学习关闭按钮' }
+            ];
+
+            closeButtons.forEach(btn => {
+                testButtonExists(btn.selector, btn.name + ' - 存在性', 'close-btn-tests');
+                testButtonClickable(btn.selector, btn.name + ' - 可点击性', 'close-btn-tests');
+            });
+        }
+
+        function runQuizBtnTests() {
+            log('开始测试评估测试按钮...', 'info');
+            
+            const quizButtons = [
+                { selector: '[data-quiz="python-basics"] .start-quiz-btn', name: 'Python基础测试按钮', func: 'startQuiz' },
+                { selector: '[data-quiz="ml-basics"] .start-quiz-btn', name: '机器学习基础测试按钮', func: 'startQuiz' },
+                { selector: '[data-quiz="math-basics"] .start-quiz-btn', name: '数学基础测试按钮', func: 'startQuiz' }
+            ];
+
+            quizButtons.forEach(btn => {
+                testButtonExists(btn.selector, btn.name + ' - 存在性', 'quiz-btn-tests');
+                testButtonClickable(btn.selector, btn.name + ' - 可点击性', 'quiz-btn-tests');
+                testButtonFunction(btn.selector, btn.func, btn.name + ' - 函数正确性', 'quiz-btn-tests');
+            });
+        }
+
+        function runCommunityTabTests() {
+            log('开始测试社区标签按钮...', 'info');
+            
+            const tabButtons = [
+                { selector: '#community-panel .tab-btn:nth-child(1)', name: '讨论区标签按钮', func: 'switchCommunityTab' },
+                { selector: '#community-panel .tab-btn:nth-child(2)', name: '发布帖子标签按钮', func: 'switchCommunityTab' }
+            ];
+
+            tabButtons.forEach(btn => {
+                testButtonExists(btn.selector, btn.name + ' - 存在性', 'community-tab-tests');
+                testButtonClickable(btn.selector, btn.name + ' - 可点击性', 'community-tab-tests');
+                testButtonFunction(btn.selector, btn.func, btn.name + ' - 函数正确性', 'community-tab-tests');
+            });
+        }
+
+        function runNavLinkTests() {
+            log('开始测试导航链接...', 'info');
+            
+            const navLinks = [
+                { selector: 'a[href="#overview"]', name: '项目概述链接' },
+                { selector: 'a[href="#phase1"]', name: '第一阶段链接' },
+                { selector: 'a[href="#phase2"]', name: '第二阶段链接' },
+                { selector: 'a[href="#phase3"]', name: '第三阶段链接' },
+                { selector: 'a[href="#projects"]', name: '实践项目链接' },
+                { selector: 'a[href="#tools"]', name: 'Web版学习工具链接' }
+            ];
+
+            navLinks.forEach(link => {
+                testLinkExists(link.selector, link.name, 'nav-link-tests');
+            });
+        }
+
+        function runAllTests() {
+            log('开始运行所有UI测试...', 'info');
+            clearResults();
+            
+            runFeatureNavTests();
+            runCloseBtnTests();
+            runQuizBtnTests();
+            runCommunityTabTests();
+            runNavLinkTests();
+            
+            log('所有UI测试完成', 'info');
+            log(`测试结果: 通过 ${testResults.passed}/${testResults.total}, 失败 ${testResults.failed}/${testResults.total}`, 
+                testResults.failed === 0 ? 'success' : 'error');
+        }
+
+        function clearResults() {
+            testResults = { total: 0, passed: 0, failed: 0, pending: 0 };
+            updateSummary();
+            
+            document.getElementById('feature-nav-tests').innerHTML = '';
+            document.getElementById('close-btn-tests').innerHTML = '';
+            document.getElementById('quiz-btn-tests').innerHTML = '';
+            document.getElementById('community-tab-tests').innerHTML = '';
+            document.getElementById('nav-link-tests').innerHTML = '';
+            document.getElementById('console-output').innerHTML = '';
+            
+            log('测试结果已清除', 'info');
+        }
+
+        function openMainPage() {
+            window.open('preview_all.html', '_blank');
+            log('已打开主页面', 'info');
+        }
+
+        window.onload = function() {
+            log('UI测试页面已加载', 'info');
+            log('点击"运行所有测试"按钮开始测试', 'info');
+        };
+    </script>
+</body>
+</html>

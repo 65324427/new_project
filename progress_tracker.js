@@ -12,6 +12,11 @@ class LearningProgressTracker {
         this.updateProgressDisplay();
         this.startSessionTracking();
         
+        // 定期保存学习时长（每30秒）
+        this.saveInterval = setInterval(() => {
+            this.saveCurrentSession();
+        }, 30000);
+        
         // 等待内容加载完成后再次更新
         setTimeout(() => {
             this.updateProgressDisplay();
@@ -52,20 +57,36 @@ class LearningProgressTracker {
         window.addEventListener('beforeunload', () => {
             this.endSessionTracking();
         });
+        
+        window.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                this.saveCurrentSession();
+            }
+        });
     }
 
     startSessionTracking() {
         this.currentSessionStartTime = Date.now();
     }
 
-    endSessionTracking() {
+    saveCurrentSession() {
         if (this.currentSessionStartTime) {
             const sessionDuration = Math.floor((Date.now() - this.currentSessionStartTime) / 1000 / 60);
             if (sessionDuration > 0) {
                 this.progressData.totalTime += sessionDuration;
                 this.progressData.lastStudied = new Date().toISOString();
                 this.saveProgressData();
+                this.updateProgressDisplay();
+                // 重置会话开始时间，避免重复计算
+                this.currentSessionStartTime = Date.now();
             }
+        }
+    }
+
+    endSessionTracking() {
+        this.saveCurrentSession();
+        if (this.saveInterval) {
+            clearInterval(this.saveInterval);
         }
     }
 

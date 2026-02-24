@@ -24,6 +24,10 @@ class LearningProgressTracker {
     }
 
     loadProgressData() {
+        if (window.userManager && window.userManager.currentUser) {
+            return window.userManager.getProgress() || this.getDefaultProgressData();
+        }
+        
         const saved = localStorage.getItem('learningProgress');
         if (saved) {
             return JSON.parse(saved);
@@ -43,7 +47,11 @@ class LearningProgressTracker {
     }
 
     saveProgressData() {
-        localStorage.setItem('learningProgress', JSON.stringify(this.progressData));
+        if (window.userManager && window.userManager.currentUser) {
+            window.userManager.updateProgress(this.progressData);
+        } else {
+            localStorage.setItem('learningProgress', JSON.stringify(this.progressData));
+        }
     }
 
     setupEventListeners() {
@@ -306,8 +314,11 @@ class LearningProgressTracker {
 let progressTracker;
 
 document.addEventListener('DOMContentLoaded', function() {
-    progressTracker = new LearningProgressTracker();
-    
-    // 将进度跟踪器暴露到全局作用域，以便HTML中的onchange可以访问
-    window.progressTracker = progressTracker;
+    // 延迟初始化，确保用户管理器已经加载
+    setTimeout(() => {
+        progressTracker = new LearningProgressTracker();
+        
+        // 将进度跟踪器暴露到全局作用域，以便HTML中的onchange可以访问
+        window.progressTracker = progressTracker;
+    }, 100);
 });

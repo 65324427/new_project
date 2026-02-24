@@ -10,8 +10,8 @@ def read_markdown_file(file_path):
         return None
 
 def extract_section_content(content, section_title):
-    pattern = rf'##\s+{re.escape(section_title)}.*?(?=##\s+|$)'
-    match = re.search(pattern, content, re.DOTALL)
+    pattern = rf'##\s+{re.escape(section_title)}.*?(?=^##\s)'
+    match = re.search(pattern, content, re.DOTALL | re.MULTILINE)
     if match:
         return match.group(0)
     return None
@@ -178,7 +178,10 @@ def update_modal_in_html(html_file, modal_id, title, content):
     </div>
 </div>'''
     
-    html_content = re.sub(pattern, new_modal_html, html_content, flags=re.DOTALL)
+    def replacer(match):
+        return new_modal_html
+    
+    html_content = re.sub(pattern, replacer, html_content, flags=re.DOTALL)
     
     with open(html_file, 'w', encoding='utf-8') as f:
         f.write(html_content)

@@ -20,13 +20,13 @@
         </header>
         
         <div class="feature-nav">
-            <button class="feature-btn" onclick="toggleFeature('progress')">学习进度</button>
-            <button class="feature-btn" onclick="toggleFeature('assessment')">评估测试</button>
-            <button class="feature-btn" onclick="toggleFeature('community')">学习社区</button>
-            <button class="feature-btn" onclick="toggleFeature('personalized')">个性化学习</button>
+            <button class="feature-btn" id="progress-btn" onclick="toggleFeature('progress')">学习进度</button>
+            <button class="feature-btn" id="assessment-btn" onclick="toggleFeature('assessment')">评估测试</button>
+            <button class="feature-btn" id="community-btn" onclick="toggleFeature('community')">学习社区</button>
+            <button class="feature-btn" id="personalized-btn" onclick="toggleFeature('personalized')">个性化学习</button>
         </div>
         
-        <div class="feature-panel" id="progress-panel" style="display: none;">
+        <div class="feature-panel" id="progress-panel">
             <div class="panel-header">
                 <h3>学习进度跟踪</h3>
                 <button class="close-btn" onclick="toggleFeature('progress')">&times;</button>
@@ -58,7 +58,7 @@
             </div>
         </div>
         
-        <div class="feature-panel" id="assessment-panel" style="display: none;">
+        <div class="feature-panel" id="assessment-panel">
             <div class="panel-header">
                 <h3>评估测试</h3>
                 <button class="close-btn" onclick="toggleFeature('assessment')">&times;</button>
@@ -86,7 +86,7 @@
             </div>
         </div>
         
-        <div class="feature-panel" id="community-panel" style="display: none;">
+        <div class="feature-panel" id="community-panel">
             <div class="panel-header">
                 <h3>学习社区</h3>
                 <button class="close-btn" onclick="toggleFeature('community')">&times;</button>
@@ -116,7 +116,7 @@
             </div>
         </div>
         
-        <div class="feature-panel" id="personalized-panel" style="display: none;">
+        <div class="feature-panel" id="personalized-panel">
             <div class="panel-header">
                 <h3>个性化学习路径</h3>
                 <button class="close-btn" onclick="toggleFeature('personalized')">&times;</button>
@@ -161,6 +161,7 @@
     </div>
     
     <script src="script.js"></script>
+    <script src="script_fixes.js"></script>
     <script>
         // 加载外部内容
         function loadContent() {

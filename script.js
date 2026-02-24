@@ -987,15 +987,16 @@ window.onload = function() {
 
 // 页面加载完成后执行
 window.addEventListener('DOMContentLoaded', function() {
+    // 不再添加额外的事件监听器，因为按钮已经有onclick属性
     // 初始化功能面板
-    const featureButtons = document.querySelectorAll('.feature-nav button');
-    featureButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const feature = this.id.replace('-btn', '');
-            toggleFeature(feature);
-        });
-    });
+    // const featureButtons = document.querySelectorAll('.feature-nav button');
+    // featureButtons.forEach(button => {
+    //     button.addEventListener('click', function() {
+    //         const feature = this.id.replace('-btn', '');
+    //         toggleFeature(feature);
+    //     });
+    // });
     
-    // 初始化默认功能
-    toggleFeature('progress');
+    // 不再自动打开任何面板，让用户手动选择
+    // toggleFeature('progress');
 });

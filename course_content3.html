@@ -1896,279 +1896,3411 @@
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal26')">&times;</span>
         <h3>大语言模型概述</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>1. 大语言模型概述</h4>
+<h5>1.1 什么是大语言模型？</h5>
+<p>大语言模型（Large Language Models，LLMs）是基于深度学习的人工智能系统，通过在海量文本数据上进行预训练，学习语言的统计规律和语义表示。</p>
+<p>**核心特点**：</p>
+<ul>
+<li>**大规模参数**：模型参数量通常在数十亿到万亿级别</li>
+<li>**海量训练数据**：使用互联网上的大规模文本数据进行训练</li>
+<li>**强大的语言理解能力**：能够理解复杂的语言结构和语义关系</li>
+<li>**生成能力**：能够生成连贯、有逻辑的文本内容</li>
+</ul>
+<h5>1.2 发展历程</h5>
+<p>**早期阶段**（2018-2020）：</p>
+<ul>
+<li>BERT（2018）：基于Transformer的双向编码器</li>
+<li>GPT-1（2018）：基于Transformer的生成式预训练模型</li>
+<li>GPT-2（2019）：更大规模的生成模型</li>
+</ul>
+<p>**快速发展阶段**（2020-2022）：</p>
+<ul>
+<li>GPT-3（2020）：1750亿参数的突破性模型</li>
+<li>T5、LaMDA等多样化模型出现</li>
+</ul>
+<p>**爆发阶段**（2022至今）：</p>
+<ul>
+<li>ChatGPT（2022）：对话式AI的里程碑</li>
+<li>GPT-4（2023）：多模态能力</li>
+<li>Claude、Llama等开源模型兴起</li>
+</ul>
+<h5>1.3 主要架构</h5>
+<p>**Transformer架构**：</p>
+<ul>
+<li>自注意力机制：捕捉长距离依赖关系</li>
+<li>编码器-解码器结构：支持多种任务</li>
+<li>位置编码：处理序列顺序信息</li>
+</ul>
+<p>**主流模型类型**：</p>
+<ul>
+<li>**编码器模型**：BERT、RoBERTa（适合理解任务）</li>
+<li>**解码器模型**：GPT系列、Llama（适合生成任务）</li>
+<li>**编码器-解码器模型**：T5、BART（适合翻译、摘要任务）</li>
+</ul>
+<h5>1.4 应用场景</h5>
+<p>**文本生成**：</p>
+<ul>
+<li>创意写作</li>
+<li>内容创作</li>
+<li>代码生成</li>
+</ul>
+<p>**文本理解**：</p>
+<ul>
+<li>情感分析</li>
+<li>文本分类</li>
+<li>信息抽取</li>
+</ul>
+<p>**对话系统**：</p>
+<ul>
+<li>智能客服</li>
+<li>虚拟助手</li>
+<li>教育辅导</li>
+</ul>
+<p>**专业领域**：</p>
+<ul>
+<li>医疗诊断辅助</li>
+<li>法律文书分析</li>
+<li>金融报告生成</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal27" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal27')">&times;</span>
         <h3>Prompt Engineering技术</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>2. Prompt Engineering技术</h4>
+<h5>2.1 什么是Prompt Engineering？</h5>
+<p>Prompt Engineering（提示工程）是指通过设计和优化输入提示词，引导大语言模型生成更准确、更符合需求的输出内容的技术。</p>
+<h5>2.2 基本原则</h5>
+<p>**清晰明确**：</p>
+<ul>
+<li>使用清晰、具体的语言</li>
+<li>避免模糊和歧义的表达</li>
+<li>明确说明期望的输出格式</li>
+</ul>
+<p>**结构化**：</p>
+<ul>
+<li>使用清晰的段落结构</li>
+<li>合理使用标题和子标题</li>
+<li>提供示例和模板</li>
+</ul>
+<p>**上下文丰富**：</p>
+<ul>
+<li>提供充分的背景信息</li>
+<li>说明任务的约束条件</li>
+<li>给出相关的参考信息</li>
+</ul>
+<h5>2.3 常用技巧</h5>
+<p>**零样本提示（Zero-shot）**：</p>
+<p>```</p>
+<p>请将以下文本翻译成英文：</p>
+<p>人工智能正在改变我们的生活方式。</p>
+<p>```</p>
+<p>**少样本提示（Few-shot）**：</p>
+<p>```</p>
+<p>示例1：</p>
+<p>输入：苹果</p>
+<p>输出：水果</p>
+<p>示例2：</p>
+<p>输入：汽车</p>
+<p>输出：交通工具</p>
+<p>输入：电脑</p>
+<p>输出：</p>
+<p>```</p>
+<p>**思维链提示（Chain of Thought）**：</p>
+<p>```</p>
+<p>问题：一个篮子里有5个苹果，你拿走了3个，现在篮子里有几个苹果？</p>
+<p>思考过程：</p>
+<ol>
+<li>篮子里最初有5个苹果</li>
+<li>你拿走了3个苹果</li>
+<li>5 - 3 = 2</li>
+<li>篮子里还有2个苹果</li>
+</ol>
+<p>答案：2个</p>
+<p>```</p>
+<p>**角色扮演提示**：</p>
+<p>```</p>
+<p>你是一位经验丰富的Python编程老师。请向初学者解释什么是列表。</p>
+<p>```</p>
+<h5>2.4 高级技巧</h5>
+<p>**自一致性**：</p>
+<ul>
+<li>要求模型多次回答相同问题</li>
+<li>选择最常见或最合理的答案</li>
+</ul>
+<p>**思维树（Tree of Thoughts）**：</p>
+<ul>
+<li>生成多个可能的解决方案</li>
+<li>评估每个方案的可行性</li>
+<li>选择最优方案</li>
+</ul>
+<p>**提示优化**：</p>
+<ul>
+<li>迭代改进提示词</li>
+<li>根据模型输出调整提示策略</li>
+<li>使用自动化工具进行优化</li>
+</ul>
+<h5>2.5 最佳实践</h5>
+<p>**测试和验证**：</p>
+<ul>
+<li>使用测试集评估提示效果</li>
+<li>对比不同提示的性能</li>
+<li>记录成功的提示模式</li>
+</ul>
+<p>**版本管理**：</p>
+<ul>
+<li>保存有效的提示版本</li>
+<li>建立提示库</li>
+<li>定期更新和优化</li>
+</ul>
+<p>**安全性考虑**：</p>
+<ul>
+<li>避免敏感信息泄露</li>
+<li>防止恶意提示注入</li>
+<li>设置内容过滤机制</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal28" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal28')">&times;</span>
         <h3>模型微调方法</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>3. 模型微调方法</h4>
+<h5>3.1 什么是模型微调？</h5>
+<p>模型微调（Fine-tuning）是在预训练模型的基础上，使用特定领域的数据进行进一步训练，使模型更好地适应特定任务或领域。</p>
+<h5>3.2 微调类型</h5>
+<p>**全参数微调**：</p>
+<ul>
+<li>更新模型的所有参数</li>
+<li>适合有大量标注数据的场景</li>
+<li>计算成本高</li>
+</ul>
+<p>**部分参数微调**：</p>
+<ul>
+<li>只更新部分层或参数</li>
+<li>平衡性能和成本</li>
+<li>常用的折中方案</li>
+</ul>
+<p>**参数高效微调**：</p>
+<ul>
+<li>LoRA（Low-Rank Adaptation）</li>
+<li>Adapter方法</li>
+<li>Prefix Tuning</li>
+</ul>
+<h5>3.3 LoRA微调</h5>
+<p>**原理**：</p>
+<ul>
+<li>在模型权重矩阵上添加低秩分解矩阵</li>
+<li>只训练低秩矩阵的参数</li>
+<li>大幅减少可训练参数数量</li>
+</ul>
+<p>**优势**：</p>
+<ul>
+<li>参数效率高</li>
+<li>训练速度快</li>
+<li>存储空间小</li>
+<li>可组合多个LoRA适配器</li>
+</ul>
+<p>**实现步骤**：</p>
+<ol>
+<li>选择要微调的层</li>
+<li>确定低秩矩阵的秩</li>
+<li>初始化LoRA参数</li>
+<li>使用特定数据训练</li>
+<li>合并或保存LoRA权重</li>
+</ol>
+<h5>3.4 微调流程</h5>
+<p>**数据准备**：</p>
+<ul>
+<li>收集领域相关数据</li>
+<li>数据清洗和预处理</li>
+<li>构建训练集和验证集</li>
+<li>数据增强（可选）</li>
+</ul>
+<p>**模型准备**：</p>
+<ul>
+<li>选择合适的预训练模型</li>
+<li>配置微调参数</li>
+<li>设置学习率调度</li>
+<li>准备训练环境</li>
+</ul>
+<p>**训练过程**：</p>
+<ul>
+<li>设置合适的batch size</li>
+<li>监控训练和验证损失</li>
+<li>早停策略防止过拟合</li>
+<li>定期保存检查点</li>
+</ul>
+<p>**评估和优化**：</p>
+<ul>
+<li>在测试集上评估性能</li>
+<li>分析错误案例</li>
+<li>调整超参数</li>
+<li>迭代改进</li>
+</ul>
+<h5>3.5 微调注意事项</h5>
+<p>**数据质量**：</p>
+<ul>
+<li>确保数据标注准确</li>
+<li>保持数据多样性</li>
+<li>避免数据泄露</li>
+</ul>
+<p>**过拟合预防**：</p>
+<ul>
+<li>使用正则化技术</li>
+<li>早停策略</li>
+<li>数据增强</li>
+<li>Dropout</li>
+</ul>
+<p>**计算资源**：</p>
+<ul>
+<li>合理分配GPU资源</li>
+<li>使用混合精度训练</li>
+<li>梯度累积</li>
+<li>分布式训练</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal29" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal29')">&times;</span>
         <h3>大模型应用开发</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>4. 大模型应用开发</h4>
+<h5>4.1 应用架构</h5>
+<p>**基础架构**：</p>
+<ul>
+<li>模型服务层</li>
+<li>API接口层</li>
+<li>业务逻辑层</li>
+<li>前端展示层</li>
+</ul>
+<p>**关键组件**：</p>
+<ul>
+<li>模型加载和推理</li>
+<li>提示词管理</li>
+<li>结果后处理</li>
+<li>缓存机制</li>
+</ul>
+<h5>4.2 开发流程</h5>
+<p>**需求分析**：</p>
+<ul>
+<li>明确应用场景</li>
+<li>确定功能需求</li>
+<li>评估技术可行性</li>
+<li>规划开发周期</li>
+</ul>
+<p>**模型选择**：</p>
+<ul>
+<li>根据需求选择合适模型</li>
+<li>考虑模型大小和性能</li>
+<li>评估部署成本</li>
+<li>测试模型效果</li>
+</ul>
+<p>**系统设计**：</p>
+<ul>
+<li>设计系统架构</li>
+<li>定义API接口</li>
+<li>规划数据流</li>
+<li>考虑扩展性</li>
+</ul>
+<p>**开发实现**：</p>
+<ul>
+<li>实现核心功能</li>
+<li>集成模型推理</li>
+<li>开发用户界面</li>
+<li>添加错误处理</li>
+</ul>
+<p>**测试优化**：</p>
+<ul>
+<li>功能测试</li>
+<li>性能测试</li>
+<li>用户体验测试</li>
+<li>持续优化</li>
+</ul>
+<h5>4.3 性能优化</h5>
+<p>**推理优化**：</p>
+<ul>
+<li>模型量化</li>
+<li>知识蒸馏</li>
+<li>模型剪枝</li>
+<li>批量推理</li>
+</ul>
+<p>**缓存策略**：</p>
+<ul>
+<li>结果缓存</li>
+<li>提示词缓存</li>
+<li>模型缓存</li>
+<li>分布式缓存</li>
+</ul>
+<p>**并发处理**：</p>
+<ul>
+<li>异步处理</li>
+<li>请求队列</li>
+<li>负载均衡</li>
+<li>限流机制</li>
+</ul>
+<h5>4.4 安全性考虑</h5>
+<p>**输入验证**：</p>
+<ul>
+<li>过滤恶意输入</li>
+<li>限制输入长度</li>
+<li>检测异常模式</li>
+<li>内容审核</li>
+</ul>
+<p>**输出过滤**：</p>
+<ul>
+<li>敏感信息检测</li>
+<li>有害内容过滤</li>
+<li>事实核查</li>
+<li>人工审核</li>
+</ul>
+<p>**访问控制**：</p>
+<ul>
+<li>身份认证</li>
+<li>权限管理</li>
+<li>使用配额</li>
+<li>审计日志</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal30" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal30')">&times;</span>
         <h3>大模型评估指标</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>5. 大模型评估指标</h4>
+<h5>5.1 评估维度</h5>
+<p>**生成质量**：</p>
+<ul>
+<li>流畅性</li>
+<li>连贯性</li>
+<li>相关性</li>
+<li>创造性</li>
+</ul>
+<p>**准确性**：</p>
+<ul>
+<li>事实准确性</li>
+<li>逻辑一致性</li>
+<li>计算正确性</li>
+<li>引用准确性</li>
+</ul>
+<p>**安全性**：</p>
+<ul>
+<li>有害内容</li>
+<li>偏见检测</li>
+<li>隐私保护</li>
+<li>合规性</li>
+</ul>
+<p>**性能指标**：</p>
+<ul>
+<li>响应时间</li>
+<li>吞吐量</li>
+<li>资源占用</li>
+<li>成本效益</li>
+</ul>
+<h5>5.2 自动化评估</h5>
+<p>**语言模型指标**：</p>
+<ul>
+<li>困惑度（Perplexity）</li>
+<li>BLEU分数</li>
+<li>ROUGE分数</li>
+<li>METEOR分数</li>
+</ul>
+<p>**语义相似度**：</p>
+<ul>
+<li>余弦相似度</li>
+<li>BERTScore</li>
+<li>MoverScore</li>
+<li>COMET</li>
+</ul>
+<p>**任务特定指标**：</p>
+<ul>
+<li>分类准确率</li>
+<li>F1分数</li>
+<li>精确率/召回率</li>
+<li>AUC-ROC</li>
+</ul>
+<h5>5.3 人工评估</h5>
+<p>**评估方法**：</p>
+<ul>
+<li>专家评审</li>
+<li>众包评估</li>
+<li>A/B测试</li>
+<li>用户反馈</li>
+</ul>
+<p>**评估标准**：</p>
+<ul>
+<li>制定评估指南</li>
+<li>培训评估人员</li>
+<li>建立一致性检查</li>
+<li>收集定性反馈</li>
+</ul>
+<h5>5.4 评估流程</h5>
+<p>**基准测试**：</p>
+<ul>
+<li>选择基准数据集</li>
+<li>定义评估任务</li>
+<li>运行基准测试</li>
+<li>记录基线性能</li>
+</ul>
+<p>**对比评估**：</p>
+<ul>
+<li>与其他模型对比</li>
+<li>与基线方法对比</li>
+<li>多维度评估</li>
+<li>统计显著性检验</li>
+</ul>
+<p>**持续监控**：</p>
+<ul>
+<li>建立监控指标</li>
+<li>定期评估性能</li>
+<li>跟踪性能变化</li>
+<li>及时发现问题</li>
+</ul>
+<p>**反馈循环**：</p>
+<ul>
+<li>收集用户反馈</li>
+<li>分析错误案例</li>
+<li>改进模型和系统</li>
+<li>迭代优化</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal31" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal31')">&times;</span>
         <h3>多模态AI概述</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>1. 多模态AI概述</h4>
+<h5>1.1 什么是多模态AI？</h5>
+<p>多模态AI是指能够处理和理解多种类型数据（如文本、图像、音频、视频等）的人工智能系统。与单一模态的AI相比，多模态AI能够综合多种信息源，提供更全面、更准确的理解和决策。</p>
+<p>**核心特点**：</p>
+<ul>
+<li>**多模态输入**：能够处理文本、图像、音频、视频等多种数据类型</li>
+<li>**跨模态理解**：能够理解不同模态之间的关联和语义</li>
+<li>**统一表示**：将不同模态的数据映射到统一的表示空间</li>
+<li>**协同推理**：利用多种模态的信息进行联合推理</li>
+</ul>
+<h5>1.2 发展历程</h5>
+<p>**早期探索**（2010-2015）：</p>
+<ul>
+<li>图像-文本检索</li>
+<li>简单的多模态融合</li>
+<li>基于传统机器学习的方法</li>
+</ul>
+<p>**深度学习时代**（2015-2020）：</p>
+<ul>
+<li>CNN和RNN的结合</li>
+<li>注意力机制的应用</li>
+<li>多模态预训练模型的出现</li>
+</ul>
+<p>**大模型时代**（2020至今）：</p>
+<ul>
+<li>CLIP（2021）：图像-文本对齐</li>
+<li>DALL-E、Stable Diffusion：文本生成图像</li>
+<li>GPT-4V、Gemini：多模态大模型</li>
+</ul>
+<h5>1.3 主要架构</h5>
+<p>**早期融合**：</p>
+<ul>
+<li>在输入层融合不同模态</li>
+<li>简单拼接或加权融合</li>
+<li>适用于模态对齐良好的场景</li>
+</ul>
+<p>**晚期融合**：</p>
+<ul>
+<li>各模态独立处理</li>
+<li>在决策层融合结果</li>
+<li>适用于模态差异较大的场景</li>
+</ul>
+<p>**混合融合**：</p>
+<ul>
+<li>结合早期和晚期融合</li>
+<li>多层次的信息交互</li>
+<li>当前主流方法</li>
+</ul>
+<p>**跨注意力融合**：</p>
+<ul>
+<li>使用注意力机制实现跨模态交互</li>
+<li>动态调整不同模态的重要性</li>
+<li>效果最好但计算复杂度高</li>
+</ul>
+<h5>1.4 应用场景</h5>
+<p>**图像理解**：</p>
+<ul>
+<li>图像描述生成</li>
+<li>视觉问答</li>
+<li>图像分类和检测</li>
+</ul>
+<p>**内容创作**：</p>
+<ul>
+<li>文本生成图像</li>
+<li>图像生成文本</li>
+<li>跨模态内容转换</li>
+</ul>
+<p>**智能交互**：</p>
+<ul>
+<li>多模态对话系统</li>
+<li>虚拟现实/增强现实</li>
+<li>智能家居</li>
+</ul>
+<p>**专业领域**：</p>
+<ul>
+<li>医疗影像分析</li>
+<li>自动驾驶</li>
+<li>工业检测</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal32" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal32')">&times;</span>
         <h3>文本-图像融合技术</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>2. 文本-图像融合技术</h4>
+<h5>2.1 融合方法</h5>
+<p>**特征级融合**：</p>
+<ul>
+<li>提取文本和图像的深度特征</li>
+<li>将特征向量拼接或融合</li>
+<li>使用全连接层进行联合处理</li>
+</ul>
+<p>**注意力机制融合**：</p>
+<ul>
+<li>计算文本和图像之间的注意力权重</li>
+<li>动态调整不同特征的重要性</li>
+<li>提高融合效果</li>
+</ul>
+<p>**对比学习融合**：</p>
+<ul>
+<li>通过对比学习对齐文本和图像表示</li>
+<li>学习跨模态的语义相似度</li>
+<li>CLIP是代表性方法</li>
+</ul>
+<h5>2.2 CLIP模型</h5>
+<p>**模型结构**：</p>
+<ul>
+<li>图像编码器：基于Vision Transformer或CNN</li>
+<li>文本编码器：基于Transformer</li>
+<li>对比学习目标函数</li>
+</ul>
+<p>**训练方法**：</p>
+<ul>
+<li>大规模图像-文本对数据</li>
+<li>对比学习损失函数</li>
+<li>批量归一化和温度参数</li>
+</ul>
+<p>**应用场景**：</p>
+<ul>
+<li>零样本图像分类</li>
+<li>图像-文本检索</li>
+<li>图像生成引导</li>
+</ul>
+<h5>2.3 图像生成模型</h5>
+<p>**DALL-E系列**：</p>
+<ul>
+<li>基于Transformer的图像生成</li>
+<li>文本到图像的转换</li>
+<li>多样性和质量兼顾</li>
+</ul>
+<p>**Stable Diffusion**：</p>
+<ul>
+<li>基于扩散模型的图像生成</li>
+<li>高质量图像生成</li>
+<li>开源和可定制</li>
+</ul>
+<p>**Midjourney**：</p>
+<ul>
+<li>艺术风格图像生成</li>
+<li>高创意性和美学质量</li>
+<li>商业应用广泛</li>
+</ul>
+<h5>2.4 技术挑战</h5>
+<p>**对齐问题**：</p>
+<ul>
+<li>文本和图像的语义对齐</li>
+<li>细粒度对应关系</li>
+<li>长文本理解</li>
+</ul>
+<p>**多样性控制**：</p>
+<ul>
+<li>生成结果的多样性</li>
+<li>风格和主题的一致性</li>
+<li>用户意图的准确表达</li>
+</ul>
+<p>**计算效率**：</p>
+<ul>
+<li>大规模模型的推理成本</li>
+<li>实时生成需求</li>
+<li>资源优化</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal33" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal33')">&times;</span>
         <h3>图像描述生成</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>3. 图像描述生成</h4>
+<h5>3.1 任务定义</h5>
+<p>图像描述生成（Image Captioning）是指自动为图像生成自然语言描述的任务。这是一个典型的多模态任务，需要同时理解图像内容和生成自然语言。</p>
+<h5>3.2 模型架构</h5>
+<p>**编码器-解码器架构**：</p>
+<ul>
+<li>编码器：CNN或ViT提取图像特征</li>
+<li>解码器：RNN或Transformer生成描述</li>
+<li>注意力机制连接编码器和解码器</li>
+</ul>
+<p>**端到端训练**：</p>
+<ul>
+<li>联合训练编码器和解码器</li>
+<li>使用交叉熵损失函数</li>
+<li>Beam Search解码策略</li>
+</ul>
+<h5>3.3 评估指标</h5>
+<p>**传统指标**：</p>
+<ul>
+<li>BLEU：基于n-gram的匹配</li>
+<li>METEOR：考虑同义词和词形变化</li>
+<li>ROUGE：基于召回率的指标</li>
+<li>CIDEr：专门为图像描述设计</li>
+</ul>
+<p>**语义指标**：</p>
+<ul>
+<li>SPICE：基于场景图的评估</li>
+<li>CLIPScore：基于CLIP的语义相似度</li>
+<li>人工评估：主观质量评估</li>
+</ul>
+<h5>3.4 技术挑战</h5>
+<p>**内容完整性**：</p>
+<ul>
+<li>描述图像中的所有重要元素</li>
+<li>准确表达空间关系</li>
+<li>处理复杂场景</li>
+</ul>
+<p>**语言自然性**：</p>
+<ul>
+<li>生成流畅自然的语言</li>
+<li>避免重复和冗余</li>
+<li>丰富的词汇和句式</li>
+</ul>
+<p>**多样性**：</p>
+<ul>
+<li>为同一图像生成不同描述</li>
+<li>覆盖不同的视角和重点</li>
+<li>避免模板化表达</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal34" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal34')">&times;</span>
         <h3>多模态模型评估</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>4. 多模态模型评估</h4>
+<h5>4.1 评估维度</h5>
+<p>**模态对齐**：</p>
+<ul>
+<li>不同模态之间的语义对齐</li>
+<li>跨模态检索准确率</li>
+<li>细粒度对应关系</li>
+</ul>
+<p>**生成质量**：</p>
+<ul>
+<li>生成内容的准确性和相关性</li>
+<li>语言的自然性和流畅性</li>
+<li>视觉质量和美学</li>
+</ul>
+<p>**任务性能**：</p>
+<ul>
+<li>特定任务的准确率</li>
+<li>泛化能力</li>
+<li>鲁棒性</li>
+</ul>
+<p>**效率指标**：</p>
+<ul>
+<li>推理速度</li>
+<li>计算资源消耗</li>
+<li>可扩展性</li>
+</ul>
+<h5>4.2 评估方法</h5>
+<p>**定量评估**：</p>
+<ul>
+<li>自动化指标计算</li>
+<li>标准数据集测试</li>
+<li>统计显著性检验</li>
+</ul>
+<p>**定性评估**：</p>
+<ul>
+<li>专家评审</li>
+<li>用户研究</li>
+<li>案例分析</li>
+</ul>
+<p>**对比评估**：</p>
+<ul>
+<li>与基线方法对比</li>
+<li>与其他模型对比</li>
+<li>消融实验</li>
+</ul>
+<h5>4.3 常用数据集</h5>
+<p>**图像-文本数据集**：</p>
+<ul>
+<li>COCO Captions</li>
+<li>Flickr30k</li>
+<li>Visual Genome</li>
+</ul>
+<p>**视觉问答数据集**：</p>
+<ul>
+<li>VQA v2</li>
+<li>GQA</li>
+<li>OK-VQA</li>
+</ul>
+<p>**多模态预训练数据集**：</p>
+<ul>
+<li>LAION-400M</li>
+<li>CC3M</li>
+<li>WebVid</li>
+</ul>
+<h5>4.4 评估挑战</h5>
+<p>**主观性**：</p>
+<ul>
+<li>评估标准的主观性</li>
+<li>评估者之间的差异</li>
+<li>文化差异影响</li>
+</ul>
+<p>**数据偏差**：</p>
+<ul>
+<li>训练数据的偏差</li>
+<li>评估数据的偏差</li>
+<li>公平性问题</li>
+</ul>
+<p>**计算成本**：</p>
+<ul>
+<li>大规模评估的计算成本</li>
+<li>时间和资源限制</li>
+<li>评估效率</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal35" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal35')">&times;</span>
         <h3>多模态应用开发</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>5. 多模态应用开发</h4>
+<h5>5.1 应用场景</h5>
+<p>**内容创作**：</p>
+<ul>
+<li>AI绘画和设计</li>
+<li>自动内容生成</li>
+<li>创意辅助工具</li>
+</ul>
+<p>**智能搜索**：</p>
+<ul>
+<li>跨模态搜索</li>
+<li>语义搜索</li>
+<li>推荐系统</li>
+</ul>
+<p>**教育领域**：</p>
+<ul>
+<li>智能辅导系统</li>
+<li>多模态学习材料</li>
+<li>个性化教育</li>
+</ul>
+<p>**医疗健康**：</p>
+<ul>
+<li>医疗影像分析</li>
+<li>病历自动生成</li>
+<li>辅助诊断</li>
+</ul>
+<h5>5.2 开发流程</h5>
+<p>**需求分析**：</p>
+<ul>
+<li>明确应用场景</li>
+<li>确定功能需求</li>
+<li>评估技术可行性</li>
+</ul>
+<p>**模型选择**：</p>
+<ul>
+<li>选择合适的预训练模型</li>
+<li>评估模型性能和成本</li>
+<li>考虑部署限制</li>
+</ul>
+<p>**数据准备**：</p>
+<ul>
+<li>收集和标注数据</li>
+<li>数据预处理</li>
+<li>数据增强</li>
+</ul>
+<p>**系统集成**：</p>
+<ul>
+<li>模型服务化</li>
+<li>API接口设计</li>
+<li>前端开发</li>
+</ul>
+<p>**测试优化**：</p>
+<ul>
+<li>功能测试</li>
+<li>性能优化</li>
+<li>用户体验测试</li>
+</ul>
+<h5>5.3 技术挑战</h5>
+<p>**模型部署**：</p>
+<ul>
+<li>大模型的部署挑战</li>
+<li>推理优化</li>
+<li>资源管理</li>
+</ul>
+<p>**实时性要求**：</p>
+<ul>
+<li>低延迟需求</li>
+<li>高并发处理</li>
+<li>负载均衡</li>
+</ul>
+<p>**数据隐私**：</p>
+<ul>
+<li>敏感数据保护</li>
+<li>隐私计算技术</li>
+<li>合规性要求</li>
+</ul>
+<p>**可解释性**：</p>
+<ul>
+<li>模型决策解释</li>
+<li>信任度建立</li>
+<li>透明度要求</li>
+</ul>
+<h5>5.4 最佳实践</h5>
+<p>**模块化设计**：</p>
+<ul>
+<li>清晰的模块划分</li>
+<li>松耦合架构</li>
+<li>易于维护和扩展</li>
+</ul>
+<p>**性能优化**：</p>
+<ul>
+<li>模型量化和压缩</li>
+<li>缓存策略</li>
+<li>并行处理</li>
+</ul>
+<p>**监控和日志**：</p>
+<ul>
+<li>实时监控</li>
+<li>错误日志</li>
+<li>性能指标</li>
+</ul>
+<p>**持续改进**：</p>
+<ul>
+<li>用户反馈收集</li>
+<li>数据迭代更新</li>
+<li>模型持续优化</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal36" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal36')">&times;</span>
         <h3>模型部署技术</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>1. 模型部署技术</h4>
+<h5>1.1 部署概述</h5>
+<p>模型部署是将训练好的机器学习模型集成到生产环境中的过程，使其能够为实际业务提供服务。</p>
+<p>**部署目标**：</p>
+<ul>
+<li>高可用性：确保服务稳定可靠</li>
+<li>高性能：快速响应请求</li>
+<li>可扩展性：支持业务增长</li>
+<li>可维护性：便于运维和更新</li>
+</ul>
+<h5>1.2 部署架构</h5>
+<p>**单体部署**：</p>
+<ul>
+<li>所有组件部署在同一服务器</li>
+<li>适合小规模应用</li>
+<li>简单但扩展性差</li>
+</ul>
+<p>**微服务部署**：</p>
+<ul>
+<li>模型服务独立部署</li>
+<li>通过API接口调用</li>
+<li>易于扩展和维护</li>
+</ul>
+<p>**容器化部署**：</p>
+<ul>
+<li>使用Docker容器封装</li>
+<li>环境一致性好</li>
+<li>便于迁移和扩展</li>
+</ul>
+<p>**云原生部署**：</p>
+<ul>
+<li>基于Kubernetes编排</li>
+<li>自动扩缩容</li>
+<li>高可用和容错</li>
+</ul>
+<h5>1.3 部署方式</h5>
+<p>**在线推理**：</p>
+<ul>
+<li>实时响应用户请求</li>
+<li>低延迟要求</li>
+<li>适用于交互式应用</li>
+</ul>
+<p>**批量推理**：</p>
+<ul>
+<li>处理批量数据</li>
+<li>吞吐量优先</li>
+<li>适用于离线处理</li>
+</ul>
+<p>**边缘部署**：</p>
+<ul>
+<li>在边缘设备上部署</li>
+<li>低延迟和隐私保护</li>
+<li>适用于物联网场景</li>
+</ul>
+<p>**混合部署**：</p>
+<ul>
+<li>结合云端和边缘</li>
+<li>灵活适应不同需求</li>
+<li>优化资源利用</li>
+</ul>
+<h5>1.4 部署流程</h5>
+<p>**模型准备**：</p>
+<ul>
+<li>模型格式转换</li>
+<li>模型优化和压缩</li>
+<li>依赖项管理</li>
+</ul>
+<p>**环境配置**：</p>
+<ul>
+<li>硬件资源规划</li>
+<li>软件环境搭建</li>
+<li>网络和安全配置</li>
+</ul>
+<p>**服务开发**：</p>
+<ul>
+<li>API接口设计</li>
+<li>服务框架选择</li>
+<li>错误处理和日志</li>
+</ul>
+<p>**测试验证**：</p>
+<ul>
+<li>功能测试</li>
+<li>性能测试</li>
+<li>压力测试</li>
+</ul>
+<p>**上线发布**：</p>
+<ul>
+<li>灰度发布</li>
+<li>监控告警</li>
+<li>回滚机制</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal37" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal37')">&times;</span>
         <h3>模型监控与维护</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>2. 模型监控与维护</h4>
+<h5>2.1 监控指标</h5>
+<p>**性能指标**：</p>
+<ul>
+<li>响应时间</li>
+<li>吞吐量</li>
+<li>错误率</li>
+<li>资源利用率</li>
+</ul>
+<p>**模型指标**：</p>
+<ul>
+<li>预测准确率</li>
+<li>数据分布变化</li>
+<li>模型漂移</li>
+<li>异常检测</li>
+</ul>
+<p>**业务指标**：</p>
+<ul>
+<li>用户满意度</li>
+<li>转化率</li>
+<li>收入影响</li>
+<li>成本效益</li>
+</ul>
+<h5>2.2 监控系统</h5>
+<p>**日志收集**：</p>
+<ul>
+<li>请求日志</li>
+<li>错误日志</li>
+<li>性能日志</li>
+<li>业务日志</li>
+</ul>
+<p>**指标监控**：</p>
+<ul>
+<li>实时指标展示</li>
+<li>历史趋势分析</li>
+<li>阈值告警</li>
+<li>异常检测</li>
+</ul>
+<p>**追踪系统**：</p>
+<ul>
+<li>请求追踪</li>
+<li>性能分析</li>
+<li>问题定位</li>
+<li>优化建议</li>
+</ul>
+<h5>2.3 模型维护</h5>
+<p>**定期评估**：</p>
+<ul>
+<li>模型性能评估</li>
+<li>数据质量检查</li>
+<li>业务影响分析</li>
+<li>改进建议</li>
+</ul>
+<p>**模型更新**：</p>
+<ul>
+<li>定期重训练</li>
+<li>在线学习</li>
+<li>增量更新</li>
+<li>版本管理</li>
+</ul>
+<p>**问题处理**：</p>
+<ul>
+<li>异常检测</li>
+<li>根因分析</li>
+<li>快速修复</li>
+<li>预防措施</li>
+</ul>
+<h5>2.4 告警机制</h5>
+<p>**告警级别**：</p>
+<ul>
+<li>信息告警</li>
+<li>警告告警</li>
+<li>严重告警</li>
+<li>紧急告警</li>
+</ul>
+<p>**告警渠道**：</p>
+<ul>
+<li>邮件通知</li>
+<li>短信通知</li>
+<li>即时通讯</li>
+<li>电话告警</li>
+</ul>
+<p>**告警处理**：</p>
+<ul>
+<li>自动化处理</li>
+<li>人工介入</li>
+<li>升级机制</li>
+<li>处理记录</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal38" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal38')">&times;</span>
         <h3>AI系统架构设计</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>3. AI系统架构设计</h4>
+<h5>3.1 架构原则</h5>
+<p>**可扩展性**：</p>
+<ul>
+<li>水平扩展能力</li>
+<li>垂直扩展支持</li>
+<li>弹性伸缩</li>
+<li>负载均衡</li>
+</ul>
+<p>**高可用性**：</p>
+<ul>
+<li>冗余设计</li>
+<li>故障转移</li>
+<li>容错机制</li>
+<li>灾备方案</li>
+</ul>
+<p>**性能优化**：</p>
+<ul>
+<li>缓存策略</li>
+<li>异步处理</li>
+<li>并发控制</li>
+<li>资源优化</li>
+</ul>
+<p>**安全性**：</p>
+<ul>
+<li>身份认证</li>
+<li>访问控制</li>
+<li>数据加密</li>
+<li>安全审计</li>
+</ul>
+<h5>3.2 架构模式</h5>
+<p>**分层架构**：</p>
+<ul>
+<li>接入层</li>
+<li>应用层</li>
+<li>服务层</li>
+<li>数据层</li>
+</ul>
+<p>**微服务架构**：</p>
+<ul>
+<li>服务拆分</li>
+<li>服务治理</li>
+<li>服务发现</li>
+<li>服务编排</li>
+</ul>
+<p>**事件驱动架构**：</p>
+<ul>
+<li>事件发布订阅</li>
+<li>异步处理</li>
+<li>解耦合</li>
+<li>可扩展性</li>
+</ul>
+<p>**Serverless架构**：</p>
+<ul>
+<li>无服务器计算</li>
+<li>按需付费</li>
+<li>自动扩展</li>
+<li>快速部署</li>
+</ul>
+<h5>3.3 技术选型</h5>
+<p>**框架选择**：</p>
+<ul>
+<li>TensorFlow Serving</li>
+<li>TorchServe</li>
+<li>ONNX Runtime</li>
+<li>Triton Inference Server</li>
+</ul>
+<p>**容器技术**：</p>
+<ul>
+<li>Docker</li>
+<li>Kubernetes</li>
+<li>Docker Compose</li>
+<li>Helm</li>
+</ul>
+<p>**消息队列**：</p>
+<ul>
+<li>Kafka</li>
+<li>RabbitMQ</li>
+<li>Redis</li>
+<li>AWS SQS</li>
+</ul>
+<p>**存储系统**：</p>
+<ul>
+<li>对象存储（S3）</li>
+<li>关系数据库</li>
+<li>NoSQL数据库</li>
+<li>时序数据库</li>
+</ul>
+<h5>3.4 架构优化</h5>
+<p>**性能优化**：</p>
+<ul>
+<li>模型量化</li>
+<li>知识蒸馏</li>
+<li>模型剪枝</li>
+<li>推理加速</li>
+</ul>
+<p>**成本优化**：</p>
+<ul>
+<li>资源利用率</li>
+<li>按需扩展</li>
+<li>Spot实例</li>
+<li>成本监控</li>
+</ul>
+<p>**可维护性**：</p>
+<ul>
+<li>模块化设计</li>
+<li>文档完善</li>
+<li>代码规范</li>
+<li>测试覆盖</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal39" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal39')">&times;</span>
         <h3>MLOps实践</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>4. MLOps实践</h4>
+<h5>4.1 MLOps概述</h5>
+<p>MLOps（Machine Learning Operations）是机器学习运维的实践，旨在将机器学习系统化、自动化和标准化，提高模型开发和部署的效率。</p>
+<p>**核心目标**：</p>
+<ul>
+<li>自动化流程</li>
+<li>提高效率</li>
+<li>保证质量</li>
+<li>降低风险</li>
+</ul>
+<h5>4.2 MLOps流程</h5>
+<p>**数据管理**：</p>
+<ul>
+<li>数据收集</li>
+<li>数据清洗</li>
+<li>数据标注</li>
+<li>数据版本管理</li>
+</ul>
+<p>**模型开发**：</p>
+<ul>
+<li>特征工程</li>
+<li>模型训练</li>
+<li>模型评估</li>
+<li>模型选择</li>
+</ul>
+<p>**模型部署**：</p>
+<ul>
+<li>模型打包</li>
+<li>环境配置</li>
+<li>服务部署</li>
+<li>灰度发布</li>
+</ul>
+<p>**监控维护**：</p>
+<ul>
+<li>性能监控</li>
+<li>数据监控</li>
+<li>模型监控</li>
+<li>持续优化</li>
+</ul>
+<h5>4.3 CI/CD/CT</h5>
+<p>**持续集成（CI）**：</p>
+<ul>
+<li>代码自动构建</li>
+<li>自动化测试</li>
+<li>代码质量检查</li>
+<li>依赖管理</li>
+</ul>
+<p>**持续部署（CD）**：</p>
+<ul>
+<li>自动化部署</li>
+<li>环境管理</li>
+<li>配置管理</li>
+<li>回滚机制</li>
+</ul>
+<p>**持续训练（CT）**：</p>
+<ul>
+<li>自动重训练</li>
+<li>模型评估</li>
+<li>模型选择</li>
+<li>自动部署</li>
+</ul>
+<h5>4.4 工具链</h5>
+<p>**数据工具**：</p>
+<ul>
+<li>DVC（Data Version Control）</li>
+<li>Apache Airflow</li>
+<li>Great Expectations</li>
+<li>MLflow</li>
+</ul>
+<p>**开发工具**：</p>
+<ul>
+<li>Jupyter Notebook</li>
+<li>VS Code</li>
+<li>PyCharm</li>
+<li>Google Colab</li>
+</ul>
+<p>**部署工具**：</p>
+<ul>
+<li>Docker</li>
+<li>Kubernetes</li>
+<li>MLflow</li>
+<li>SageMaker</li>
+</ul>
+<p>**监控工具**：</p>
+<ul>
+<li>Prometheus</li>
+<li>Grafana</li>
+<li>ELK Stack</li>
+<li>Datadog</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal40" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal40')">&times;</span>
         <h3>AI系统性能优化</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>5. AI系统性能优化</h4>
+<h5>5.1 推理优化</h5>
+<p>**模型优化**：</p>
+<ul>
+<li>模型量化：FP32→FP16/INT8</li>
+<li>知识蒸馏：大模型→小模型</li>
+<li>模型剪枝：移除冗余参数</li>
+<li>结构优化：简化模型结构</li>
+</ul>
+<p>**推理加速**：</p>
+<ul>
+<li>TensorRT：NVIDIA推理加速器</li>
+<li>ONNX Runtime：跨平台推理</li>
+<li>OpenVINO：Intel推理优化</li>
+<li>TVM：深度学习编译器</li>
+</ul>
+<p>**批处理优化**：</p>
+<ul>
+<li>动态批处理</li>
+<li>请求合并</li>
+<li>预取机制</li>
+<li>流水线处理</li>
+</ul>
+<h5>5.2 系统优化</h5>
+<p>**缓存策略**：</p>
+<ul>
+<li>结果缓存</li>
+<li>模型缓存</li>
+<li>特征缓存</li>
+<li>分布式缓存</li>
+</ul>
+<p>**并发处理**：</p>
+<ul>
+<li>异步处理</li>
+<li>请求队列</li>
+<li>线程池</li>
+<li>协程</li>
+</ul>
+<p>**负载均衡**：</p>
+<ul>
+<li>轮询策略</li>
+<li>最少连接</li>
+<li>加权轮询</li>
+<li>一致性哈希</li>
+</ul>
+<p>**资源管理**：</p>
+<ul>
+<li>GPU资源分配</li>
+<li>内存管理</li>
+<li>CPU优化</li>
+<li>网络优化</li>
+</ul>
+<h5>5.3 性能测试</h5>
+<p>**基准测试**：</p>
+<ul>
+<li>建立性能基线</li>
+<li>定义测试场景</li>
+<li>收集性能数据</li>
+<li>分析性能瓶颈</li>
+</ul>
+<p>**压力测试**：</p>
+<ul>
+<li>高并发测试</li>
+<li>长时间运行测试</li>
+<li>极限负载测试</li>
+<li>故障恢复测试</li>
+</ul>
+<p>**性能分析**：</p>
+<ul>
+<li>CPU分析</li>
+<li>内存分析</li>
+<li>GPU分析</li>
+<li>网络分析</li>
+</ul>
+<h5>5.4 优化策略</h5>
+<p>**渐进优化**：</p>
+<ul>
+<li>识别瓶颈</li>
+<li>制定优化计划</li>
+<li>逐步实施</li>
+<li>持续监控</li>
+</ul>
+<p>**权衡考虑**：</p>
+<ul>
+<li>性能vs成本</li>
+<li>速度vs精度</li>
+<li>延迟vs吞吐量</li>
+<li>复杂度vs可维护性</li>
+</ul>
+<p>**最佳实践**：</p>
+<ul>
+<li>性能监控</li>
+<li>定期评估</li>
+<li>持续优化</li>
+<li>知识积累</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal41" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal41')">&times;</span>
         <h3>强化学习基础</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>1. 强化学习基础</h4>
+<h5>1.1 什么是强化学习？</h5>
+<p>强化学习（Reinforcement Learning，RL）是一种机器学习方法，通过智能体与环境的交互，学习最优策略以最大化累积奖励。</p>
+<p>**核心要素**：</p>
+<ul>
+<li>**智能体（Agent）**：进行决策和行动的主体</li>
+<li>**环境（Environment）**：智能体所处的外部世界</li>
+<li>**状态（State）**：环境的当前情况</li>
+<li>**动作（Action）**：智能体可以采取的行动</li>
+<li>**奖励（Reward）**：环境对智能体行动的反馈</li>
+</ul>
+<h5>1.2 基本概念</h5>
+<p>**马尔可夫决策过程（MDP）**：</p>
+<ul>
+<li>状态空间S</li>
+<li>动作空间A</li>
+<li>转移概率P</li>
+<li>奖励函数R</li>
+<li>折扣因子γ</li>
+</ul>
+<p>**策略（Policy）**：</p>
+<ul>
+<li>确定性策略：π(s) = a</li>
+<li>随机策略：π(a|s) = P(a|s)</li>
+</ul>
+<p>**价值函数**：</p>
+<ul>
+<li>状态价值V(s)：从状态s开始的期望回报</li>
+<li>动作价值Q(s,a)：在状态s采取动作a的期望回报</li>
+</ul>
+<h5>1.3 主要算法</h5>
+<p>**基于价值的方法**：</p>
+<ul>
+<li>Q-Learning</li>
+<li>Deep Q-Network (DQN)</li>
+<li>Double DQN</li>
+<li>Dueling DQN</li>
+</ul>
+<p>**基于策略的方法**：</p>
+<ul>
+<li>Policy Gradient</li>
+<li>REINFORCE</li>
+<li>Actor-Critic</li>
+<li>Proximal Policy Optimization (PPO)</li>
+</ul>
+<p>**基于模型的方法**：</p>
+<ul>
+<li>Dyna</li>
+<li>AlphaZero</li>
+<li>MuZero</li>
+</ul>
+<h5>1.4 应用场景</h5>
+<p>**游戏AI**：</p>
+<ul>
+<li>围棋（AlphaGo）</li>
+<li>国际象棋（AlphaZero）</li>
+<li>电子游戏（DQN）</li>
+</ul>
+<p>**机器人控制**：</p>
+<ul>
+<li>机械臂控制</li>
+<li>步态控制</li>
+<li>自主导航</li>
+</ul>
+<p>**推荐系统**：</p>
+<ul>
+<li>个性化推荐</li>
+<li>广告投放</li>
+<li>内容推荐</li>
+</ul>
+<p>**金融交易**：</p>
+<ul>
+<li>算法交易</li>
+<li>风险管理</li>
+<li>投资组合优化</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal42" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal42')">&times;</span>
         <h3>图神经网络</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>2. 图神经网络</h4>
+<h5>2.1 什么是图神经网络？</h5>
+<p>图神经网络（Graph Neural Networks，GNN）是一类专门用于处理图结构数据的深度学习模型，能够学习节点、边和整个图的表示。</p>
+<p>**图的基本概念**：</p>
+<ul>
+<li>节点（Node）：图中的实体</li>
+<li>边（Edge）：节点之间的关系</li>
+<li>邻接矩阵：表示图结构的矩阵</li>
+<li>节点特征：每个节点的属性</li>
+</ul>
+<h5>2.2 GNN架构</h5>
+<p>**图卷积网络（GCN）**：</p>
+<ul>
+<li>基于谱域的卷积</li>
+<li>基于空域的卷积</li>
+<li>聚合邻居节点信息</li>
+</ul>
+<p>**图注意力网络（GAT）**：</p>
+<ul>
+<li>注意力机制</li>
+<li>动态权重分配</li>
+<li>可解释性强</li>
+</ul>
+<p>**图自编码器（GAE）**：</p>
+<ul>
+<li>节点表示学习</li>
+<li>图重构</li>
+<li>链接预测</li>
+</ul>
+<h5>2.3 主要应用</h5>
+<p>**社交网络分析**：</p>
+<ul>
+<li>社区发现</li>
+<li>影响力分析</li>
+<li>推荐系统</li>
+</ul>
+<p>**生物信息学**：</p>
+<ul>
+<li>蛋白质结构预测</li>
+<li>药物分子设计</li>
+<li>基因网络分析</li>
+</ul>
+<p>**知识图谱**：</p>
+<ul>
+<li>实体链接</li>
+<li>关系抽取</li>
+<li>知识推理</li>
+</ul>
+<p>**交通网络**：</p>
+<ul>
+<li>路径规划</li>
+<li>流量预测</li>
+<li>网络优化</li>
+</ul>
+<h5>2.4 技术挑战</h5>
+<p>**可扩展性**：</p>
+<ul>
+<li>大规模图的处理</li>
+<li>内存和计算效率</li>
+<li>分布式训练</li>
+</ul>
+<p>**异构图**：</p>
+<ul>
+<li>不同类型的节点和边</li>
+<li>多模态信息融合</li>
+<li>复杂关系建模</li>
+</ul>
+<p>**动态图**：</p>
+<ul>
+<li>时序图处理</li>
+<li>动态拓扑变化</li>
+<li>在线学习</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal43" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal43')">&times;</span>
         <h3>联邦学习</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>3. 联邦学习</h4>
+<h5>3.1 什么是联邦学习？</h5>
+<p>联邦学习（Federated Learning）是一种分布式机器学习方法，允许多个客户端在本地训练模型，只共享模型参数而不共享原始数据。</p>
+<p>**核心特点**：</p>
+<ul>
+<li>数据隐私保护</li>
+<li>分布式训练</li>
+<li>通信效率</li>
+<li>异构性处理</li>
+</ul>
+<h5>3.2 联邦学习流程</h5>
+<p>**初始化**：</p>
+<ul>
+<li>服务器初始化全局模型</li>
+<li>分发模型到客户端</li>
+</ul>
+<p>**本地训练**：</p>
+<ul>
+<li>客户端在本地数据上训练</li>
+<li>计算模型更新</li>
+</ul>
+<p>**模型聚合**：</p>
+<ul>
+<li>客户端发送模型更新到服务器</li>
+<li>服务器聚合更新得到新模型</li>
+</ul>
+<p>**迭代优化**：</p>
+<ul>
+<li>重复训练和聚合过程</li>
+<li>直到模型收敛</li>
+</ul>
+<h5>3.3 聚合算法</h5>
+<p>**FedAvg**：</p>
+<ul>
+<li>加权平均</li>
+<li>简单有效</li>
+<li>广泛使用</li>
+</ul>
+<p>**FedProx**：</p>
+<ul>
+<li>近似优化</li>
+<li>处理异构性</li>
+<li>提高收敛速度</li>
+</ul>
+<p>**FedNova**：</p>
+<ul>
+<li>归一化更新</li>
+<li>减少异构性影响</li>
+<li>提高模型性能</li>
+</ul>
+<h5>3.4 应用场景</h5>
+<p>**医疗健康**：</p>
+<ul>
+<li>跨医院合作</li>
+<li>患者隐私保护</li>
+<li>疾病预测</li>
+</ul>
+<p>**金融服务**：</p>
+<ul>
+<li>反欺诈检测</li>
+<li>信用评估</li>
+<li>风险管理</li>
+</ul>
+<p>**移动设备**：</p>
+<ul>
+<li>输入法优化</li>
+<li>语音识别</li>
+<li>推荐系统</li>
+</ul>
+<p>**物联网**：</p>
+<ul>
+<li>智能家居</li>
+<li>工业物联网</li>
+<li>边缘计算</li>
+</ul>
+<h5>3.5 技术挑战</h5>
+<p>**通信效率**：</p>
+<ul>
+<li>减少通信开销</li>
+<li>压缩模型更新</li>
+<li>异步通信</li>
+</ul>
+<p>**数据异构性**：</p>
+<ul>
+<li>非独立同分布数据</li>
+<li>客户端数据不平衡</li>
+<li>个性化需求</li>
+</ul>
+<p>**安全性**：</p>
+<ul>
+<li>恶意客户端攻击</li>
+<li>模型反向攻击</li>
+<li>隐私泄露风险</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal44" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal44')">&times;</span>
         <h3>自监督学习</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>4. 自监督学习</h4>
+<h5>4.1 什么是自监督学习？</h5>
+<p>自监督学习（Self-Supervised Learning）是一种无需人工标注的学习方法，通过从数据本身生成监督信号，学习有用的表示。</p>
+<p>**核心思想**：</p>
+<ul>
+<li>利用数据自身的结构</li>
+<li>自动生成伪标签</li>
+<li>学习通用表示</li>
+<li>迁移到下游任务</li>
+</ul>
+<h5>4.2 主要方法</h5>
+<p>**对比学习**：</p>
+<ul>
+<li>SimCLR</li>
+<li>MoCo</li>
+<li>BYOL</li>
+<li>SwAV</li>
+</ul>
+<p>**生成式方法**：</p>
+<ul>
+<li>BERT</li>
+<li>GPT</li>
+<li>MAE</li>
+<li>BEiT</li>
+</ul>
+<p>**掩码方法**：</p>
+<ul>
+<li>掩码语言模型</li>
+<li>掩码图像建模</li>
+<li>掩码视频建模</li>
+</ul>
+<h5>4.3 应用领域</h5>
+<p>**自然语言处理**：</p>
+<ul>
+<li>预训练语言模型</li>
+<li>文本分类</li>
+<li>机器翻译</li>
+<li>问答系统</li>
+</ul>
+<p>**计算机视觉**：</p>
+<ul>
+<li>图像分类</li>
+<li>目标检测</li>
+<li>语义分割</li>
+<li>图像生成</li>
+</ul>
+<p>**多模态学习**：</p>
+<ul>
+<li>图像-文本对齐</li>
+<li>视频理解</li>
+<li>跨模态检索</li>
+</ul>
+<h5>4.4 技术优势</h5>
+<p>**数据效率**：</p>
+<ul>
+<li>减少标注需求</li>
+<li>利用无标注数据</li>
+<li>提高泛化能力</li>
+</ul>
+<p>**通用表示**：</p>
+<ul>
+<li>学习通用特征</li>
+<li>迁移到多种任务</li>
+<li>减少过拟合</li>
+</ul>
+<p>**可扩展性**：</p>
+<ul>
+<li>大规模数据训练</li>
+<li>持续学习</li>
+<li>领域适应</li>
+</ul>
+<h5>4.5 未来方向</h5>
+<p>**更高效的方法**：</p>
+<ul>
+<li>减少计算成本</li>
+<li>提高训练效率</li>
+<li>优化数据利用</li>
+</ul>
+<p>**更好的表示**：</p>
+<ul>
+<li>学习更丰富的特征</li>
+<li>提高表示质量</li>
+<li>增强可解释性</li>
+</ul>
+<p>**跨模态学习**：</p>
+<ul>
+<li>多模态自监督</li>
+<li>跨模态对齐</li>
+<li>统一表示学习</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal45" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal45')">&times;</span>
         <h3>AI安全与隐私保护</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>1. AI安全概述</h4>
+<h5>1.1 什么是AI安全？</h5>
+<p>AI安全是指保护AI系统免受恶意攻击、滥用和意外事故，确保AI系统的可靠性、安全性和可信度。</p>
+<p>**安全目标**：</p>
+<ul>
+<li>可靠性：系统按预期工作</li>
+<li>鲁棒性：抵御攻击和异常</li>
+<li>隐私保护：保护敏感数据</li>
+<li>公平性：避免歧视和偏见</li>
+</ul>
+<h5>1.2 安全威胁类型</h5>
+<p>**对抗攻击**：</p>
+<ul>
+<li>对抗样本攻击</li>
+<li>模型反演攻击</li>
+<li>成员推理攻击</li>
+<li>模型提取攻击</li>
+</ul>
+<p>**数据安全**：</p>
+<ul>
+<li>数据投毒</li>
+<li>数据泄露</li>
+<li>隐私侵犯</li>
+<li>数据篡改</li>
+</ul>
+<p>**系统安全**：</p>
+<ul>
+<li>模型后门</li>
+<li>恶意代码注入</li>
+<li>资源耗尽攻击</li>
+<li>拒绝服务攻击</li>
+</ul>
+<p>**滥用风险**：</p>
+<ul>
+<li>深度伪造</li>
+<li>自动化攻击</li>
+<li>社会工程</li>
+<li>信息操纵</li>
+</ul>
+<h5>1.3 安全框架</h5>
+<p>**威胁建模**：</p>
+<ul>
+<li>识别潜在威胁</li>
+<li>评估攻击面</li>
+<li>分析攻击路径</li>
+<li>制定防御策略</li>
+</ul>
+<p>**风险评估**：</p>
+<ul>
+<li>风险识别</li>
+<li>风险分析</li>
+<li>风险评估</li>
+<li>风险处理</li>
+</ul>
+<p>**安全设计**：</p>
+<ul>
+<li>安全第一原则</li>
+<li>最小权限原则</li>
+<li>深度防御</li>
+<li>故障安全</li>
+</ul>
+<p>**安全测试**：</p>
+<ul>
+<li>漏洞扫描</li>
+<li>渗透测试</li>
+<li>红队测试</li>
+<li>安全审计</li>
+</ul>
+<h5>1.4 合规要求</h5>
+<p>**法律法规**：</p>
+<ul>
+<li>GDPR（欧盟）</li>
+<li>CCPA（美国）</li>
+<li>数据安全法（中国）</li>
+<li>个人信息保护法（中国）</li>
+</ul>
+<p>**行业标准**：</p>
+<ul>
+<li>ISO/IEC 27001</li>
+<li>NIST AI RMF</li>
+<li>IEEE 7000系列</li>
+<li>OWASP AI Top 10</li>
+</ul>
+<p>**企业政策**：</p>
+<ul>
+<li>数据治理</li>
+<li>访问控制</li>
+<li>审计日志</li>
+<li>应急响应</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal46" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal46')">&times;</span>
         <h3>金融科技AI应用</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>1. 金融科技AI应用</h4>
+<h5>1.1 应用概述</h5>
+<p>金融科技（FinTech）是AI应用最广泛的领域之一，AI技术在风险管理、投资决策、客户服务等方面发挥着重要作用。</p>
+<p>**主要应用领域**：</p>
+<ul>
+<li>风险管理与信用评估</li>
+<li>欺诈检测与预防</li>
+<li>算法交易与投资</li>
+<li>智能客服与投顾</li>
+</ul>
+<h5>1.2 风险管理与信用评估</h5>
+<p>**信用评分模型**：</p>
+<ul>
+<li>传统评分模型</li>
+<li>机器学习评分模型</li>
+<li>深度学习评分模型</li>
+<li>多模态评分模型</li>
+</ul>
+<p>**风险评估技术**：</p>
+<ul>
+<li>信用风险评估</li>
+<li>市场风险评估</li>
+<li>操作风险评估</li>
+<li>流动性风险评估</li>
+</ul>
+<p>**应用场景**：</p>
+<ul>
+<li>个人贷款审批</li>
+<li>企业信贷评估</li>
+<li>信用卡发卡</li>
+<li>保险定价</li>
+</ul>
+<h5>1.3 欺诈检测与预防</h5>
+<p>**欺诈类型**：</p>
+<ul>
+<li>信用卡欺诈</li>
+<li>身份盗用</li>
+<li>洗钱活动</li>
+<li>内部欺诈</li>
+</ul>
+<p>**检测技术**：</p>
+<ul>
+<li>异常检测</li>
+<li>图神经网络</li>
+<li>时序分析</li>
+<li>多模态融合</li>
+</ul>
+<p>**防御措施**：</p>
+<ul>
+<li>实时监控</li>
+<li>规则引擎</li>
+<li>机器学习模型</li>
+<li>人工审核</li>
+</ul>
+<h5>1.4 算法交易与投资</h5>
+<p>**交易策略**：</p>
+<ul>
+<li>趋势跟踪</li>
+<li>均值回归</li>
+<li>套利交易</li>
+<li>高频交易</li>
+</ul>
+<p>**技术方法**：</p>
+<ul>
+<li>时间序列预测</li>
+<li>强化学习</li>
+<li>深度学习</li>
+<li>自然语言处理</li>
+</ul>
+<p>**风险管理**：</p>
+<ul>
+<li>止损策略</li>
+<li>仓位管理</li>
+<li>压力测试</li>
+<li>回测验证</li>
+</ul>
+<h5>1.5 智能客服与投顾</h5>
+<p>**智能客服**：</p>
+<ul>
+<li>对话系统</li>
+<li>意图识别</li>
+<li>情感分析</li>
+<li>知识图谱</li>
+</ul>
+<p>**智能投顾**：</p>
+<ul>
+<li>风险评估</li>
+<li>资产配置</li>
+<li>投资建议</li>
+<li>组合优化</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal47" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal47')">&times;</span>
         <h3>医疗健康AI应用</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>2. 医疗健康AI应用</h4>
+<h5>2.1 应用概述</h5>
+<p>AI在医疗健康领域的应用正在快速发展，从医学影像分析到药物研发，AI技术正在改变医疗行业的方方面面。</p>
+<p>**主要应用领域**：</p>
+<ul>
+<li>医学影像分析</li>
+<li>疾病诊断与预测</li>
+<li>药物研发</li>
+<li>个性化医疗</li>
+</ul>
+<h5>2.2 医学影像分析</h5>
+<p>**影像类型**：</p>
+<ul>
+<li>X光片</li>
+<li>CT扫描</li>
+<li>MRI</li>
+<li>超声波</li>
+</ul>
+<p>**分析任务**：</p>
+<ul>
+<li>图像分类</li>
+<li>目标检测</li>
+<li>语义分割</li>
+<li>图像生成</li>
+</ul>
+<p>**应用场景**：</p>
+<ul>
+<li>肺结节检测</li>
+<li>乳腺癌筛查</li>
+<li>脑肿瘤分割</li>
+<li>视网膜病变诊断</li>
+</ul>
+<h5>2.3 疾病诊断与预测</h5>
+<p>**诊断技术**：</p>
+<ul>
+<li>临床决策支持</li>
+<li>症状分析</li>
+<li>实验室数据分析</li>
+<li>多模态融合</li>
+</ul>
+<p>**预测模型**：</p>
+<ul>
+<li>疾病风险预测</li>
+<li>并发症预测</li>
+<li>再入院预测</li>
+<li>生存期预测</li>
+</ul>
+<p>**应用场景**：</p>
+<ul>
+<li>糖尿病预测</li>
+<li>心脏病诊断</li>
+<li>癌症筛查</li>
+<li>精神疾病诊断</li>
+</ul>
+<h5>2.4 药物研发</h5>
+<p>**研发流程**：</p>
+<ul>
+<li>靶点发现</li>
+<li>分子设计</li>
+<li>药物筛选</li>
+<li>临床试验</li>
+</ul>
+<p>**AI应用**：</p>
+<ul>
+<li>分子生成</li>
+<li>药物-靶点预测</li>
+<li>副作用预测</li>
+<li>临床试验优化</li>
+</ul>
+<p>**技术方法**：</p>
+<ul>
+<li>图神经网络</li>
+<li>生成模型</li>
+<li>强化学习</li>
+<li>多模态学习</li>
+</ul>
+<h5>2.5 个性化医疗</h5>
+<p>**精准医疗**：</p>
+<ul>
+<li>基因组分析</li>
+<li>生物标志物识别</li>
+<li>个性化治疗方案</li>
+<li>药物反应预测</li>
+</ul>
+<p>**健康监测**：</p>
+<ul>
+<li>可穿戴设备</li>
+<li>实时监测</li>
+<li>异常检测</li>
+<li>健康管理</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal48" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal48')">&times;</span>
         <h3>智能交通AI应用</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>3. 智能交通AI应用</h4>
+<h5>3.1 应用概述</h5>
+<p>智能交通系统利用AI技术优化交通流量、提高安全性、减少环境污染，是智慧城市的重要组成部分。</p>
+<p>**主要应用领域**：</p>
+<ul>
+<li>自动驾驶</li>
+<li>交通流量优化</li>
+<li>智能停车</li>
+<li>交通安全</li>
+</ul>
+<h5>3.2 自动驾驶</h5>
+<p>**技术等级**：</p>
+<ul>
+<li>L0：无自动化</li>
+<li>L1：驾驶辅助</li>
+<li>L2：部分自动化</li>
+<li>L3：有条件自动化</li>
+<li>L4：高度自动化</li>
+<li>L5：完全自动化</li>
+</ul>
+<p>**核心技术**：</p>
+<ul>
+<li>计算机视觉</li>
+<li>激光雷达</li>
+<li>高精度地图</li>
+<li>路径规划</li>
+</ul>
+<p>**挑战**：</p>
+<ul>
+<li>复杂环境感知</li>
+<li>实时决策</li>
+<li>安全性保证</li>
+<li>法规合规</li>
+</ul>
+<h5>3.3 交通流量优化</h5>
+<p>**优化目标**：</p>
+<ul>
+<li>减少拥堵</li>
+<li>提高通行效率</li>
+<li>降低能耗</li>
+<li>改善环境</li>
+</ul>
+<p>**技术方法**：</p>
+<ul>
+<li>交通预测</li>
+<li>信号灯优化</li>
+<li>路径规划</li>
+<li>动态调度</li>
+</ul>
+<p>**应用场景**：</p>
+<ul>
+<li>城市交通管理</li>
+<li>高速公路管理</li>
+<li>公交调度</li>
+<li>共享出行</li>
+</ul>
+<h5>3.4 智能停车</h5>
+<p>**功能特点**：</p>
+<ul>
+<li>车位检测</li>
+<li>车位引导</li>
+<li>自动泊车</li>
+<li>支付集成</li>
+</ul>
+<p>**技术实现**：</p>
+<ul>
+<li>图像识别</li>
+<li>传感器网络</li>
+<li>移动应用</li>
+<li>云端服务</li>
+</ul>
+<h5>3.5 交通安全</h5>
+<p>**安全系统**：</p>
+<ul>
+<li>驾驶员监控</li>
+<li>疲劳检测</li>
+<li>碰撞预警</li>
+<li>紧急制动</li>
+</ul>
+<p>**技术方法**：</p>
+<ul>
+<li>计算机视觉</li>
+<li>传感器融合</li>
+<li>行为分析</li>
+<li>预测模型</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal49" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal49')">&times;</span>
         <h3>智能制造AI应用</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>4. 智能制造AI应用</h4>
+<h5>4.1 应用概述</h5>
+<p>智能制造利用AI技术实现生产过程的智能化、自动化和优化，提高生产效率、降低成本、提升产品质量。</p>
+<p>**主要应用领域**：</p>
+<ul>
+<li>质量检测</li>
+<li>预测性维护</li>
+<li>生产优化</li>
+<li>供应链管理</li>
+</ul>
+<h5>4.2 质量检测</h5>
+<p>**检测技术**：</p>
+<ul>
+<li>视觉检测</li>
+<li>声学检测</li>
+<li>振动检测</li>
+<li>多模态检测</li>
+</ul>
+<p>**检测任务**：</p>
+<ul>
+<li>缺陷检测</li>
+<li>尺寸测量</li>
+<li>表面分析</li>
+<li>组装验证</li>
+</ul>
+<p>**应用场景**：</p>
+<ul>
+<li>电子制造</li>
+<li>汽车制造</li>
+<li>食品加工</li>
+<li>纺织工业</li>
+</ul>
+<h5>4.3 预测性维护</h5>
+<p>**维护策略**：</p>
+<ul>
+<li>预防性维护</li>
+<li>预测性维护</li>
+<li>纠正性维护</li>
+<li>基于状态的维护</li>
+</ul>
+<p>**技术方法**：</p>
+<ul>
+<li>传感器监测</li>
+<li>数据分析</li>
+<li>异常检测</li>
+<li>寿命预测</li>
+</ul>
+<p>**应用场景**：</p>
+<ul>
+<li>机械设备</li>
+<li>电力设备</li>
+<li>工业机器人</li>
+<li>生产流水线</li>
+</ul>
+<h5>4.4 生产优化</h5>
+<p>**优化目标**：</p>
+<ul>
+<li>提高效率</li>
+<li>降低成本</li>
+<li>提高质量</li>
+<li>减少浪费</li>
+</ul>
+<p>**优化技术**：</p>
+<ul>
+<li>生产调度</li>
+<li>资源分配</li>
+<li>工艺优化</li>
+<li>能耗优化</li>
+</ul>
+<p>**应用场景**：</p>
+<ul>
+<li>生产计划</li>
+<li>库存管理</li>
+<li>物流优化</li>
+<li>能源管理</li>
+</ul>
+<h5>4.5 供应链管理</h5>
+<p>**管理环节**：</p>
+<ul>
+<li>需求预测</li>
+<li>采购管理</li>
+<li>库存管理</li>
+<li>物流配送</li>
+</ul>
+<p>**AI应用**：</p>
+<ul>
+<li>需求预测</li>
+<li>供应商评估</li>
+<li>库存优化</li>
+<li>路径规划</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal50" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal50')">&times;</span>
         <h3>零售与营销AI应用</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>5. 零售与营销AI应用</h4>
+<h5>5.1 应用概述</h5>
+<p>AI在零售和营销领域的应用正在改变传统的商业模式，从个性化推荐到智能客服，AI技术提升用户体验和运营效率。</p>
+<p>**主要应用领域**：</p>
+<ul>
+<li>个性化推荐</li>
+<li>智能客服</li>
+<li>需求预测</li>
+<li>价格优化</li>
+</ul>
+<h5>5.2 个性化推荐</h5>
+<p>**推荐算法**：</p>
+<ul>
+<li>协同过滤</li>
+<li>内容推荐</li>
+<li>深度学习推荐</li>
+<li>多模态推荐</li>
+</ul>
+<p>**应用场景**：</p>
+<ul>
+<li>电商推荐</li>
+<li>内容推荐</li>
+<li>广告推荐</li>
+<li>社交推荐</li>
+</ul>
+<p>**技术挑战**：</p>
+<ul>
+<li>冷启动问题</li>
+<li>数据稀疏性</li>
+<li>实时性要求</li>
+<li>可解释性</li>
+</ul>
+<h5>5.3 智能客服</h5>
+<p>**功能特点**：</p>
+<ul>
+<li>对话系统</li>
+<li>意图识别</li>
+<li>情感分析</li>
+<li>知识检索</li>
+</ul>
+<p>**技术实现**：</p>
+<ul>
+<li>自然语言处理</li>
+<li>大语言模型</li>
+<li>知识图谱</li>
+<li>多轮对话</li>
+</ul>
+<h5>5.4 需求预测</h5>
+<p>**预测方法**：</p>
+<ul>
+<li>时间序列预测</li>
+<li>机器学习预测</li>
+<li>深度学习预测</li>
+<li>集成预测</li>
+</ul>
+<p>**应用场景**：</p>
+<ul>
+<li>销量预测</li>
+<li>库存预测</li>
+<li>趋势预测</li>
+<li>季节性预测</li>
+</ul>
+<h5>5.5 价格优化</h5>
+<p>**优化策略**：</p>
+<ul>
+<li>动态定价</li>
+<li>个性化定价</li>
+<li>促销定价</li>
+<li>竞争定价</li>
+</ul>
+<p>**技术方法**：</p>
+<ul>
+<li>需求弹性分析</li>
+<li>竞争分析</li>
+<li>机器学习</li>
+<li>强化学习</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal51" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal51')">&times;</span>
         <h3>项目需求分析与设计</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>1. 项目需求分析与设计</h4>
+<h5>1.1 需求分析</h5>
+<p>**需求收集**：</p>
+<ul>
+<li>与利益相关者沟通</li>
+<li>明确业务目标</li>
+<li>识别用户需求</li>
+<li>分析技术可行性</li>
+</ul>
+<p>**需求分类**：</p>
+<ul>
+<li>功能需求</li>
+<li>非功能需求</li>
+<li>约束条件</li>
+<li>成功标准</li>
+</ul>
+<p>**需求文档**：</p>
+<ul>
+<li>需求规格说明书</li>
+<li>用例描述</li>
+<li>用户故事</li>
+<li>验收标准</li>
+</ul>
+<h5>1.2 项目设计</h5>
+<p>**系统架构设计**：</p>
+<ul>
+<li>整体架构</li>
+<li>模块划分</li>
+<li>接口设计</li>
+<li>数据流设计</li>
+</ul>
+<p>**技术选型**：</p>
+<ul>
+<li>模型选择</li>
+<li>框架选择</li>
+<li>工具选择</li>
+<li>平台选择</li>
+</ul>
+<p>**设计文档**：</p>
+<ul>
+<li>架构设计文档</li>
+<li>详细设计文档</li>
+<li>接口文档</li>
+<li>数据字典</li>
+</ul>
+<h5>1.3 可行性分析</h5>
+<p>**技术可行性**：</p>
+<ul>
+<li>现有技术能力</li>
+<li>技术成熟度</li>
+<li>技术风险</li>
+<li>技术依赖</li>
+</ul>
+<p>**经济可行性**：</p>
+<ul>
+<li>成本估算</li>
+<li>收益分析</li>
+<li>投资回报率</li>
+<li>风险评估</li>
+</ul>
+<p>**操作可行性**：</p>
+<ul>
+<li>组织支持</li>
+<li>人员能力</li>
+<li>流程适配</li>
+<li>培训需求</li>
+</ul>
+<h5>1.4 项目规划</h5>
+<p>**项目范围**：</p>
+<ul>
+<li>明确项目边界</li>
+<li>定义交付物</li>
+<li>识别里程碑</li>
+<li>管理期望</li>
+</ul>
+<p>**时间规划**：</p>
+<ul>
+<li>项目时间表</li>
+<li>里程碑计划</li>
+<li>任务分解</li>
+<li>依赖关系</li>
+</ul>
+<p>**资源规划**：</p>
+<ul>
+<li>人力资源</li>
+<li>硬件资源</li>
+<li>软件资源</li>
+<li>预算分配</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal52" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal52')">&times;</span>
         <h3>数据处理与特征工程</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>2. 数据处理与特征工程</h4>
+<h5>2.1 数据收集</h5>
+<p>**数据来源**：</p>
+<ul>
+<li>内部数据</li>
+<li>外部数据</li>
+<li>公开数据集</li>
+<li>第三方数据</li>
+</ul>
+<p>**数据类型**：</p>
+<ul>
+<li>结构化数据</li>
+<li>非结构化数据</li>
+<li>半结构化数据</li>
+<li>多模态数据</li>
+</ul>
+<p>**数据质量**：</p>
+<ul>
+<li>完整性检查</li>
+<li>准确性验证</li>
+<li>一致性检查</li>
+<li>时效性评估</li>
+</ul>
+<h5>2.2 数据清洗</h5>
+<p>**缺失值处理**：</p>
+<ul>
+<li>删除缺失值</li>
+<li>填充缺失值</li>
+<li>插值方法</li>
+<li>模型预测</li>
+</ul>
+<p>**异常值处理**：</p>
+<ul>
+<li>识别异常值</li>
+<li>分析异常原因</li>
+<li>处理异常值</li>
+<li>记录处理过程</li>
+</ul>
+<p>**数据标准化**：</p>
+<ul>
+<li>格式统一</li>
+<li>单位转换</li>
+<li>编码规范</li>
+<li>命名规范</li>
+</ul>
+<p>**数据去重**：</p>
+<ul>
+<li>识别重复记录</li>
+<li>合并重复数据</li>
+<li>保留最新记录</li>
+<li>记录去重过程</li>
+</ul>
+<h5>2.3 特征工程</h5>
+<p>**特征提取**：</p>
+<ul>
+<li>基础特征</li>
+<li>统计特征</li>
+<li>时间特征</li>
+<li>文本特征</li>
+</ul>
+<p>**特征变换**：</p>
+<ul>
+<li>数值变换</li>
+<li>类别编码</li>
+<li>特征缩放</li>
+<li>特征离散化</li>
+</ul>
+<p>**特征选择**：</p>
+<ul>
+<li>过滤法</li>
+<li>包装法</li>
+<li>嵌入法</li>
+<li>维度降低</li>
+</ul>
+<p>**特征构造**：</p>
+<ul>
+<li>特征交叉</li>
+<li>特征组合</li>
+<li>领域知识</li>
+<li>自动特征工程</li>
+</ul>
+<h5>2.4 数据增强</h5>
+<p>**图像增强**：</p>
+<ul>
+<li>旋转翻转</li>
+<li>裁剪缩放</li>
+<li>颜色变换</li>
+<li>噪声添加</li>
+</ul>
+<p>**文本增强**：</p>
+<ul>
+<li>同义词替换</li>
+<li>随机删除</li>
+<li>随机交换</li>
+<li>回译</li>
+</ul>
+<p>**时序增强**：</p>
+<ul>
+<li>时间扭曲</li>
+<li>幅度缩放</li>
+<li>时间裁剪</li>
+<li>噪声注入</li>
+</ul>
+<p>**合成数据**：</p>
+<ul>
+<li>GAN生成</li>
+<li>VAE生成</li>
+<li>扩散模型</li>
+<li>数据合成</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal53" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal53')">&times;</span>
         <h3>模型选择与训练</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>3. 模型选择与训练</h4>
+<h5>3.1 模型选择</h5>
+<p>**问题类型**：</p>
+<ul>
+<li>分类问题</li>
+<li>回归问题</li>
+<li>聚类问题</li>
+<li>序列问题</li>
+</ul>
+<p>**模型类型**：</p>
+<ul>
+<li>传统机器学习模型</li>
+<li>深度学习模型</li>
+<li>集成学习模型</li>
+<li>预训练模型</li>
+</ul>
+<p>**选择标准**：</p>
+<ul>
+<li>准确性</li>
+<li>效率</li>
+<li>可解释性</li>
+<li>可维护性</li>
+</ul>
+<p>**模型对比**：</p>
+<ul>
+<li>基线模型</li>
+<li>多模型对比</li>
+<li>交叉验证</li>
+<li>统计检验</li>
+</ul>
+<h5>3.2 模型训练</h5>
+<p>**训练策略**：</p>
+<ul>
+<li>数据划分</li>
+<li>交叉验证</li>
+<li>分层采样</li>
+<li>时间序列划分</li>
+</ul>
+<p>**超参数调优**：</p>
+<ul>
+<li>网格搜索</li>
+<li>随机搜索</li>
+<li>贝叶斯优化</li>
+<li>进化算法</li>
+</ul>
+<p>**训练技巧**：</p>
+<ul>
+<li>学习率调度</li>
+<li>早停策略</li>
+<li>梯度裁剪</li>
+<li>正则化</li>
+</ul>
+<p>**训练监控**：</p>
+<ul>
+<li>损失曲线</li>
+<li>指标监控</li>
+<li>梯度监控</li>
+<li>资源监控</li>
+</ul>
+<h5>3.3 模型评估</h5>
+<p>**评估指标**：</p>
+<ul>
+<li>准确性指标</li>
+<li>效率指标</li>
+<li>稳定性指标</li>
+<li>可解释性指标</li>
+</ul>
+<p>**评估方法**：</p>
+<ul>
+<li>交叉验证</li>
+<li>留出法</li>
+<li>自助法</li>
+<li>时间序列验证</li>
+</ul>
+<p>**错误分析**：</p>
+<ul>
+<li>错误分类分析</li>
+<li>困难样本分析</li>
+<li>数据偏差分析</li>
+<li>模型偏差分析</li>
+</ul>
+<p>**模型解释**：</p>
+<ul>
+<li>特征重要性</li>
+<li>SHAP值</li>
+<li>LIME</li>
+<li>注意力可视化</li>
+</ul>
+<h5>3.4 模型优化</h5>
+<p>**性能优化**：</p>
+<ul>
+<li>模型架构优化</li>
+<li>超参数优化</li>
+<li>数据优化</li>
+<li>训练策略优化</li>
+</ul>
+<p>**效率优化**：</p>
+<ul>
+<li>模型压缩</li>
+<li>量化</li>
+<li>剪枝</li>
+<li>知识蒸馏</li>
+</ul>
+<p>**部署优化**：</p>
+<ul>
+<li>推理优化</li>
+<li>批处理</li>
+<li>缓存</li>
+<li>并行化</li>
+</ul>
+<p>**持续优化**：</p>
+<ul>
+<li>在线学习</li>
+<li>增量学习</li>
+<li>主动学习</li>
+<li>迁移学习</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal54" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal54')">&times;</span>
         <h3>模型评估与优化</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>4. 模型评估与优化</h4>
+<h5>4.1 评估框架</h5>
+<p>**评估维度**：</p>
+<ul>
+<li>准确性</li>
+<li>鲁棒性</li>
+<li>公平性</li>
+<li>可解释性</li>
+</ul>
+<p>**评估流程**：</p>
+<ul>
+<li>定义评估目标</li>
+<li>选择评估指标</li>
+<li>设计评估方案</li>
+<li>执行评估</li>
+<li>分析结果</li>
+</ul>
+<p>**评估工具**：</p>
+<ul>
+<li>自动化评估框架</li>
+<li>评估数据集</li>
+<li>评估脚本</li>
+<li>可视化工具</li>
+</ul>
+<h5>4.2 性能评估</h5>
+<p>**准确性评估**：</p>
+<ul>
+<li>分类准确率</li>
+<li>回归误差</li>
+<li>排序指标</li>
+<li>生成质量</li>
+</ul>
+<p>**效率评估**：</p>
+<ul>
+<li>推理速度</li>
+<li>吞吐量</li>
+<li>资源占用</li>
+<li>成本效益</li>
+</ul>
+<p>**稳定性评估**：</p>
+<ul>
+<li>数据扰动</li>
+<li>噪声鲁棒性</li>
+<li>分布变化</li>
+<li>长期稳定性</li>
+</ul>
+<p>**可扩展性评估**：</p>
+<ul>
+<li>水平扩展</li>
+<li>垂直扩展</li>
+<li>并发处理</li>
+<li>大规模数据</li>
+</ul>
+<h5>4.3 鲁棒性评估</h5>
+<p>**对抗攻击**：</p>
+<ul>
+<li>对抗样本</li>
+<li>攻击方法</li>
+<li>防御措施</li>
+<li>评估指标</li>
+</ul>
+<p>**数据偏差**：</p>
+<ul>
+<li>训练数据偏差</li>
+<li>测试数据偏差</li>
+<li>公平性指标</li>
+<li>偏差缓解</li>
+</ul>
+<p>**异常处理**：</p>
+<ul>
+<li>异常检测</li>
+<li>异常处理</li>
+<li>降级策略</li>
+<li>恢复机制</li>
+</ul>
+<p>**边界情况**：</p>
+<ul>
+<li>极端输入</li>
+<li>空输入</li>
+<li>长输入</li>
+<li>特殊字符</li>
+</ul>
+<h5>4.4 持续优化</h5>
+<p>**监控机制**：</p>
+<ul>
+<li>性能监控</li>
+<li>数据监控</li>
+<li>用户反馈</li>
+<li>业务指标</li>
+</ul>
+<p>**更新策略**：</p>
+<ul>
+<li>定期重训练</li>
+<li>在线学习</li>
+<li>增量更新</li>
+<li>版本管理</li>
+</ul>
+<p>**A/B测试**：</p>
+<ul>
+<li>实验设计</li>
+<li>指标定义</li>
+<li>样本量计算</li>
+<li>统计分析</li>
+</ul>
+<p>**迭代改进**：</p>
+<ul>
+<li>问题识别</li>
+<li>方案设计</li>
+<li>实施改进</li>
+<li>效果评估</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal55" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal55')">&times;</span>
         <h3>项目部署与文档编写</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>5. 项目部署与文档编写</h4>
+<h5>5.1 部署准备</h5>
+<p>**环境准备**：</p>
+<ul>
+<li>硬件配置</li>
+<li>软件环境</li>
+<li>依赖管理</li>
+<li>配置文件</li>
+</ul>
+<p>**模型准备**：</p>
+<ul>
+<li>模型格式转换</li>
+<li>模型优化</li>
+<li>模型验证</li>
+<li>模型备份</li>
+</ul>
+<p>**服务准备**：</p>
+<ul>
+<li>API设计</li>
+<li>服务框架</li>
+<li>负载测试</li>
+<li>性能测试</li>
+</ul>
+<p>**安全准备**：</p>
+<ul>
+<li>身份认证</li>
+<li>访问控制</li>
+<li>数据加密</li>
+<li>安全审计</li>
+</ul>
+<h5>5.2 部署策略</h5>
+<p>**部署方式**：</p>
+<ul>
+<li>在线部署</li>
+<li>批量部署</li>
+<li>边缘部署</li>
+<li>混合部署</li>
+</ul>
+<p>**部署流程**：</p>
+<ul>
+<li>开发环境</li>
+<li>测试环境</li>
+<li>预生产环境</li>
+<li>生产环境</li>
+</ul>
+<p>**发布策略**：</p>
+<ul>
+<li>蓝绿部署</li>
+<li>金丝雀发布</li>
+<li>滚动发布</li>
+<li>灰度发布</li>
+</ul>
+<p>**回滚机制**：</p>
+<ul>
+<li>版本管理</li>
+<li>快速回滚</li>
+<li>数据恢复</li>
+<li>服务恢复</li>
+</ul>
+<h5>5.3 监控维护</h5>
+<p>**监控指标**：</p>
+<ul>
+<li>系统指标</li>
+<li>业务指标</li>
+<li>模型指标</li>
+<li>用户指标</li>
+</ul>
+<p>**告警机制**：</p>
+<ul>
+<li>告警规则</li>
+<li>告警级别</li>
+<li>告警渠道</li>
+<li>告警处理</li>
+</ul>
+<p>**日志管理**：</p>
+<ul>
+<li>访问日志</li>
+<li>错误日志</li>
+<li>性能日志</li>
+<li>审计日志</li>
+</ul>
+<p>**维护计划**：</p>
+<ul>
+<li>定期检查</li>
+<li>预防性维护</li>
+<li>故障处理</li>
+<li>容量规划</li>
+</ul>
+<h5>5.4 文档编写</h5>
+<p>**技术文档**：</p>
+<ul>
+<li>架构文档</li>
+<li>设计文档</li>
+<li>API文档</li>
+<li>部署文档</li>
+</ul>
+<p>**用户文档**：</p>
+<ul>
+<li>使用手册</li>
+<li>常见问题</li>
+<li>故障排除</li>
+<li>最佳实践</li>
+</ul>
+<p>**开发文档**：</p>
+<ul>
+<li>代码文档</li>
+<li>注释规范</li>
+<li>开发指南</li>
+<li>贡献指南</li>
+</ul>
+<p>**运维文档**：</p>
+<ul>
+<li>运维手册</li>
+<li>监控指南</li>
+<li>应急预案</li>
+<li>变更管理</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal56" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal56')">&times;</span>
         <h3>AI岗位简历优化</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>1. AI岗位简历优化</h4>
+<h5>1.1 简历结构</h5>
+<p>**基本信息**：</p>
+<ul>
+<li>姓名、联系方式</li>
+<li>教育背景</li>
+<li>工作经验</li>
+<li>技能清单</li>
+<li>项目经验</li>
+</ul>
+<p>**核心原则**：</p>
+<ul>
+<li>简洁明了</li>
+<li>重点突出</li>
+<li>量化成果</li>
+<li>匹配岗位</li>
+</ul>
+<h5>1.2 技能展示</h5>
+<p>**技术技能**：</p>
+<ul>
+<li>编程语言（Python、C++、Java）</li>
+<li>深度学习框架（TensorFlow、PyTorch）</li>
+<li>机器学习算法</li>
+<li>数据处理工具（Pandas、NumPy）</li>
+<li>云平台（AWS、Azure、GCP）</li>
+</ul>
+<p>**软技能**：</p>
+<ul>
+<li>问题解决能力</li>
+<li>团队协作</li>
+<li>沟通能力</li>
+<li>学习能力</li>
+<li>项目管理</li>
+</ul>
+<p>**领域知识**：</p>
+<ul>
+<li>行业知识</li>
+<li>业务理解</li>
+<li>领域专长</li>
+<li>应用场景</li>
+</ul>
+<h5>1.3 项目经验</h5>
+<p>**项目描述**：</p>
+<ul>
+<li>项目背景和目标</li>
+<li>技术方案</li>
+<li>个人职责</li>
+<li>项目成果</li>
+</ul>
+<p>**量化成果**：</p>
+<ul>
+<li>性能提升百分比</li>
+<li>成本降低金额</li>
+<li>用户增长数量</li>
+<li>效率提升倍数</li>
+</ul>
+<p>**技术亮点**：</p>
+<ul>
+<li>创新点</li>
+<li>技术难点</li>
+<li>解决方案</li>
+<li>技术价值</li>
+</ul>
+<h5>1.4 简历优化技巧</h5>
+<p>**关键词优化**：</p>
+<ul>
+<li>匹配岗位JD</li>
+<li>使用行业术语</li>
+<li>突出核心技能</li>
+<li>量化成果</li>
+</ul>
+<p>**格式优化**：</p>
+<ul>
+<li>使用专业模板</li>
+<li>保持一致性</li>
+<li>合理使用加粗</li>
+<li>控制篇幅</li>
+</ul>
+<p>**内容优化**：</p>
+<ul>
+<li>突出相关性</li>
+<li>删除冗余信息</li>
+<li>使用动作动词</li>
+<li>展示成长轨迹</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal57" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal57')">&times;</span>
         <h3>技术面试准备</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>2. 技术面试准备</h4>
+<h5>2.1 面试类型</h5>
+<p>**技术面试**：</p>
+<ul>
+<li>算法题</li>
+<li>编程题</li>
+<li>系统设计</li>
+<li>机器学习理论</li>
+</ul>
+<p>**行为面试**：</p>
+<ul>
+<li>团队协作</li>
+<li>问题解决</li>
+<li>冲突处理</li>
+<li>领导力</li>
+</ul>
+<p>**项目面试**：</p>
+<ul>
+<li>项目经验</li>
+<li>技术细节</li>
+<li>挑战与解决方案</li>
+<li>成果与影响</li>
+</ul>
+<h5>2.2 算法题准备</h5>
+<p>**基础算法**：</p>
+<ul>
+<li>排序算法</li>
+<li>搜索算法</li>
+<li>动态规划</li>
+<li>贪心算法</li>
+</ul>
+<p>**数据结构**：</p>
+<ul>
+<li>数组和链表</li>
+<li>栈和队列</li>
+<li>树和图</li>
+<li>哈希表</li>
+</ul>
+<p>**解题策略**：</p>
+<ul>
+<li>理解题意</li>
+<li>分析复杂度</li>
+<li>编写伪代码</li>
+<li>优化解法</li>
+</ul>
+<p>**练习资源**：</p>
+<ul>
+<li>LeetCode</li>
+<li>HackerRank</li>
+<li>Codeforces</li>
+<li>牛客网</li>
+</ul>
+<h5>2.3 机器学习理论</h5>
+<p>**基础概念**：</p>
+<ul>
+<li>监督学习</li>
+<li>无监督学习</li>
+<li>强化学习</li>
+<li>深度学习</li>
+</ul>
+<p>**常用算法**：</p>
+<ul>
+<li>线性回归</li>
+<li>逻辑回归</li>
+<li>决策树</li>
+<li>神经网络</li>
+</ul>
+<p>**评估指标**：</p>
+<ul>
+<li>准确率</li>
+<li>精确率</li>
+<li>召回率</li>
+<li>F1分数</li>
+</ul>
+<p>**实践经验**：</p>
+<ul>
+<li>特征工程</li>
+<li>模型选择</li>
+<li>超参数调优</li>
+<li>模型部署</li>
+</ul>
+<h5>2.4 系统设计</h5>
+<p>**设计原则**：</p>
+<ul>
+<li>可扩展性</li>
+<li>可靠性</li>
+<li>可维护性</li>
+<li>安全性</li>
+</ul>
+<p>**设计流程**：</p>
+<ul>
+<li>需求分析</li>
+<li>架构设计</li>
+<li>技术选型</li>
+<li>评估优化</li>
+</ul>
+<p>**常见场景**：</p>
+<ul>
+<li>推荐系统</li>
+<li>搜索引擎</li>
+<li>实时系统</li>
+<li>分布式系统</li>
+</ul>
+<p>**设计模式**：</p>
+<ul>
+<li>微服务架构</li>
+<li>事件驱动架构</li>
+<li>分层架构</li>
+<li>CQRS</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal58" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal58')">&times;</span>
         <h3>算法题解题技巧</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>3. 算法题解题技巧</h4>
+<h5>3.1 解题方法论</h5>
+<p>**五步法**：</p>
+<ol>
+<li>理解问题</li>
+<li>分析约束</li>
+<li>设计算法</li>
+<li>实现代码</li>
+<li>优化验证</li>
+</ol>
+<p>**思维技巧**：</p>
+<ul>
+<li>画图辅助</li>
+<li>举例验证</li>
+<li>分解问题</li>
+<li>类比思考</li>
+</ul>
+<h5>3.2 常见题型</h5>
+<p>**数组类**：</p>
+<ul>
+<li>两数之和</li>
+<li>最大子数组和</li>
+<li>合并区间</li>
+<li>排序数组</li>
+</ul>
+<p>**字符串类**：</p>
+<ul>
+<li>最长公共子串</li>
+<li>字符串匹配</li>
+<li>回文串</li>
+<li>字符串转换</li>
+</ul>
+<p>**树类**：</p>
+<ul>
+<li>二叉树遍历</li>
+<li>最近公共祖先</li>
+<li>平衡二叉树</li>
+<li>二叉搜索树</li>
+</ul>
+<p>**图类**：</p>
+<ul>
+<li>最短路径</li>
+<li>拓扑排序</li>
+<li>连通分量</li>
+<li>最小生成树</li>
+</ul>
+<h5>3.3 优化技巧</h5>
+<p>**时间优化**：</p>
+<ul>
+<li>减少循环次数</li>
+<li>使用更高效算法</li>
+<li>预处理</li>
+<li>缓存结果</li>
+</ul>
+<p>**空间优化**：</p>
+<ul>
+<li>原地操作</li>
+<li>滚动数组</li>
+<li>位运算</li>
+<li>懒加载</li>
+</ul>
+<p>**代码优化**：</p>
+<ul>
+<li>减少重复计算</li>
+<li>使用内置函数</li>
+<li>合理使用数据结构</li>
+<li>避免不必要的拷贝</li>
+</ul>
+<h5>3.4 调试技巧</h5>
+<p>**常见错误**：</p>
+<ul>
+<li>边界条件</li>
+<li>空值处理</li>
+<li>整数溢出</li>
+<li>死循环</li>
+</ul>
+<p>**调试方法**：</p>
+<ul>
+<li>打印日志</li>
+<li>断点调试</li>
+<li>单元测试</li>
+<li>代码审查</li>
+</ul>
+<p>**测试用例**：</p>
+<ul>
+<li>正常情况</li>
+<li>边界情况</li>
+<li>异常情况</li>
+<li>极端情况</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal59" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal59')">&times;</span>
         <h3>职业发展规划</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>4. 职业发展规划</h4>
+<h5>4.1 职业路径</h5>
+<p>**技术路线**：</p>
+<ul>
+<li>初级工程师</li>
+<li>中级工程师</li>
+<li>高级工程师</li>
+<li>技术专家</li>
+<li>首席科学家</li>
+</ul>
+<p>**管理路线**：</p>
+<ul>
+<li>技术主管</li>
+<li>技术经理</li>
+<li>技术总监</li>
+<li>CTO</li>
+</ul>
+<p>**混合路线**：</p>
+<ul>
+<li>技术+管理</li>
+<li>技术+产品</li>
+<li>技术+业务</li>
+</ul>
+<h5>4.2 技能发展</h5>
+<p>**深度发展**：</p>
+<ul>
+<li>专精某一领域</li>
+<li>成为领域专家</li>
+<li>持续深入研究</li>
+<li>发表技术文章</li>
+</ul>
+<p>**广度发展**：</p>
+<ul>
+<li>学习多种技术</li>
+<li>跨领域知识</li>
+<li>全栈能力</li>
+<li>综合解决问题</li>
+</ul>
+<p>**持续学习**：</p>
+<ul>
+<li>关注技术趋势</li>
+<li>参加技术会议</li>
+<li>阅读技术书籍</li>
+<li>实践新技术</li>
+</ul>
+<h5>4.3 职业规划</h5>
+<p>**短期规划（1-2年）**：</p>
+<ul>
+<li>提升技术能力</li>
+<li>完成重要项目</li>
+<li>积累经验</li>
+<li>建立人脉</li>
+</ul>
+<p>**中期规划（3-5年）**：</p>
+<ul>
+<li>成为技术骨干</li>
+<li>带领小团队</li>
+<li>深入某一领域</li>
+<li>提升影响力</li>
+</ul>
+<p>**长期规划（5-10年）**：</p>
+<ul>
+<li>成为技术专家</li>
+<li>或转向管理</li>
+<li>或创业</li>
+<li>或跨行业发展</li>
+</ul>
+<h5>4.4 职业转换</h5>
+<p>**转换时机**：</p>
+<ul>
+<li>技术瓶颈</li>
+<li>兴趣变化</li>
+<li>行业趋势</li>
+<li>个人发展</li>
+</ul>
+<p>**转换准备**：</p>
+<ul>
+<li>学习新技能</li>
+<li>积累相关经验</li>
+<li>建立人脉</li>
+<li>准备简历</li>
+</ul>
+<p>**转换策略**：</p>
+<ul>
+<li>渐进式转换</li>
+<li>跨领域应用</li>
+<li>利用现有优势</li>
+<li>降低风险</li>
+</ul>
     </div>
 </div>
 <div class="modal" id="modal60" style="display: none;">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal60')">&times;</span>
         <h3>行业趋势与发展方向</h3>
-        <p>本内容正在开发中，敬请期待...</p>
-        <p>点击右上角关闭按钮返回。</p>
+        <h4>5. 行业趋势与发展方向</h4>
+<h5>5.1 技术趋势</h5>
+<p>**大模型时代**：</p>
+<ul>
+<li>大语言模型</li>
+<li>多模态模型</li>
+<li>模型微调</li>
+<li>应用开发</li>
+</ul>
+<p>**AI工程化**：</p>
+<ul>
+<li>MLOps</li>
+<li>模型部署</li>
+<li>系统架构</li>
+<li>性能优化</li>
+</ul>
+<p>**AI安全**：</p>
+<ul>
+<li>对抗攻击</li>
+<li>隐私保护</li>
+<li>可解释AI</li>
+<li>AI伦理</li>
+</ul>
+<p>**行业应用**：</p>
+<ul>
+<li>金融科技</li>
+<li>医疗健康</li>
+<li>智能制造</li>
+<li>自动驾驶</li>
+</ul>
+<h5>5.2 市场需求</h5>
+<p>**热门岗位**：</p>
+<ul>
+<li>机器学习工程师</li>
+<li>深度学习工程师</li>
+<li>算法工程师</li>
+<li>AI产品经理</li>
+</ul>
+<p>**技能需求**：</p>
+<ul>
+<li>扎实的理论基础</li>
+<li>丰富的实践经验</li>
+<li>工程化能力</li>
+<li>业务理解能力</li>
+</ul>
+<p>**薪资水平**：</p>
+<ul>
+<li>初级：15-30万/年</li>
+<li>中级：30-60万/年</li>
+<li>高级：60-100万/年</li>
+<li>专家：100万+/年</li>
+</ul>
+<h5>5.3 发展建议</h5>
+<p>**持续学习**：</p>
+<ul>
+<li>关注前沿技术</li>
+<li>参加技术社区</li>
+<li>阅读技术论文</li>
+<li>实践新技术</li>
+</ul>
+<p>**建立影响力**：</p>
+<ul>
+<li>技术博客</li>
+<li>开源项目</li>
+<li>技术分享</li>
+<li>技术书籍</li>
+</ul>
+<p>**职业网络**：</p>
+<ul>
+<li>参加技术会议</li>
+<li>加入技术社区</li>
+<li>建立人脉关系</li>
+<li>寻找导师</li>
+</ul>
+<p>**平衡发展**：</p>
+<ul>
+<li>技术能力</li>
+<li>软技能</li>
+<li>业务理解</li>
+<li>行业知识</li>
+</ul>
+<h5>5.4 未来展望</h5>
+<p>**技术发展**：</p>
+<ul>
+<li>更强大的模型</li>
+<li>更高效的方法</li>
+<li>更广泛的应用</li>
+<li>更好的安全性</li>
+</ul>
+<p>**职业机会**：</p>
+<ul>
+<li>新兴领域</li>
+<li>传统行业</li>
+<li>跨学科应用</li>
+<li>创业机会</li>
+</ul>
+<p>**挑战与机遇**：</p>
+<ul>
+<li>技术快速变化</li>
+<li>竞争激烈</li>
+<li>伦理问题</li>
+<li>社会影响</li>
+</ul>
+<p>**个人发展**：</p>
+<ul>
+<li>终身学习</li>
+<li>适应变化</li>
+<li>保持热情</li>
+<li>追求卓越</li>
+</ul>
     </div>
 </div>

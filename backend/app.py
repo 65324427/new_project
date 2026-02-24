@@ -34,7 +34,11 @@ def save_users(users):
 def index():
     return send_from_directory(TEMPLATES_DIR, 'preview_all.html')
 
-@app.route('/<path:filename>')
+@app.route('/test')
+def test_page():
+    return send_from_directory(TEMPLATES_DIR, 'test_functions.html')
+
+@app.route('/static/<path:filename>')
 def serve_static(filename):
     return send_from_directory(STATIC_DIR, filename)
 

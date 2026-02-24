@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>功能测试 - AI课程学习平台</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .test-section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-section h2 {
+            color: #4a90e2;
+            margin-top: 0;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        .test-result {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .test-result.success {
+            background-color: #d4edda;
+            border-left: 4px solid #28a745;
+        }
+        .test-result.error {
+            background-color: #f8d7da;
+            border-left: 4px solid #dc3545;
+        }
+        .test-result.info {
+            background-color: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+        }
+        .status {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .status.running {
+            color: #ffc107;
+        }
+        .status.success {
+            color: #28a745;
+        }
+        .status.error {
+            color: #dc3545;
+        }
+        button {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background-color: #357abd;
+        }
+        button.secondary {
+            background-color: #6c757d;
+        }
+        button.secondary:hover {
+            background-color: #545b62;
+        }
+        #console-output {
+            background-color: #1e1e1e;
+            color: #00ff00;
+            padding: 20px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            max-height: 400px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .summary {
+            background-color: #fff3cd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .summary h3 {
+            margin-top: 0;
+            color: #856404;
+        }
+        .metric {
+            display: inline-block;
+            margin: 10px 20px;
+            padding: 10px 20px;
+            background-color: white;
+            border-radius: 4px;
+        }
+        .metric-label {
+            color: #666;
+            font-size: 14px;
+        }
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4a90e2;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 AI课程学习平台 - 功能测试</h1>
+    
+    <div class="test-section">
+        <h2>📊 测试控制面板</h2>
+        <button onclick="runAllTests()">🚀 运行所有测试</button>
+        <button class="secondary" onclick="clearConsole()">🧹 清空控制台</button>
+        <button class="secondary" onclick="window.location.href='../templates/preview_all.html'">📱 打开主页面</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>📝 测试结果</h2>
+        <div id="test-results"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>💻 控制台输出</h2>
+        <div id="console-output">等待测试运行...</div>
+    </div>
+    
+    <div class="summary" id="test-summary" style="display: none;">
+        <h3>📈 测试摘要</h3>
+        <div class="metric">
+            <div class="metric-label">API测试</div>
+            <div class="metric-value" id="api-tests">-</div>
+        </div>
+        <div class="metric">
+            <div class="metric-label">前端文件</div>
+            <div class="metric-value" id="frontend-tests">-</div>
+        </div>
+        <div class="metric">
+            <div class="metric-label">本地存储</div>
+            <div class="metric-value" id="storage-tests">-</div>
+        </div>
+        <div class="metric">
+            <div class="metric-label">DOM元素</div>
+            <div class="metric-value" id="dom-tests">-</div>
+        </div>
+    </div>
+    
+    <script src="test_functions.js"></script>
+    <script>
+        let testResults = {
+            api: { total: 0, passed: 0, failed: 0 },
+            frontend: { total: 0, passed: 0, failed: 0 },
+            storage: { total: 0, passed: 0, failed: 0 },
+            dom: { total: 0, passed: 0, failed: 0 }
+        };
+        
+        function updateTestResults(category, total, passed, failed) {
+            testResults[category] = { total, passed, failed };
+            updateSummary();
+        }
+        
+        function updateSummary() {
+            document.getElementById('api-tests').textContent = 
+                `${testResults.api.passed}/${testResults.api.total}`;
+            document.getElementById('frontend-tests').textContent = 
+                `${testResults.frontend.passed}/${testResults.frontend.total}`;
+            document.getElementById('storage-tests').textContent = 
+                `${testResults.storage.passed}/${testResults.storage.total}`;
+            document.getElementById('dom-tests').textContent = 
+                `${testResults.dom.passed}/${testResults.dom.total}`;
+            
+            const totalTests = testResults.api.total + testResults.frontend.total + 
+                              testResults.storage.total + testResults.dom.total;
+            const totalPassed = testResults.api.passed + testResults.frontend.passed + 
+                               testResults.storage.passed + testResults.dom.passed;
+            
+            const summary = document.getElementById('test-summary');
+            summary.style.display = 'block';
+            
+            if (totalPassed === totalTests) {
+                summary.innerHTML = `
+                    <h3>🎉 测试完成 - 全部通过</h3>
+                    <p>所有 ${totalTests} 个测试都已通过！</p>
+                `;
+            } else {
+                const failedCount = totalTests - totalPassed;
+                summary.innerHTML = `
+                    <h3>⚠️ 测试完成 - ${failedCount} 个失败</h3>
+                    <p>通过: ${totalPassed}/${totalTests} (${((totalPassed/totalTests)*100).toFixed(1)}%)</p>
+                `;
+            }
+        }
+        
+        function runAllTests() {
+            const consoleOutput = document.getElementById('console-output');
+            const testResultsDiv = document.getElementById('test-results');
+            
+            consoleOutput.innerHTML = '正在运行测试...\n';
+            testResultsDiv.innerHTML = '';
+            
+            // 重置测试结果
+            testResults = {
+                api: { total: 0, passed: 0, failed: 0 },
+                frontend: { total: 0, passed: 0, failed: 0 },
+                storage: { total: 0, passed: 0, failed: 0 },
+                dom: { total: 0, passed: 0, failed: 0 }
+            };
+            
+            // 捕获console输出
+            const originalLog = console.log;
+            const logs = [];
+            
+            console.log = function(...args) {
+                logs.push(args.join(' '));
+                originalLog.apply(console, args);
+                
+                // 更新控制台显示
+                consoleOutput.innerHTML += args.join(' ') + '\n';
+                consoleOutput.scrollTop = consoleOutput.scrollHeight;
+            };
+            
+            // 运行测试
+            setTimeout(async () => {
+                await testAPI();
+                await new Promise(resolve => setTimeout(resolve, 2500));
+                await testFrontendFiles();
+                await new Promise(resolve => setTimeout(resolve, 2500));
+                testLocalStorage();
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                testDOMElements();
+                
+                // 恢复console.log
+                console.log = originalLog;
+                
+                consoleOutput.innerHTML += '\n=== 测试完成 ===\n';
+                consoleOutput.scrollTop = consoleOutput.scrollHeight;
+                
+                updateSummary();
+            }, 100);
+        }
+        
+        function clearConsole() {
+            document.getElementById('console-output').innerHTML = '控制台已清空\n';
+            document.getElementById('test-results').innerHTML = '';
+            document.getElementById('test-summary').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

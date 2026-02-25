@@ -16,6 +16,15 @@ TEMPLATES_DIR = FRONTEND_DIR / 'templates'
 app.config['STATIC_FOLDER'] = str(STATIC_DIR)
 app.config['TEMPLATES_FOLDER'] = str(TEMPLATES_DIR)
 
+# 测试模式配置
+import os
+if os.environ.get('TESTING'):
+    # 测试模式下使用相对路径
+    STATIC_DIR = 'static'
+    TEMPLATES_DIR = 'templates'
+    app.config['STATIC_FOLDER'] = STATIC_DIR
+    app.config['TEMPLATES_FOLDER'] = TEMPLATES_DIR
+
 # 用户数据存储
 USERS_FILE = BASE_DIR / 'backend' / 'users.json'
 

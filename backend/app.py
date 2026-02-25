@@ -19,7 +19,6 @@ app.config['STATIC_FOLDER'] = str(STATIC_DIR)
 app.config['TEMPLATES_FOLDER'] = str(TEMPLATES_DIR)
 
 # 测试模式配置
-import os
 if os.environ.get('TESTING'):
     # 测试模式下使用相对路径
     STATIC_DIR = 'static'

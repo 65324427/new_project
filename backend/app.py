@@ -26,6 +26,10 @@ if os.environ.get('TESTING'):
     TEMPLATES_DIR = 'templates'
     app.config['STATIC_FOLDER'] = STATIC_DIR
     app.config['TEMPLATES_FOLDER'] = TEMPLATES_DIR
+else:
+    # 生产模式使用绝对路径
+    app.config['STATIC_FOLDER'] = str(STATIC_DIR)
+    app.config['TEMPLATES_FOLDER'] = str(TEMPLATES_DIR)
 
 # 用户数据存储
 USERS_FILE = BASE_DIR / 'backend' / 'users.json'

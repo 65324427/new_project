@@ -5,6 +5,7 @@ Trae AI 集成模块
 
 import requests
 import json
+import os
 from typing import Dict, List, Optional, Any
 
 class TraeAI:

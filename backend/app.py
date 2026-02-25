@@ -3,6 +3,8 @@ from flask_cors import CORS
 import os
 import json
 from pathlib import Path
+from trae_ai import TraeAI
+from trae_config import get_trae_config
 
 app = Flask(__name__)
 CORS(app)
@@ -249,6 +251,170 @@ def handle_progress():
 @app.route('/api/health')
 def health_check():
     return jsonify({'status': 'healthy', 'message': 'API运行正常'})
+
+# Trae AI 相关API端点
+@app.route('/api/trae/generate-code', methods=['POST'])
+def trae_generate_code():
+    """
+    Trae AI 代码生成接口
+    """
+    data = request.json
+    prompt = data.get('prompt', '')
+    language = data.get('language', 'python')
+    context = data.get('context')
+    max_tokens = data.get('max_tokens', 2000)
+    
+    trae_ai = TraeAI()
+    result = trae_ai.generate_code(prompt, language, context, max_tokens)
+    
+    return jsonify(result)
+
+@app.route('/api/trae/explain-code', methods=['POST'])
+def trae_explain_code():
+    """
+    Trae AI 代码解释接口
+    """
+    data = request.json
+    code = data.get('code', '')
+    language = data.get('language', 'python')
+    
+    trae_ai = TraeAI()
+    result = trae_ai.explain_code(code, language)
+    
+    return jsonify(result)
+
+@app.route('/api/trae/optimize-code', methods=['POST'])
+def trae_optimize_code():
+    """
+    Trae AI 代码优化接口
+    """
+    data = request.json
+    code = data.get('code', '')
+    language = data.get('language', 'python')
+    optimization_type = data.get('optimization_type', 'performance')
+    
+    trae_ai = TraeAI()
+    result = trae_ai.optimize_code(code, language, optimization_type)
+    
+    return jsonify(result)
+
+@app.route('/api/trae/debug-code', methods=['POST'])
+def trae_debug_code():
+    """
+    Trae AI 代码调试接口
+    """
+    data = request.json
+    code = data.get('code', '')
+    error_message = data.get('error_message')
+    language = data.get('language', 'python')
+    
+    trae_ai = TraeAI()
+    result = trae_ai.debug_code(code, error_message, language)
+    
+    return jsonify(result)
+
+@app.route('/api/trae/chat', methods=['POST'])
+def trae_chat():
+    """
+    Trae AI 对话接口
+    """
+    data = request.json
+    message = data.get('message', '')
+    conversation_history = data.get('conversation_history')
+    model = data.get('model', 'gpt-4o')
+    
+    trae_ai = TraeAI()
+    result = trae_ai.chat(message, conversation_history, model)
+    
+    return jsonify(result)
+
+@app.route('/api/trae/analyze-content', methods=['POST'])
+def trae_analyze_content():
+    """
+    Trae AI 课程内容分析接口
+    """
+    data = request.json
+    content = data.get('content', '')
+    analysis_type = data.get('analysis_type', 'completeness')
+    
+    trae_ai = TraeAI()
+    result = trae_ai.analyze_course_content(content, analysis_type)
+    
+    return jsonify(result)
+
+@app.route('/api/trae/generate-quiz', methods=['POST'])
+def trae_generate_quiz():
+    """
+    Trae AI 测验生成接口
+    """
+    data = request.json
+    topic = data.get('topic', '')
+    difficulty = data.get('difficulty', 'medium')
+    count = data.get('count', 5)
+    
+    trae_ai = TraeAI()
+    result = trae_ai.generate_quiz_questions(topic, difficulty, count)
+    
+    return jsonify(result)
+
+@app.route('/api/trae/suggest-path', methods=['POST'])
+def trae_suggest_path():
+    """
+    Trae AI 学习路径推荐接口
+    """
+    data = request.json
+    user_level = data.get('user_level', 'beginner')
+    user_goals = data.get('user_goals', [])
+    available_time = data.get('available_time', 10)
+    
+    trae_ai = TraeAI()
+    result = trae_ai.suggest_learning_path(user_level, user_goals, available_time)
+    
+    return jsonify(result)
+
+@app.route('/api/trae/config', methods=['GET', 'POST', 'PUT'])
+def trae_config():
+    """
+    Trae AI 配置管理接口
+    """
+    config = get_trae_config()
+    
+    if request.method == 'GET':
+        return jsonify({
+            'success': True,
+            'config': config.config
+        })
+    
+    elif request.method == 'POST':
+        data = request.json
+        action = data.get('action')
+        
+        if action == 'set_api_key':
+            api_key = data.get('api_key', '')
+            success = config.set_api_key(api_key)
+            return jsonify({'success': success})
+        
+        elif action == 'set_model':
+            model_type = data.get('model_type', 'default')
+            model_name = data.get('model_name', 'gpt-4o')
+            success = config.set_model(model_type, model_name)
+            return jsonify({'success': success})
+        
+        elif action == 'enable_feature':
+            feature = data.get('feature', '')
+            success = config.enable_feature(feature)
+            return jsonify({'success': success})
+        
+        elif action == 'disable_feature':
+            feature = data.get('feature', '')
+            success = config.disable_feature(feature)
+            return jsonify({'success': success})
+        
+        elif action == 'reset':
+            success = config.reset_to_default()
+            return jsonify({'success': success})
+        
+        return jsonify({'success': False, 'error': '未知操作'})
 
 if __name__ == '__main__':
     # 确保必要的目录存在

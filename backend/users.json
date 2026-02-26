@@ -2,5 +2,89 @@
   "test_id": {
     "username": "test",
     "email": "test@example.com"
+  },
+  "user_1771988303_smoke_test_user": {
+    "id": "user_1771988303_smoke_test_user",
+    "username": "smoke_test_user",
+    "email": "smoke@example.com",
+    "password": "3156406517044597",
+    "createdAt": "2026-02-25T10:58:23",
+    "lastLogin": "2026-02-26T00:01:09",
+    "settings": {
+      "theme": "light",
+      "notifications": true,
+      "language": "zh-CN"
+    },
+    "progress": {
+      "totalProgress": 0,
+      "completedSections": [],
+      "sectionProgress": {},
+      "totalTime": 0,
+      "lastStudied": null,
+      "sessions": []
+    },
+    "statistics": {
+      "totalSessions": 0,
+      "averageSessionTime": 0,
+      "longestSession": 0,
+      "streakDays": 0,
+      "lastStudyDate": null
+    }
+  },
+  "user_1772035253_smoke_user_1772035253": {
+    "id": "user_1772035253_smoke_user_1772035253",
+    "username": "smoke_user_1772035253",
+    "email": "smoke_1772035253@example.com",
+    "password": "3156406517044597",
+    "createdAt": "2026-02-26T00:00:53",
+    "lastLogin": null,
+    "settings": {
+      "theme": "light",
+      "notifications": true,
+      "language": "zh-CN"
+    },
+    "progress": {
+      "totalProgress": 0,
+      "completedSections": [],
+      "sectionProgress": {},
+      "totalTime": 0,
+      "lastStudied": null,
+      "sessions": []
+    },
+    "statistics": {
+      "totalSessions": 0,
+      "averageSessionTime": 0,
+      "longestSession": 0,
+      "streakDays": 0,
+      "lastStudyDate": null
+    }
+  },
+  "user_1772035269_smoke_user_1772035269": {
+    "id": "user_1772035269_smoke_user_1772035269",
+    "username": "smoke_user_1772035269",
+    "email": "smoke_1772035269@example.com",
+    "password": "3156406517044597",
+    "createdAt": "2026-02-26T00:01:09",
+    "lastLogin": null,
+    "settings": {
+      "theme": "light",
+      "notifications": true,
+      "language": "zh-CN"
+    },
+    "progress": {
+      "totalProgress": 0,
+      "completedSections": [],
+      "sectionProgress": {},
+      "totalTime": 0,
+      "lastStudied": null,
+      "sessions": []
+    },
+    "statistics": {
+      "totalSessions": 0,
+      "averageSessionTime": 0,
+      "longestSession": 0,
+      "streakDays": 0,
+      "lastStudyDate": null
+    }
   }
 }
